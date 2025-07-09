@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ND Photography</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- font icon -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+      <!-- AOS CSS CDN -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="testimonialpage.css" />
+  </head>
+  <body>
+     <header>
+      <div class="navbar" data-aos="fade-down">
+        <div class="logo">ND Photography</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <div class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <div class="dropdown-content">
+              <a href="#" onclick="closeMenu()">Weddings</a>
+              <a href="#" onclick="closeMenu()">Portraits</a>
+              <a href="#" onclick="closeMenu()">Events</a>
+              <a href="#" onclick="closeMenu()">Commercial</a>
+              <a href="#" onclick="closeMenu()">Nature</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="services.html" onclick="toggleDropdown(event)">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="services.html" onclick="closeMenu()">Weddings</a>
+              <a href="services.html" onclick="closeMenu()">Events</a>
+              <a href="services.html" onclick="closeMenu()">Portrait Sessions</a>
+              <a href="services.html" onclick="closeMenu()">Commercial</a>
+            </div>
+          </div>
+          <a href="#" onclick="closeMenu()">About</a>
+          <div class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">More ▾</a>
+            <div class="dropdown-content">
+              <a href="#" onclick="closeMenu()">Testimonials</a>
+              <a href="#" onclick="closeMenu()">Pricing</a>
+              <a href="#" onclick="closeMenu()">Blog</a>
+            </div>
+          </div>
+          <a href="#" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="#" onclick="closeMenu()">Book Now</a>
+        </nav>
+      </div>
+    </header>
+
+
+      <!-- Testimonials  -->
+<section class="client-testimonial py-5">
+  <div class="container">
+
+    <div class="testimonial-heading text-center mb-5">
+      <p class="text-muted">Client</p>
+      <h2 class="fw-bold">FEEDBACK</h2>
+      <p class="text-muted">
+        Discover what our clients have to say about their experience with ND-Photography. From weddings to portraits, their words reflect the passion and dedication we bring to every shot.
+      </p>
+    </div>
+
+
+    <!-- Wedding -->
+<div class="testimonial-row">
+  <div class="testimonial-img">
+    <img src="img/weddingcouple.jpg" alt="Client - Sarah & John">
+  </div>
+  <div class="testimonial-text">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>From the moment we connected with ND-Photography, we felt completely at ease. They didn’t just photograph our wedding — they captured the soul of it. Every image is full of raw emotion and beautiful detail. Looking through our album feels like reliving the day.</p>
+    <h4>Sarah & John</h4>
+    <span>Wedding Client</span>
+  </div>
+</div>
+
+<!-- Portrait -->
+<div class="testimonial-row row-reverse">
+  <div class="testimonial-img">
+    <img src="img/portraitgirl.jpg" alt="Client - Emma Blake">
+  </div>
+  <div class="testimonial-text">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>As someone camera-shy, I was nervous for my portrait session, but ND-Photography made it incredibly comfortable. The final portraits reflected my personality and were beyond what I imagined. Their ability to bring out natural expressions is unmatched.</p>
+    <h4>Emma Blake</h4>
+    <span>Portrait Client</span>
+  </div>
+</div>
+
+<!-- Event -->
+<div class="testimonial-row">
+  <div class="testimonial-img">
+    <img src="img/eventcouple.jpg" alt="Client - Liam & Mia">
+  </div>
+  <div class="testimonial-text">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>Our anniversary event was a once-in-a-lifetime celebration and ND-Photography captured every magical moment. From candid laughter to group photos, everything was done with precision and creativity. We are truly grateful for their storytelling through pictures.</p>
+    <h4>Liam & Mia</h4>
+    <span>Event Client</span>
+  </div>
+</div>
+
+<!-- Commercial -->
+<div class="testimonial-row row-reverse">
+  <div class="testimonial-img">
+    <img src="img/commercialphoto.jpg" alt="Client - David Singh">
+  </div>
+  <div class="testimonial-text">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>We hired ND-Photography for our product shoot and were blown away. The attention to lighting, angles, and brand representation was excellent. Their images significantly elevated our brand presence and engagement across all platforms.</p>
+    <h4>David Singh</h4>
+    <span>Commercial Shoot Client</span>
+  </div>
+</div>
+
+<!-- Nature -->
+<div class="testimonial-row">
+  <div class="testimonial-img">
+    <img src="img/naturephotgraphy.jpg" alt="Client - Arjun Mehta">
+  </div>
+  <div class="testimonial-text">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>I collaborated with ND-Photography on a nature photography project. Their patience, eye for detail, and ability to capture wildlife in natural moments was inspiring. The results were breathtaking and truly celebrated nature’s raw beauty.</p>
+    <h4>Arjun Mehta</h4>
+    <span>Nature Photography Client</span>
+  </div>
+</div>
+
+<!-- Branding -->
+<div class="testimonial-row row-reverse">
+  <div class="testimonial-img">
+    <img src="img/bussinesswomen.jpg" alt="Client - Olivia Roy">
+  </div>
+  <div class="testimonial-text">
+    <i class="fas fa-quote-left quote-icon"></i>
+    <p>For my personal branding shoot, I needed something clean, modern, and expressive. ND-Photography delivered exactly that and more. Every photo speaks of confidence, style, and clarity — everything I wanted my brand to convey.</p>
+    <h4>Olivia Roy</h4>
+    <span>Branding Client</span>
+  </div>
+</div>
+
+
+  </div>
+</section>
+
+<section class="testimonialcta-section text-white">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3">Loved Their Experience?</h2>
+    <p class="lead mb-4">Book your personalized photography session today and let us turn your vision into reality.</p>
+    <a href="#contact" class="btn testimonialcta-btn  btn-lg px-6 rounded-pill text-white">Let’s Connect<i class="fa-solid fa-angle-right ms-2"></i></a>
+  </div>
+</section>
+
+
+
+<!-- footer -->
+    <footer data-aos="fade-up">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col" data-aos="fade-up">
+            <h3>About Us</h3>
+            <p>ND Photography specializes in capturing life's precious moments through stunning imagery.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="#">Portfolio</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="services.html">Wedding Photography</a></li>
+              <li><a href="services.html">Portrait Sessions</a></li>
+              <li><a href="services.html">Event Photography</a></li>
+              <li><a href="services.html">Commercial Photography</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for special offers and tips.</p>
+            <form class="newsletter">
+              <input type="email" placeholder="Your Email Address" required />
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" data-aos="fade-up" data-aos-delay="400">
+          <p>&copy; 2023 ND Photography. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script src="testimonialpage.js"></script>
+
+  </body>
+</html>
+
+
