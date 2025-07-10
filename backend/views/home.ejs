@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ND Photography | Capturing Moments That Matter</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="/user/home.css">
+</head>
+<body>
+    <%- include('Navbar') %>
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center">
+        <!-- Hero Slides -->
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+        
+        <!-- Overlay -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Hero Content -->
+        <div class="container hero-content text-center">
+            <h1 class="tagline mb-3 animate-on-scroll">Capturing Moments That Matter</h1>
+            <p class="sub-tagline animate-on-scroll delay-1">Professional photography for weddings, portraits, and events</p>
+            <div class="d-flex justify-content-center gap-3 animate-on-scroll delay-2">
+                <a href="#contact" class="btn btn-primary btn-lg">Book a Session</a>
+                <a href="#portfolio" class="btn btn-outline-light btn-lg">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Portfolio Section -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold section-heading animate-on-scroll">Featured Work</h2>
+                <p class="lead animate-on-scroll delay-1">A selection of our recent projects</p>
+            </div>
+            
+            <div class="row">
+                <!-- Portfolio Item 1 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wedding Photography">
+                        <div class="portfolio-overlay">
+                            <h3>Wedding Photography</h3>
+                            <p>Sarah & Jake's Wedding</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 2 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item animate-on-scroll delay-1">
+                        <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Portrait Session">
+                        <div class="portfolio-overlay">
+                            <h3>Portrait Session</h3>
+                            <p>Professional Headshots</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 3 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item animate-on-scroll delay-2">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Event Photography">
+                        <div class="portfolio-overlay">
+                            <h3>Event Photography</h3>
+                            <p>Corporate Conference</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 4 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item animate-on-scroll">
+                        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Commercial Photography">
+                        <div class="portfolio-overlay">
+                            <h3>Commercial Photography</h3>
+                            <p>Product Campaign</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 5 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item animate-on-scroll delay-1">
+                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Wedding Photography">
+                        <div class="portfolio-overlay">
+                            <h3>Wedding Photography</h3>
+                            <p>Emma & David's Wedding</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Portfolio Item 6 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="portfolio-item animate-on-scroll delay-2">
+                        <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Portrait Session">
+                        <div class="portfolio-overlay">
+                            <h3>Portrait Session</h3>
+                            <p>Family Portraits</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="portfolio.html" class="btn btn-primary btn-lg animate-on-scroll">View Full Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-4 fw-bold section-heading animate-on-scroll">Our Services</h2>
+                <p class="lead animate-on-scroll delay-1">Professional photography for all occasions</p>
+            </div>
+            
+            <div class="row">
+                <!-- Wedding Photography -->
+                <div class="col-md-6 col-lg-3" >
+
+                    <div class="service-card text-center p-4 animate-on-scroll border border-primary">
+                        <div class="service-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h3>Wedding Photography</h3>
+                        <p>Capture your special day with beautiful, timeless photographs that tell your unique story.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Portrait Sessions -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card text-center p-4 animate-on-scroll delay-1 border border-primary">
+                        <div class="service-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3>Portrait Sessions</h3>
+                        <p>Professional portraits for individuals, families, and professionals that showcase your personality.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Event Photography -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card text-center p-4 animate-on-scroll delay-2 border border-primary">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Event Photography</h3>
+                        <p>Corporate events, parties, and special occasions captured with professionalism and creativity.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Commercial Photography -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card text-center p-4 animate-on-scroll delay-3 border border-primary">
+                        <div class="service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Commercial Photography</h3>
+                        <p>High-quality product and commercial photography to enhance your brand's visual identity.</p>
+                        <a href="#" class="btn btn-outline-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer') %>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="/user/home.js"></script>
+</body>
+</html>
