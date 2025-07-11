@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Carter Photography | Professional Portfolio</title>
     <link rel="stylesheet" href="portfolio.css">
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-   <header>
+   
+      <header>
       <div class="navbar" data-aos="fade-down">
         <div class="logo">ND Photography</div>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <nav class="nav-links" id="navLinks">
           <a href="index.html" onclick="closeMenu()">Home</a>
           <div class="dropdown">
-            <a href="./portfolio.html" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <a href="#" onclick="toggleDropdown(event)">Portfolio ▾</a>
             <div class="dropdown-content">
               <a href="#" onclick="closeMenu()">Weddings</a>
               <a href="#" onclick="closeMenu()">Portraits</a>
@@ -27,25 +29,25 @@
             </div>
           </div>
           <div class="dropdown">
-            <a href="#services" onclick="toggleDropdown(event)">Services ▾</a>
+            <a href="services.html" onclick="toggleDropdown(event)">Services ▾</a>
             <div class="dropdown-content">
-              <a href="services.html" onclick="closeMenu()">Weddings</a>
-              <a href="services.html" onclick="closeMenu()">Events</a>
-              <a href="services.html" onclick="closeMenu()">Portrait Sessions</a>
-              <a href="services.html" onclick="closeMenu()">Commercial</a>
+              <a href="#" onclick="closeMenu()">Weddings</a>
+              <a href="#" onclick="closeMenu()">Events</a>
+              <a href="#" onclick="closeMenu()">Portrait Sessions</a>
+              <a href="#" onclick="closeMenu()">Commercial</a>
             </div>
           </div>
-          <a href="about.html" onclick="closeMenu()">About</a>
+          <a href="#" onclick="closeMenu()">About</a>
           <div class="dropdown">
             <a href="#" onclick="toggleDropdown(event)">More ▾</a>
             <div class="dropdown-content">
-              <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
+              <a href="testimonialpage.html" onclick="closeMenu()">Testimonials</a>
               <a href="#" onclick="closeMenu()">Pricing</a>
               <a href="#" onclick="closeMenu()">Blog</a>
             </div>
           </div>
-          <a href="#cta" onclick="closeMenu()">Contact</a>
-          <a class="cta" href="#cta" onclick="closeMenu()">Book Now</a>
+          <a href="#" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="#" onclick="closeMenu()">Book Now</a>
         </nav>
       </div>
     </header>
@@ -195,7 +197,8 @@
         </div>
     </div>
     
-    <footer data-aos="fade-up">
+  
+     <footer data-aos="fade-up">
       <div class="container">
         <div class="footer-content">
           <div class="footer-col" data-aos="fade-up">
@@ -210,7 +213,7 @@
           <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
             <h3>Quick Links</h3>
             <ul class="footer-links">
-              <li><a href="#">Home</a></li>
+              <li><a href="index.html">Home</a></li>
               <li><a href="#">Portfolio</a></li>
               <li><a href="services.html">Services</a></li>
               <li><a href="#">About</a></li>
@@ -220,10 +223,10 @@
           <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
             <h3>Services</h3>
             <ul class="footer-links">
-              <li><a href="#services">Wedding Photography</a></li>
-              <li><a href="#services">Portrait Sessions</a></li>
-              <li><a href="#services">Event Photography</a></li>
-              <li><a href="#services">Commercial Photography</a></li>
+              <li><a href="services.html">Wedding Photography</a></li>
+              <li><a href="services.html">Portrait Sessions</a></li>
+              <li><a href="services.html">Event Photography</a></li>
+              <li><a href="services.html">Commercial Photography</a></li>
             </ul>
           </div>
           <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
@@ -240,9 +243,9 @@
         </div>
       </div>
     </footer>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="portfolio.js"></script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
