@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me | Professional Photographer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+   <link rel="stylesheet" href="about.css">
+</head>
+<body>
+    <!-- header -->
+     <header>
+      <div class="navbar" data-aos="fade-down">
+        <div class="logo">ND Photography</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <div class="dropdown">
+            <a href="portfolio.html" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <div class="dropdown-content">
+              <a href="portfolio.html" onclick="closeMenu()">Weddings</a>
+              <a href="portfolio.html" onclick="closeMenu()">Portraits</a>
+              <a href="portfolio.html" onclick="closeMenu()">Events</a>
+              <a href="portfolio.html" onclick="closeMenu()">Commercial</a>
+              <a href="portfolio.html" onclick="closeMenu()">Nature</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="services.html" onclick="toggleDropdown(event)">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="services.html" onclick="closeMenu()">Weddings</a>
+              <a href="services.html" onclick="closeMenu()">Events</a>
+              <a href="services.html" onclick="closeMenu()">Portrait Sessions</a>
+              <a href="services.html" onclick="closeMenu()">Commercial</a>
+            </div>
+          </div>
+          <a href="#" onclick="closeMenu()">About</a>
+          <div class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">More ▾</a>
+            <div class="dropdown-content">
+              <a href="testimonialpage.html" onclick="closeMenu()">Testimonials</a>
+              <a href="pricingandfaq.html" onclick="closeMenu()">Pricing</a>
+              <a href="#" onclick="closeMenu()">Blog</a>
+            </div>
+          </div>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="contact.html" onclick="closeMenu()">Book Now</a>
+        </nav>
+      </div>
+    </header>
+     <!-- header end -->
+        <section class="hero-section text-center">
+            <h1 class="display-3 fw-bold mb-4">About Me</h1>
+            <p class="lead">Capturing moments, telling stories, creating art</p>
+        </section>
+         <div class="container">
+        <section class="bio-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Photographer" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">Photographer's Bio and Story</h2>
+                    <p>Hello, I'm Sarah Johnson, a professional photographer with over 12 years of experience capturing life's most precious moments. My journey began when I received my first camera as a birthday gift at age 14, and I've been obsessed with photography ever since.</p>
+                    <p>After studying Fine Arts at the University of Washington, I worked as an assistant to several renowned photographers, which helped me develop my unique style. In 2015, I decided to start my own photography business, and I haven't looked back since.</p>
+                    <p>What drives me is the ability to freeze time - to capture emotions, relationships, and beauty that might otherwise be forgotten. Whether it's a wedding, a portrait session, or a commercial project, I approach each assignment with the same passion and attention to detail.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="philosophy-section">
+            <h2 class="section-title">My Photography Philosophy</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-eye fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                            <h4>See the Unseen</h4>
+                            <p>I believe in looking beyond the obvious to capture the subtle emotions and details that tell the real story.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-heart fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                            <h4>Authenticity Matters</h4>
+                            <p>My goal is to create images that feel genuine, not staged. I guide rather than pose, allowing natural moments to unfold.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-lightbulb fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                            <h4>Light is Everything</h4>
+                            <p>I work with light to create mood and depth, whether it's soft natural light or carefully crafted artificial lighting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="equipment-section py-5">
+            <h2 class="section-title">Equipment I Use</h2>
+            <p class="mb-5">Quality equipment helps me deliver the best results for my clients. Here's some of my favorite gear:</p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="equipment-card card">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Camera">
+                        <div class="card-body">
+                            <h5 class="card-title">Canon EOS R5</h5>
+                            <p class="card-text">My primary camera body for most assignments, offering incredible resolution and low-light performance.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="equipment-card card">
+                        <img src="https://images.unsplash.com/photo-1552168324-d612d77725e3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Lenses">
+                        <div class="card-body">
+                            <h5 class="card-title">Lens Collection</h5>
+                            <p class="card-text">From wide-angle to telephoto, I carry a selection of prime and zoom lenses to handle any situation.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="equipment-card card">
+                        <img src="https://images.unsplash.com/photo-1512790182412-b19e6d62bc39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="card-img-top" alt="Lighting">
+                        <div class="card-body">
+                            <h5 class="card-title">Lighting Equipment</h5>
+                            <p class="card-text">Professional strobes, continuous lights, and modifiers to create perfect lighting in any environment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="awards-section py-5 bg-light rounded">
+            <h2 class="section-title">Awards & Recognition</h2>
+            <p>I'm honored to have received recognition from these prestigious organizations:</p>
+            
+            <div class="awards-list mt-4">
+                <div class="award-item">
+                    <div class="award-year">2022</div>
+                    <div class="award-details">
+                        <h5>International Photography Awards</h5>
+                        <p class="mb-0">1st Place - Portrait Category for "The Elder's Gaze"</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2020</div>
+                    <div class="award-details">
+                        <h5>National Geographic Photo Contest</h5>
+                        <p class="mb-0">Finalist - People Category for "Market Colors"</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2018</div>
+                    <div class="award-details">
+                        <h5>Sony World Photography Awards</h5>
+                        <p class="mb-0">Shortlisted - Professional Portraiture</p>
+                    </div>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2016</div>
+                    <div class="award-details">
+                        <h5>Photographer's Forum Best of College Photography</h5>
+                        <p class="mb-0">Top 100 - Fine Art Category</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bts-section py-5">
+            <h2 class="section-title">Behind the Scenes</h2>
+            <p>Photography isn't just about the final image - it's about the process, the people, and the moments in between. Here's a glimpse behind the curtain:</p>
+            
+            <div class="bts-gallery">
+                <div class="bts-item">
+                    <img src="https://images.unsplash.com/photo-1526666923127-b2970f64b422?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BTS 1">
+                    <div class="bts-caption">Setting up the perfect shot</div>
+                </div>
+                <div class="bts-item">
+                    <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BTS 2">
+                    <div class="bts-caption">Working with natural light</div>
+                </div>
+                <div class="bts-item">
+                    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BTS 3">
+                    <div class="bts-caption">On location shoot</div>
+                </div>
+                <div class="bts-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BTS 4">
+                    <div class="bts-caption">Editing process</div>
+                </div>
+                <div class="bts-item">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BTS 5">
+                    <div class="bts-caption">Client consultation</div>
+                </div>
+                <div class="bts-item">
+                    <img src="https://images.unsplash.com/photo-1522206024047-9c925421675b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="BTS 6">
+                    <div class="bts-caption">Equipment maintenance</div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- footer -->
+     <footer data-aos="fade-up">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col" data-aos="fade-up">
+            <h3>About Us</h3>
+            <p>ND Photography specializes in capturing life's precious moments through stunning imagery.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="services.html">Wedding Photography</a></li>
+              <li><a href="services.html">Portrait Sessions</a></li>
+              <li><a href="services.html">Event Photography</a></li>
+              <li><a href="services.html">Commercial Photography</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for special offers and tips.</p>
+            <form class="newsletter">
+              <input type="email" placeholder="Your Email Address" required />
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" data-aos="fade-up" data-aos-delay="400">
+          <p>&copy; 2023 ND Photography. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="about.js"></script>
+</body>
+</html>
