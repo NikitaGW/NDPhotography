@@ -3,7 +3,7 @@ let express = require('express')
 
 var router = express.Router();
 
-router.get('/admin',function(req,res){
+router.get('/',function(req,res){
     res.render('admin/home.ejs');
 });
 
