@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Carter Photography | Professional Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/user/portfolio.css">
+</head>
+<body>
+   
+    <%- include('Navbar') %>
+    <section class="portfolioBanner">
+        <h1 class="logo">ALEX CARTER PHOTOGRAPHY</h1>
+        <p class="tagline">Capturing Life's Priceless Moments</p>
+    </section>
+    
+    <div class="container">
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All Work</button>
+            <button class="filter-btn" data-filter="weddings">Weddings</button>
+            <button class="filter-btn" data-filter="portraits">Portraits</button>
+            <button class="filter-btn" data-filter="events">Events</button>
+            <button class="filter-btn" data-filter="commercial">Commercial</button>
+            <button class="filter-btn" data-filter="nature">Nature</button>
+        </div>
+        
+        <div class="gallery">
+            <!-- Weddings -->
+            <div class="gallery-item" data-category="weddings">
+                <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Wedding ceremony">
+                <div class="item-info">
+                    <h3 class="item-title">Golden Hour Vows</h3>
+                    <p class="item-date">June 2023</p>
+                    <p class="item-desc">Emotional exchange of vows during sunset at the Cliffside Resort</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="weddings">
+                <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Bride preparing">
+                <div class="item-info">
+                    <h3 class="item-title">Bride's Preparation</h3>
+                    <p class="item-date">May 2023</p>
+                    <p class="item-desc">Intimate moments before the ceremony at the historic Grand Hotel</p>
+                </div>
+            </div>
+            
+            <!-- Portraits -->
+            <div class="gallery-item" data-category="portraits">
+                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Portrait of woman">
+                <div class="item-info">
+                    <h3 class="item-title">Urban Elegance</h3>
+                    <p class="item-date">April 2023</p>
+                    <p class="item-desc">Corporate headshot session with natural lighting in downtown studio</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="portraits">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Portrait of man">
+                <div class="item-info">
+                    <h3 class="item-title">Executive Profile</h3>
+                    <p class="item-date">March 2023</p>
+                    <p class="item-desc">Professional portrait for LinkedIn profile and company website</p>
+                </div>
+            </div>
+            
+            <!-- Events -->
+            <div class="gallery-item" data-category="events">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Concert event">
+                <div class="item-info">
+                    <h3 class="item-title">Summer Music Festival</h3>
+                    <p class="item-date">August 2023</p>
+                    <p class="item-desc">Headliner performance captured with dynamic stage lighting</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="events">
+                <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Corporate event">
+                <div class="item-info">
+                    <h3 class="item-title">Tech Conference</h3>
+                    <p class="item-date">February 2023</p>
+                    <p class="item-desc">Keynote speaker at annual industry conference with 2000+ attendees</p>
+                </div>
+            </div>
+            
+            <!-- Commercial -->
+            <div class="gallery-item" data-category="commercial">
+                <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Product photography">
+                <div class="item-info">
+                    <h3 class="item-title">Luxury Watch Campaign</h3>
+                    <p class="item-date">January 2023</p>
+                    <p class="item-desc">Product photography for international jewelry brand's catalog</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="commercial">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Fashion photography">
+                <div class="item-info">
+                    <h3 class="item-title">Spring Collection</h3>
+                    <p class="item-date">December 2022</p>
+                    <p class="item-desc">Fashion editorial for designer lookbook and social media campaign</p>
+                </div>
+            </div>
+            
+            <!-- Nature -->
+            <div class="gallery-item" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Landscape photography">
+                <div class="item-info">
+                    <h3 class="item-title">Mountain Dawn</h3>
+                    <p class="item-date">November 2022</p>
+                    <p class="item-desc">Sunrise over the Rocky Mountains captured during autumn</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1470114716159-e389f8712fda?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Wildlife photography">
+                <div class="item-info">
+                    <h3 class="item-title">Forest Encounter</h3>
+                    <p class="item-date">October 2022</p>
+                    <p class="item-desc">Wild deer in morning mist at Yellowstone National Park</p>
+                </div>
+            </div>
+            
+            <!-- Additional items to fill out the gallery -->
+            <div class="gallery-item" data-category="weddings">
+                <img src="https://images.unsplash.com/photo-1519659528534-7fd733a832a0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Wedding reception">
+                <div class="item-info">
+                    <h3 class="item-title">Reception Celebration</h3>
+                    <p class="item-date">September 2022</p>
+                    <p class="item-desc">First dance under custom crystal chandelier at vineyard estate</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item" data-category="portraits">
+                <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Family portrait">
+                <div class="item-info">
+                    <h3 class="item-title">Generations</h3>
+                    <p class="item-date">August 2022</p>
+                    <p class="item-desc">Three-generation family portrait session in the studio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <div class="lightbox-content">
+            <img id="lightbox-img" src="" alt="">
+            <div class="lightbox-info">
+                <h2 id="lightbox-title"></h2>
+                <p id="lightbox-date"></p>
+                <p id="lightbox-desc"></p>
+            </div>
+        </div>
+    </div>
+    <%- include('footer') %>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/user/portfolio.js"></script>
+    <!-- <script src="script.js"></script> -->
+</body>
+</html>

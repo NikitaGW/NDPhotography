@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <!-- <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" /> -->
+    <link rel="stylesheet" href="/user/pricing.css">
+</head>
+<body>
+    <%- include('Navbar') %>
+    <!-- Pricing Section -->
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title">Pricing & Packages</h2>
+                <p class="section-subtitle">Choose the perfect photography package for your needs. All packages include high-resolution edited images.</p>
+            </div>
+            
+            <div class="row">
+                <!-- Basic Package -->
+                <div class="col-md-4 animate-on-scroll">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Basic</h3>
+                            <p class="pricing-price">₹15,999</p>
+                            <p class="pricing-period">per session</p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li>2 hours of coverage</li>
+                                <li>50+ edited images</li>
+                                <li>Online gallery</li>
+                                <li>Digital download</li>
+                                <li class="disabled">Print release</li>
+                                <li class="disabled">Second photographer</li>
+                                <li class="disabled">Photo album</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary btn-pricing">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Standard Package (Popular) -->
+                <div class="col-md-4 animate-on-scroll delay-1">
+                    <div class="pricing-card" style="transform: scale(1.05);">
+                        <div class="popular-tag">Most Popular</div>
+                        <div class="pricing-header" style="background-color: var(--secondary-color);">
+                            <h3 class="pricing-title">Standard</h3>
+                            <p class="pricing-price">₹29,999</p>
+                            <p class="pricing-period">per session</p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li>4 hours of coverage</li>
+                                <li>100+ edited images</li>
+                                <li>Online gallery</li>
+                                <li>Digital download</li>
+                                <li>Print release</li>
+                                <li class="disabled">Second photographer</li>
+                                <li class="disabled">Photo album</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-dark btn-pricing">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Package -->
+                <div class="col-md-4 animate-on-scroll delay-2">
+                    <div class="pricing-card">
+                        <div class="pricing-header">
+                            <h3 class="pricing-title">Premium</h3>
+                            <p class="pricing-price">₹49,999</p>
+                            <p class="pricing-period">per session</p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li>Full day coverage</li>
+                                <li>200+ edited images</li>
+                                <li>Online gallery</li>
+                                <li>Digital download</li>
+                                <li>Print release</li>
+                                <li>Second photographer</li>
+                                <li>20-page photo album</li>
+                            </ul>
+                            <a href="#contact" class="btn btn-primary btn-pricing">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Custom Packages -->
+            <div class="custom-packages animate-on-scroll">
+                <h3 class="custom-title">Custom Packages & Add-ons</h3>
+                <p>Tailor your photography experience with these additional services:</p>
+                
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="addon-card">
+                            <h4 class="addon-title">Additional Hour of Coverage</h4>
+                            <p class="addon-price">₹3,999/hour</p>
+                            <p>Extend your session time for more comprehensive coverage.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="addon-card">
+                            <h4 class="addon-title">Second Photographer</h4>
+                            <p class="addon-price">₹7,999</p>
+                            <p>Get multiple angles and more comprehensive coverage of your event.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="addon-card">
+                            <h4 class="addon-title">Professional Photo Album</h4>
+                            <p class="addon-price">From ₹9,999</p>
+                            <p>High-quality printed album to preserve your memories.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="addon-card">
+                            <h4 class="addon-title">Engagement Session</h4>
+                            <p class="addon-price">₹12,999</p>
+                            <p>Additional pre-wedding or engagement photo session.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="#contact" class="btn btn-outline-primary">Request Custom Package</a>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <div class="faq-section animate-on-scroll">
+                <h3 class="custom-title">FAQs About Pricing & Booking</h3>
+                
+                <div class="accordion" id="faqAccordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <h4 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            What payment methods do you accept?
+                        </h4>
+                        <div id="faq1" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                            We accept all major credit/debit cards, bank transfers, UPI payments, and cash. A 25% deposit is required to secure your booking, with the balance due on the day of your session.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <h4 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            How long does it take to receive our photos?
+                        </h4>
+                        <div id="faq2" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                            Our standard delivery time is 2-3 weeks for portrait sessions and 4-6 weeks for weddings. You'll receive a preview selection within 3-5 days after your session.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                        <h4 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            What is your cancellation policy?
+                        </h4>
+                        <div id="faq3" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                            Deposits are non-refundable but can be applied to a rescheduled session within 6 months. Cancellations within 14 days of the session date require 50% of the total package price.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item">
+                        <h4 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            Do you offer discounts for weekday bookings?
+                        </h4>
+                        <div id="faq4" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                            Yes! We offer 15% off for sessions booked Monday through Thursday. This discount doesn't apply to weddings or holiday periods.
+                        </div>
+                    </div>
+                    
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item">
+                        <h4 class="faq-question collapsed" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            Can we request specific shots or poses?
+                        </h4>
+                        <div id="faq5" class="collapse faq-answer" data-bs-parent="#faqAccordion">
+                            Absolutely! We encourage clients to share inspiration photos or a shot list before the session. We'll incorporate your ideas while also providing our professional guidance.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer') %>
+ <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+     <script>
+        // Scroll Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            animateElements.forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

@@ -12,9 +12,10 @@
         <div class="logo">ND Photography</div>
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
         <nav class="nav-links" id="navLinks">
-          <a href="#" onclick="closeMenu()">Home</a>
+          <a href="/" onclick="closeMenu()">Home</a>
+          <a href="/about" onclick="closeMenu()">About</a>
           <div class="dropdown">
-            <a href="./portfolio.html" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <a href="./portfolio" onclick="toggleDropdown(event)">Portfolio ▾</a>
             <div class="dropdown-content">
               <a href="#" onclick="closeMenu()">Weddings</a>
               <a href="#" onclick="closeMenu()">Portraits</a>
@@ -24,7 +25,7 @@
             </div>
           </div>
           <div class="dropdown">
-            <a href="#services" onclick="toggleDropdown(event)">Services ▾</a>
+            <a href="/services" onclick="toggleDropdown(event)">Services ▾</a>
             <div class="dropdown-content">
               <a href="services.html" onclick="closeMenu()">Weddings</a>
               <a href="services.html" onclick="closeMenu()">Events</a>
@@ -32,17 +33,16 @@
               <a href="services.html" onclick="closeMenu()">Commercial</a>
             </div>
           </div>
-          <a href="about.html" onclick="closeMenu()">About</a>
           <div class="dropdown">
             <a href="#" onclick="toggleDropdown(event)">More ▾</a>
             <div class="dropdown-content">
-              <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
-              <a href="pricingandfaq.html" onclick="closeMenu()">Pricing</a>
+              <a href="/testimonials" onclick="closeMenu()">Testimonials</a>
+              <a href="/pricing" onclick="closeMenu()">Pricing</a>
               <a href="#" onclick="closeMenu()">Blog</a>
             </div>
           </div>
-          <a href="#cta" onclick="closeMenu()">Contact</a>
-          <a class="cta" href="#cta" onclick="closeMenu()">Book Now</a>
+          <a href="/contact" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="/contact" onclick="closeMenu()">Book Now</a>
         </nav>
       </div>
     </header>

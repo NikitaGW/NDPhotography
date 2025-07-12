@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+/* testimonial */
+
+.client-testimonial {
+  background-color: #f8f9fa;
+}
+
+.testimonial-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  flex-wrap: wrap;
+}
+
+.testimonial-row.row-reverse {
+  flex-direction: row-reverse;
+}
+
+.testimonial-img {
+  position: relative;
+  display: inline-block;
+  padding: 7px;
+}
+
+.testimonial-img img {
+  width: 300px;
+  height: auto;
+  display: block;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Top-left corner line */
+.testimonial-img::before,
+.testimonial-img::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 3px solid #ff4f5a;
+}
+
+.testimonial-img::before {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Bottom-right corner line */
+.testimonial-img::after {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+.testimonial-text {
+  flex: 1;
+  font-size: 1.1rem;
+  color: #333;
+  padding: 1rem;
+}
+
+.testimonial-text .quote-icon {
+  font-size: 2rem;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text h4 {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.testimonial-text span {
+  font-style: italic;
+  color: #888;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .testimonial-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .testimonial-row.row-reverse {
+    flex-direction: column;
+  }
+
+  .testimonial-img img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.testimonialcta-section {
+  position: relative;
+  color: white;
+  padding: 5rem 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.testimonialcta-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url('/images/testimonialpagebg.jpg') center center/cover no-repeat;
+  background-attachment: fixed;
+  filter: blur(1px) brightness(0.7);
+  z-index: -1;
+}
+
+.testimonialcta-btn {
+  background-color: #ff4f5a;
+  color: white !important;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.testimonialcta-btn:hover {
+  background-color: #e33f4a;
+}
