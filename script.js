@@ -48,24 +48,36 @@
 
       AOS.init({ once: true, duration: 800 });
 
-      function toggleMenu() {
-        document.getElementById("navLinks").classList.toggle("show");
-      }
+     function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("show");
+}
 
-      function closeMenu() {
-        document.getElementById("navLinks").classList.remove("show");
-        document.querySelectorAll(".dropdown-content").forEach(dc => dc.classList.remove("show"));
-      }
+function closeMenu() {
+  document.getElementById("navLinks").classList.remove("show");
+  document.querySelectorAll(".dropdown-content").forEach(dc => dc.classList.remove("show"));
+}
 
-      function toggleDropdown(e) {
-        if (window.innerWidth <= 991) {
-          e.preventDefault();
-          const content = e.target.nextElementSibling;
-          const isOpen = content.classList.contains("show");
-          document.querySelectorAll(".dropdown-content").forEach(dc => dc.classList.remove("show"));
-          if (!isOpen) content.classList.add("show");
-        }
+function toggleDropdown(e) {
+  if (window.innerWidth <= 991) {
+    const content = e.target.nextElementSibling;
+    const isOpen = content && content.classList.contains("show");
+
+    if (!isOpen) {
+      // Only prevent default on first tap to open dropdown
+      e.preventDefault();
+
+      // Close any other open dropdowns
+      document.querySelectorAll(".dropdown-content").forEach(dc => dc.classList.remove("show"));
+
+      // Open the selected dropdown
+      if (content) {
+        content.classList.add("show");
       }
+    }
+    // If already open, don't preventDefault → link will work on second tap
+  }
+}
+
 
 
   var swiper = new Swiper(".testimonials-slider", {
