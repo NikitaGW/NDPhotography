@@ -4,24 +4,24 @@ let express = require('express');
 var router = express.Router();
 
 router.get('/',(req,res)=>{
-    res.render('home.ejs');
+    res.render('user/home.ejs');
 })
 router.get('/portfolio',(req,res)=>{
-    res.render('portfolio.ejs')
+    res.render('user/portfolio.ejs')
 })
 router.get('/services',(req,res)=>{
-    res.render('services.ejs')
+    res.render('user/services.ejs')
 })
 router.get('/about',(req,res)=>{
     res.render("about.ejs")
 })
 router.get('/contact',(req,res)=>{
-    res.render('contact.ejs')
+    res.render('user/contact.ejs')
 })
 router.get('/testimonials',(req,res)=>{
-    res.render('testimonials.ejs');
+    res.render('user/testimonials.ejs');
 })
 router.get('/pricing',(req,res)=>{
-    res.render('pricing.ejs');
+    res.render('user/pricing.ejs');
 })
 module.exports = router;
