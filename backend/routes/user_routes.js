@@ -13,7 +13,7 @@ router.get('/services',(req,res)=>{
     res.render('user/services.ejs')
 })
 router.get('/about',(req,res)=>{
-    res.render("about.ejs")
+    res.render("user/about.ejs")
 })
 router.get('/contact',(req,res)=>{
     res.render('user/contact.ejs')
