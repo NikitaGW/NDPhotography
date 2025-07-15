@@ -10,8 +10,7 @@
 </head>
 <body> 
     <%- include('navbar.ejs') %>
-
-    <!-- Main Content -->
+   <!-- Main Content -->
     <div id="content">
         <div class="page-header">
             <div>
@@ -60,11 +59,11 @@
             
             <div class="stat-card">
                 <div class="stat-icon bg-warning-light">
-                    <i class="bi bi-cash"></i>
+                    <i class="bi bi-currency-rupee"></i>
                 </div>
                 <div class="stat-info">
                     <h5>Monthly Revenue</h5>
-                    <h3>$8,420</h3>
+                    <h3>₹68,420</h3>
                     <div class="stat-trend trend-up">
                         <i class="bi bi-arrow-up"></i>
                         <span>12.5% since last month</span>
@@ -172,6 +171,9 @@
                             <div>
                                 <i class="bi bi-bar-chart"></i>
                                 <p>Revenue chart visualization</p>
+                                <div class="currency-info">
+                                    <i class="bi bi-currency-rupee"></i> Indian Rupee (₹)
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -273,13 +275,33 @@
             document.body.classList.toggle('sidebar-open');
         });
         
+        // Close sidebar when clicking on backdrop
+        document.getElementById('mobileBackdrop').addEventListener('click', function() {
+            document.body.classList.remove('sidebar-open');
+        });
+        
         // Add active class to clicked nav links
         document.querySelectorAll('.nav-link').forEach(link => {
             link.addEventListener('click', function() {
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
+                
+                // Close sidebar on mobile after clicking a link
+                if (window.innerWidth <= 992) {
+                    document.body.classList.remove('sidebar-open');
+                }
             });
         });
+        
+        // Update currency to Indian Rupees
+        document.querySelectorAll('.stat-info h3').forEach(el => {
+            if (el.textContent.includes('$')) {
+                el.textContent = '₹' + el.textContent.replace('$', '').replace(/\d+/g, m => 
+                    parseInt(m).toLocaleString('en-IN')
+                );
+            }
+        });
     </script>
+
 </body>
 </html>
