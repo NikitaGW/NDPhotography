@@ -304,7 +304,7 @@
 
         .testimonials .overlay {
             background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-                        url('img/testimonials.png') no-repeat center top 30%;
+                        url('/images/testimonials.png') no-repeat center top 30%;
             background-size: cover;
             background-attachment: fixed;
             width: 100%;

@@ -24,4 +24,16 @@ router.get('/testimonials',(req,res)=>{
 router.get('/pricing',(req,res)=>{
     res.render('user/pricing.ejs');
 })
+router.get('/serviceswedding',(req,res)=>{
+    res.render('user/servicesWedding.ejs')
+})
+router.get('/portraitservices',(req,res)=>{
+    res.render('user/portraitservices.ejs')
+})
+router.get('/commercialservices',(req,res)=>{
+    res.render('user/commercialservices.ejs');
+})
+router.get('/blog',(req,res)=>{
+    res.render('user/blog.ejs')
+})
 module.exports = router;
