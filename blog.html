@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="blog.css">
+</head>
+<body>
+     <header>
+      <div class="navbar" data-aos="fade-down">
+        <div class="logo">ND Photography</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <div class="dropdown">
+            <a href="portfolio.html" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <div class="dropdown-content">
+              <a href="portfolio.html" onclick="closeMenu()">Weddings</a>
+              <a href="portfolio.html" onclick="closeMenu()">Portraits</a>
+              <a href="portfolio.html" onclick="closeMenu()">Events</a>
+              <a href="portfolio.html" onclick="closeMenu()">Commercial</a>
+              <a href="portfolio.html" onclick="closeMenu()">Nature</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="weddingserPage.html" onclick="toggleDropdown(event)">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="weddingserPage.html" onclick="closeMenu()">Weddings</a>
+              <a href="eventserPage.html" onclick="closeMenu()">Events</a>
+              <a href="portraitserPage.html" onclick="closeMenu()">Portrait Sessions</a>
+              <a href="commercialserPage.html" onclick="closeMenu()">Commercial</a>
+            </div>
+          </div>
+          <a href="about.html" onclick="closeMenu()">About</a>
+          <div class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">More ▾</a>
+            <div class="dropdown-content">
+              <a href="testimonialpage.html" onclick="closeMenu()">Testimonials</a>
+              <a href="pricingandfaq.html" onclick="closeMenu()">Pricing</a>
+              <a href="#" onclick="closeMenu()">Blog</a>
+            </div>
+          </div>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="contact.html" onclick="closeMenu()">Book Now</a>
+        </nav>
+      </div>
+    </header>
+    <!-- Photography Tips Hero Section -->
+    <!-- <section class="hero tips-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Photography Tips & Techniques</h1>
+                <p class="lead">Elevate your photography skills with our expert tips and tutorials</p>
+                <a href="#tips" class="btn btn-explore">Explore Tips <i class="fas fa-arrow-down"></i></a>
+            </div>
+        </div>
+    </section> -->
+
+    <section class="hero-section text-center">
+            <h1 class="display-4 fw-bold mb-4">Photography Tips & Techniques</h1>
+            <p class="lead">Elevate your photography skills with our expert tips and tutorials</p>
+            <a href="#tips" class="btn btn-explore">Explore Tips <i class="fas fa-arrow-down"></i></a>
+        </section>
+
+    <!-- Main Content -->
+<div class="container main-container">
+  <div class="row g-4">
+      <!-- Blog Posts Column -->
+      <div class="col-lg-8">
+          <h2 id="tips" class="section-title">Latest Photography Tips</h2>
+          
+          <div id="blog-container" class="row g-4">
+              <!-- Cards will be loaded here -->
+          </div>
+          
+          <!-- Pagination -->
+          <nav aria-label="Page navigation" class="mt-5">
+              <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                      <a class="page-link" href="#" tabindex="-1">
+                          <i class="fas fa-chevron-left"></i>
+                      </a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                      <a class="page-link" href="#">
+                          <i class="fas fa-chevron-right"></i>
+                      </a>
+                  </li>
+              </ul>
+          </nav>
+      </div>
+            
+    <!-- Sidebar Column -->
+    <div class="col-lg-4">
+        <!-- Categories Widget -->
+        <div class="sidebar-card">
+            <h4 class="sidebar-title">
+                <i class="fas fa-folder-open me-2"></i>Categories
+            </h4>
+            <ul class="sidebar-list">
+                <li><a href="#" class="category-filter active" data-category="all">All Topics <span class="badge">10</span></a></li>
+                <li><a href="#" class="category-filter" data-category="composition">Composition <span class="badge">2</span></a></li>
+                <li><a href="#" class="category-filter" data-category="lighting">Lighting <span class="badge">2</span></a></li>
+                <li><a href="#" class="category-filter" data-category="portraits">Portraits <span class="badge">2</span></a></li>
+                <li><a href="#" class="category-filter" data-category="landscape">Landscape <span class="badge">2</span></a></li>
+                <li><a href="#" class="category-filter" data-category="editing">Editing <span class="badge">2</span></a></li>
+            </ul>
+        </div>
+                
+      <!-- Popular Tips Widget -->
+      <div class="sidebar-card">
+          <h4 class="sidebar-title">
+              <i class="fas fa-fire me-2"></i>Popular Tips
+          </h4>
+          <div class="popular-tips">
+              <a href="#" class="popular-tip">
+                  <div class="popular-tip-img" style="background-image: url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2058&q=80')"></div>
+                  <div class="popular-tip-content">
+                      <h5>Understanding Exposure Triangle</h5>
+                      <small>April 20, 2023</small>
+                  </div>
+              </a>
+              <a href="#" class="popular-tip">
+                  <div class="popular-tip-img" style="background-image: url('https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1886&q=80')"></div>
+                  <div class="popular-tip-content">
+                      <h5>Posing Camera-Shy People</h5>
+                      <small>March 15, 2023</small>
+                  </div>
+              </a>
+              <a href="#" class="popular-tip">
+                  <div class="popular-tip-img" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')"></div>
+                  <div class="popular-tip-content">
+                      <h5>Common Photography Mistakes</h5>
+                      <small>February 28, 2023</small>
+                  </div>
+              </a>
+          </div>
+      </div>
+
+      <!-- Recent Work added to Sidebar -->
+      <div class="sidebar-card">
+        <h4 class="sidebar-title">
+          <i class="fas fa-images me-2"></i>Recent Work
+        </h4>
+        <div class="sidebar-recent-work">
+          
+          <!-- Work Item 1 -->
+          <div class="recent-work-item d-flex mb-3">
+            <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&w=100&q=80" alt="Portrait Session" class="recent-work-thumb me-3 rounded">
+            <div>
+              <h6 class="mb-1">Urban Portrait Session</h6>
+              <small class="text-muted d-block">June 2023 • Portrait</small>
+              <a href="#" class="text-decoration-none small">View More <i class="fas fa-arrow-right small"></i></a>
+            </div>
+          </div>
+
+          <!-- Work Item 2 -->
+          <div class="recent-work-item d-flex mb-3">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=100&q=80" alt="Landscape Photography" class="recent-work-thumb me-3 rounded">
+            <div>
+              <h6 class="mb-1">Pacific NW Landscapes</h6>
+              <small class="text-muted d-block">May 2023 • Landscape</small>
+              <a href="#" class="text-decoration-none small">View More <i class="fas fa-arrow-right small"></i></a>
+            </div>
+          </div>
+
+          <!-- Work Item 3 -->
+          <div class="recent-work-item d-flex">
+            <img src="https://images.unsplash.com/photo-1520390138845-fd2d229dd553?auto=format&fit=crop&w=100&q=80" alt="Wedding Photography" class="recent-work-thumb me-3 rounded">
+            <div>
+              <h6 class="mb-1">Sarah & Michael's Wedding</h6>
+              <small class="text-muted d-block">Apr 2023 • Wedding</small>
+              <a href="#" class="text-decoration-none small">View More <i class="fas fa-arrow-right small"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+        
+      <!-- Tags Widget -->
+      <div class="sidebar-card">
+          <h4 class="sidebar-title">
+              <i class="fas fa-tags me-2"></i>Tags
+          </h4>
+          <div class="tags-container">
+              <a href="#" class="tag tag-filter active" data-tag="all">all</a>
+              <a href="#" class="tag tag-filter" data-tag="composition">composition</a>
+              <a href="#" class="tag tag-filter" data-tag="lighting">lighting</a>
+              <a href="#" class="tag tag-filter" data-tag="portraits">portraits</a>
+              <a href="#" class="tag tag-filter" data-tag="landscape">landscape</a>
+              <a href="#" class="tag tag-filter" data-tag="editing">editing</a>
+              <a href="#" class="tag tag-filter" data-tag="tutorial">tutorial</a>
+              <a href="#" class="tag tag-filter" data-tag="beginner">beginner</a>
+              <a href="#" class="tag tag-filter" data-tag="advanced">advanced</a>
+          </div>
+      </div>
+        
+      <!-- Newsletter Widget -->
+      <div class="sidebar-card photo-newsletter">
+          <h4 class="sidebar-title">
+              <i class="fas fa-envelope me-2"></i>Photo Tips Newsletter
+          </h4>
+          <p>Get weekly photography tips delivered to your inbox</p>
+          <form class="newsletter-form">
+              <input type="email" class="form-control" placeholder="Your email address">
+              <button type="submit" class="btn btn-subscribe">Subscribe</button>
+          </form>
+      </div>
+  </div>
+  </div>
+</div>
+
+    
+    <!-- footer -->
+    <footer data-aos="fade-up">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col" data-aos="fade-up">
+            <h3>About Us</h3>
+            <p>ND Photography specializes in capturing life's precious moments through stunning imagery.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="weddingserPage.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="weddingserPage.html">Wedding Photography</a></li>
+              <li><a href="portraitserPage.html">Portrait Sessions</a></li>
+              <li><a href="eventserPage.html">Event Photography</a></li>
+              <li><a href="commercialserPage.html">Commercial Photography</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for special offers and tips.</p>
+            <form class="newsletter">
+              <input type="email" placeholder="Your Email Address" required />
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" data-aos="fade-up" data-aos-delay="400">
+          <p>&copy; 2023 ND Photography. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+      <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="blog.js"></script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wedding services</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+     <!-- FontAwesome & AOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="services.css">
+</head>
+<body>
+    <header>
+      <div class="navbar" data-aos="fade-down">
+        <div class="logo">ND Photography</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <div class="dropdown">
+            <a href="portfolio.html" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <div class="dropdown-content">
+              <a href="portfolio.html" onclick="closeMenu()">Weddings</a>
+              <a href="portfolio.html" onclick="closeMenu()">Portraits</a>
+              <a href="portfolio.html" onclick="closeMenu()">Events</a>
+              <a href="portfolio.html" onclick="closeMenu()">Commercial</a>
+              <a href="portfolio.html" onclick="closeMenu()">Nature</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="weddingserPage.html" onclick="toggleDropdown(event)">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="weddingserPage.html" onclick="closeMenu()">Weddings</a>
+              <a href="eventserPage.html" onclick="closeMenu()">Events</a>
+              <a href="portraitserPage.html" onclick="closeMenu()">Portrait Sessions</a>
+              <a href="commercialserPage.html" onclick="closeMenu()">Commercial</a>
+            </div>
+          </div>
+          <a href="about.html" onclick="closeMenu()">About</a>
+          <div class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">More ▾</a>
+            <div class="dropdown-content">
+              <a href="testimonialpage.html" onclick="closeMenu()">Testimonials</a>
+              <a href="pricingandfaq.html" onclick="closeMenu()">Pricing</a>
+              <a href="blog.html" onclick="closeMenu()">Blog</a>
+            </div>
+          </div>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="contact.html" onclick="closeMenu()">Book Now</a>
+        </nav>
+      </div>
+    </header>
+<!-- Wedding Services -->
+<section id="services-section" class="py-5 bg-light">
+  <div class="container">
+    <div class="text-center mb-5">
+      <p class="text-muted">Timeless Memories, Captured Elegantly</p>
+      <h2 class="fw-bold">Our Wedding Photography Services</h2>
+      <p class="text-muted">
+        We don’t just take photos — we document love stories. From the smallest ritual to the grandest moment, our lenses capture it all with heart.
+      </p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Pre-Wedding Shoot -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+        <div class="service-card h-100">
+          <img src="img/prewedding.jpg" alt="Pre-Wedding Shoot" class="service-img">
+          <div class="service-content p-4">
+            <h5 class="fw-bold">Pre-Wedding Shoot</h5>
+            <p class="text-muted">
+              Scenic locations, elegant outfits, and candid chemistry—your love story captured in a cinematic style before the big day.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Haldi & Mehndi -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="service-card h-100">
+          <img src="img/mehndi.jpg" alt="Haldi & Mehndi" class="service-img">
+          <div class="service-content p-4">
+            <h5 class="fw-bold">Haldi & Mehndi Moments</h5>
+            <p class="text-muted">
+              We capture the vibrant colors, candid laughter, and every intricate henna detail with a joyful storytelling approach.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wedding Ceremony -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="service-card h-100">
+          <img src="img/weddingcouple.jpg" alt="Wedding Ceremony" class="service-img">
+          <div class="service-content p-4">
+            <h5 class="fw-bold">The Wedding Ceremony</h5>
+            <p class="text-muted">
+              The sacred rituals, emotional glances, and royal elegance are documented with cinematic depth and traditional finesse.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Candid Moments -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in">
+        <div class="service-card h-100">
+          <img src="img/candid.jpg" alt="Candid Photography" class="service-img">
+          <div class="service-content p-4">
+            <h5 class="fw-bold">Candid Photography</h5>
+            <p class="text-muted">
+              Unscripted, emotional, real. We freeze those fleeting moments — the tears, smiles, and stolen glances that matter most.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reception Coverage -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="service-card h-100">
+          <img src="img/reception.jpg" alt="Reception Coverage" class="service-img">
+          <div class="service-content p-4">
+            <h5 class="fw-bold">Reception Coverage</h5>
+            <p class="text-muted">
+              From glamorous entries to couple dances, we cover your reception with grace, glamour, and editorial-style frames.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Album & Delivery -->
+      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="service-card h-100">
+          <img src="img/album.jpg" alt="Albums & Delivery" class="service-img">
+          <div class="service-content p-4">
+            <h5 class="fw-bold">Albums & Edits</h5>
+            <p class="text-muted">
+              Receive beautifully retouched photos, cinematic videos, and handcrafted albums delivered with love and care.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- package section start -->
+ <section class="py-5 bg-light">
+  <div class="container px-4">
+    <div class="text-center mb-5">
+        <h6 class="text-uppercase text-muted">Wedding Packages</h6>
+        <h2 class="fw-bold">CHOOSE YOUR PERFECT PLAN</h2>
+
+        <p class="text-muted">
+        Select from thoughtfully designed wedding photography packages tailored to suit every couple’s dream day — whether it’s a cozy ceremony or a grand celebration. Each package includes professional coverage, cinematic editing, and timeless storytelling that captures your love beautifully.
+        </p>
+
+    </div>
+
+    <div class="row justify-content-center gx-4">
+
+      <!-- Standard Package -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="package-card text-center shadow-sm h-100">
+          <div class="package-header bg-dark text-white py-4">
+            <h5 class="mb-0">Standard</h5>
+            <h2 class="display-7 fw-bold">₹6,500<span class="fs-6">/session</span></h2>
+          </div>
+          <div class="package-body p-4 bg-light">
+            <ul class="list-unstyled mb-4 text-start">
+              <li><i class="fa-regular fa-circle-check me-2"></i>1-Hour Pre-Wedding or Portrait Shoot</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>15 Retouched JPEGs (Lifestyle or Candid)</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Basic Color Grading & Skin Retouching</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Secure Online Preview Gallery</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Delivery Within 72 Hours</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>On-Site Coverage Within 10 km Radius</li>
+
+            </ul>
+            <a href="contact.html" class="btn btn-dark px-4 py-2 rounded-pill">Purchase Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Golden Package -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="package-card text-center shadow-sm h-100">
+          <div class="package-header bg-dark text-white py-4">
+            <h5 class="mb-0">Golden</h5>
+            <h2 class="display-7 fw-bold">₹12,000<span class="fs-6">/session</span></h2>
+          </div>
+          <div class="package-body p-4 bg-light">
+            <ul class="list-unstyled mb-4 text-start">
+              <li><i class="fa-regular fa-circle-check me-2"></i>3-Hour Coverage: Haldi / Mehndi / Engagement</li>
+              <li><i class="fa-regular fa-circle-check me-2"></i>40+ Edited Images (High-Res + Web)</li>
+              <li><i class="fa-regular fa-circle-check me-2"></i>Candid Photography & Cinematic B-Roll</li>
+              <li><i class="fa-regular fa-circle-check me-2"></i>Skin Retouch + HDR Color Grading</li>
+              <li><i class="fa-regular fa-circle-check me-2"></i>Priority Delivery: 48 Hours</li>
+              <li><i class="fa-regular fa-circle-check me-2"></i>Drone Shots + 25 km Travel Included</li>
+
+            </ul>
+            <a href="contact.html" class="btn btn-dark px-4 py-2 rounded-pill">Purchase Now</a>
+          </div>
+        </div>
+      </div>
+      <!-- premium -->
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="package-card text-center shadow-sm h-100">
+          <div class="package-header bg-dark text-white py-4">
+            <h5 class="mb-0">Premium</h5>
+            <h2 class="display-7 fw-bold">₹20,000<span class="fs-6">/session</span></h2>
+          </div>
+          <div class="package-body p-4 bg-light">
+            <ul class="list-unstyled mb-4 text-start">
+            <li><i class="fa-regular fa-circle-check me-2"></i>Full-Day Wedding & Reception Coverage</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>100+ Master Retouched Images + RAW Files</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Creative Candid + Traditional Photography</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Premium Album (Layflat, Matte Finish)</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Same-Day Sneak Peeks & 24-Hour Turnaround</li>
+            <li><i class="fa-regular fa-circle-check me-2"></i>Includes Drone, 100 km Travel & On-Site Backup</li>
+
+            </ul>
+            <a href="contact.html" class="btn btn-dark px-4 py-2 rounded-pill">Purchase Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ <!-- package section ends -->
+<!--  -->
+ <section class="py-5 bg-white">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h6 class="text-uppercase text-muted">Benefits</h6>
+      <h2 class="fw-bold text-dark">What’s Included in Each Package</h2>
+      <p class="text-muted">Every package ensures a premium photography experience with high-end deliverables.</p>
+    </div>
+
+    <div class="row text-center g-4">
+      <div class="col-md-4">
+        <div class="p-4 package-feature h-100">
+          <i class="fas fa-camera-retro fa-2x mb-3 package-icon"></i>
+          <h5 class="fw-bold">Professional Equipment</h5>
+          <p class="text-muted">Top-tier DSLR/Mirrorless cameras with premium lenses and lighting gear.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 package-feature h-100">
+          <i class="fas fa-edit fa-2x mb-3 package-icon"></i>
+          <h5 class="fw-bold">Expert Editing</h5>
+          <p class="text-muted">AI-assisted editing, color grading, HDR, and skin retouching included.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 package-feature h-100">
+          <i class="fas fa-cloud-upload-alt fa-2x mb-3 package-icon"></i>
+          <h5 class="fw-bold">Online Delivery</h5>
+          <p class="text-muted">Secure access to an online gallery, RAW files (optional), and archival backups.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- services-cta -->
+<section class="servicescta-section text-white">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-3">Ready to Capture Timeless Moments?</h2>
+    <p class="lead mb-4">Book your personalized photography session today and let us turn your vision into reality.</p>
+    <a href="contact.html" class="btn servicescta-btn btn-lg px-6 rounded-pill text-white">Get in Touch<i class="fa-solid fa-angle-right ms-2"></i></a>
+  </div>
+</section>
+<!-- footer -->
+    <footer data-aos="fade-up">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col" data-aos="fade-up">
+            <h3>About Us</h3>
+            <p>ND Photography specializes in capturing life's precious moments through stunning imagery.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="weddingserPage.html">Wedding Photography</a></li>
+              <li><a href="portraitserPage.html">Portrait Sessions</a></li>
+              <li><a href="eventserPage.html">Event Photography</a></li>
+              <li><a href="commercialserPage.html">Commercial Photography</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for special offers and tips.</p>
+            <form class="newsletter">
+              <input type="email" placeholder="Your Email Address" required />
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" data-aos="fade-up" data-aos-delay="400">
+          <p>&copy; 2023 ND Photography. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="services.js"></script>
+</body>
+</html>
