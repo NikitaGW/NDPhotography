@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Now | ND Photography</title>
+
+  <!-- Bootstrap and Fonts -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+   <header>
+      <div class="navbar" data-aos="fade-down">
+        <div class="logo">ND Photography</div>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links" id="navLinks">
+          <a href="index.html" onclick="closeMenu()">Home</a>
+          <div class="dropdown">
+            <a href="portfolio.html" onclick="toggleDropdown(event)">Portfolio ▾</a>
+            <div class="dropdown-content">
+              <a href="portfolio.html" onclick="closeMenu()">Weddings</a>
+              <a href="portfolio.html" onclick="closeMenu()">Portraits</a>
+              <a href="portfolio.html" onclick="closeMenu()">Events</a>
+              <a href="portfolio.html" onclick="closeMenu()">Commercial</a>
+              <a href="portfolio.html" onclick="closeMenu()">Nature</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <a href="weddingserPage.html" onclick="toggleDropdown(event)">Services ▾</a>
+            <div class="dropdown-content">
+              <a href="weddingserPage.html" onclick="closeMenu()">Weddings</a>
+              <a href="eventserPage.html"closeMenu()">Events</a>
+              <a href="portraitserPage.html" onclick="closeMenu()">Portrait Sessions</a>
+              <a href="commercialserPage.html" onclick="closeMenu()">Commercial</a>
+            </div>
+          </div>
+          <a href="about.html" onclick="closeMenu()">About</a>
+          <div class="dropdown">
+            <a href="#" onclick="toggleDropdown(event)">More ▾</a>
+            <div class="dropdown-content">
+              <a href="testimonialpage.html" onclick="closeMenu()">Testimonials</a>
+              <a href="pricingandfaq.html" onclick="closeMenu()">Pricing</a>
+              <a href="blog.html" onclick="closeMenu()">Blog</a>
+            </div>
+          </div>
+          <a href="contact.html" onclick="closeMenu()">Contact</a>
+          <a class="cta" href="booking.html" onclick="closeMenu()">Book Now</a>
+        </nav>
+      </div>
+    </header>
+
+  <div class="booking-wrapper row g-0">
+    <!-- Left: Info -->
+    <div class="col-md-5 info-section">
+      <h2><i class="fas fa-camera-retro"></i>Book with ND Photography</h2>
+      <p>Whether it's a wedding, portrait session, or commercial shoot — we capture your story beautifully. Fill the form and let’s create something amazing!</p>
+    </div>
+
+    <!-- Right: Form -->
+    <div class="col-md-7 form-section">
+      <h3>Book Your Session</h3>
+      <p class="text-muted" style="font-size:14px;">Fill in your details and we’ll get back to you soon.</p>
+
+      <form>
+        <div class="mb-2">
+          <label for="name" class="form-label">Full Name*</label>
+          <input type="text" class="form-control form-control-sm" id="name" required>
+        </div>
+
+        <div class="mb-2">
+          <label for="email" class="form-label">Email Address*</label>
+          <input type="email" class="form-control form-control-sm" id="email" required>
+        </div>
+
+        <div class="mb-2">
+          <label for="phone" class="form-label">Phone Number*</label>
+          <input type="tel" class="form-control form-control-sm" id="phone" required>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-md-6">
+            <label for="service" class="form-label">Photography Type*</label>
+            <select class="form-select form-select-sm" id="service" required>
+              <option value="">Select</option>
+              <option>Wedding</option>
+              <option>Portrait</option>
+              <option>Event</option>
+              <option>Commercial</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="location" class="form-label">Location*</label>
+            <input type="text" class="form-control form-control-sm" id="location" placeholder="e.g., Pune" required>
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-md-6">
+            <label for="date" class="form-label">Preferred Date*</label>
+            <input type="date" class="form-control form-control-sm" id="date" required>
+          </div>
+          <div class="col-md-6">
+            <label for="slot" class="form-label">Preferred Slot*</label>
+            <select class="form-select form-select-sm" id="slot" required>
+              <option value="">Select</option>
+              <option>Morning</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+              <option>Night</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label for="message" class="form-label">Message (Optional)</label>
+          <textarea class="form-control form-control-sm" id="message" rows="3"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100 mt-2">Book Now</button>
+      </form>
+    </div>
+  </div>
+
+   <footer data-aos="fade-up">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-col" data-aos="fade-up">
+            <h3>About Us</h3>
+            <p>ND Photography specializes in capturing life's precious moments through stunning imagery.</p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="100">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="weddingserPage.html">Services</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="200">
+            <h3>Services</h3>
+            <ul class="footer-links">
+              <li><a href="weddingserPage.html">Wedding Photography</a></li>
+              <li><a href="portraitserPage.html">Portrait Sessions</a></li>
+              <li><a href="eventserPage.html">Event Photography</a></li>
+              <li><a href="commercialserPage.html">Commercial Photography</a></li>
+            </ul>
+          </div>
+          <div class="footer-col" data-aos="fade-up" data-aos-delay="300">
+            <h3>Newsletter</h3>
+            <p>Subscribe to our newsletter for special offers and tips.</p>
+            <form class="newsletter">
+              <input type="email" placeholder="Your Email Address" required />
+              <button type="submit" class="btn">Subscribe</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom" data-aos="fade-up" data-aos-delay="400">
+          <p>&copy; 2023 ND Photography. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Date Limit Script -->
+  <script>
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const nextYear = new Date();
+    nextYear.setFullYear(today.getFullYear() + 1);
+    dateInput.min = today.toISOString().split('T')[0];
+    dateInput.max = nextYear.toISOString().split('T')[0];
+
+
+            // navbar
+        
+      AOS.init({ once: true, duration: 800 });
+
+      function toggleMenu() {
+        document.getElementById("navLinks").classList.toggle("show");
+      }
+
+      function closeMenu() {
+        document.getElementById("navLinks").classList.remove("show");
+        document.querySelectorAll(".dropdown-content").forEach(dc => dc.classList.remove("show"));
+      }
+
+      function toggleDropdown(e) {
+        if (window.innerWidth <= 991) {
+          e.preventDefault();
+          const content = e.target.nextElementSibling;
+          const isOpen = content.classList.contains("show");
+          document.querySelectorAll(".dropdown-content").forEach(dc => dc.classList.remove("show"));
+          if (!isOpen) content.classList.add("show");
+        }
+      }
+  </script>
+
+</body>
+</html>
