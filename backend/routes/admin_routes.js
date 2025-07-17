@@ -47,4 +47,8 @@ router.get('/logout',(req,res)=>{
     });
 })
 
+router.get('/add_slider',(req,res)=>{
+    res.render('admin/add_slider.ejs')
+})
+
 module.exports = router;

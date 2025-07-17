@@ -1,0 +1,371 @@
+:root {
+  --primary: #3a7bd5;
+  --primary-dark: #2c65b8;
+  --secondary: #f8f9fa;
+  --dark: #343a40;
+  --light: #f8f9fa;
+  --success: #28a745;
+  --danger: #dc3545;
+  --warning: #fd7e14;
+  --info: #17a2b8;
+  --sidebar-width: 260px;
+  --topbar-height: 60px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* Sidebar Styles */
+#sidebar {
+  width: var(--sidebar-width);
+  background: #1a1f33;
+  color: white;
+  position: fixed;
+  height: 100vh;
+  transition: var(--transition);
+  z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  text-align: center;
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar-header .logo i {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.sidebar-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+}
+
+.sidebar-menu {
+  padding: 20px 0;
+  height: calc(100vh - var(--topbar-height));
+  overflow-y: auto;
+}
+
+.sidebar-menu::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.sidebar-menu li {
+  position: relative;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 0;
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.95rem;
+  border-left: 3px solid transparent;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid var(--primary);
+}
+
+.nav-link i {
+  margin-right: 12px;
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.badge-notification {
+  margin-left: auto;
+  font-size: 0.7rem;
+  padding: 3px 6px;
+  background: var(--danger);
+  color: white;
+  border-radius: 50px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Submenu Styles */
+.submenu {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.submenu.show {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+.submenu .nav-link {
+  padding: 10px 15px 10px 45px;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.submenu .nav-link:before {
+  content: "";
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+/* Second level submenu */
+.submenu .submenu {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.submenu .submenu .nav-link {
+  padding-left: 65px;
+}
+
+.submenu .submenu .nav-link:before {
+  left: 45px;
+}
+
+.menu-toggle {
+  margin-left: auto;
+  transition: transform 0.3s;
+  font-size: 0.8rem;
+}
+
+.menu-toggle.rotated {
+  transform: rotate(180deg);
+}
+
+/* Topbar Styles */
+#topbar {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  padding: 0 20px;
+  /* margin-left: var(--sidebar-width); */
+  height: var(--topbar-height);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: var(--sidebar-width);
+  z-index: 900;
+  transition: var(--transition);
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.topbar-icon {
+  position: relative;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--dark);
+}
+
+.notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--danger);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.user-dropdown img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--primary);
+}
+
+.name {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 5px 0;
+  margin-top: 10px;
+}
+
+.dropdown-item {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.dropdown-item:hover {
+  background: rgba(58, 123, 213, 0.1);
+  color: var(--primary);
+}
+
+.dropdown-item i {
+  margin-right: 8px;
+  width: 18px;
+  text-align: center;
+}
+
+.dropdown-divider {
+  margin: 5px 0;
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Mobile Styles */
+.mobile-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.mobile-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 1.5rem;
+  color: var(--dark);
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+  background: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content Area */
+.main-content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--topbar-height);
+  padding: 20px;
+  transition: var(--transition);
+  min-height: calc(100vh - var(--topbar-height));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+  #sidebar {
+    left: calc(-1 * var(--sidebar-width));
+  }
+
+  #sidebar.active {
+    left: 0;
+  }
+
+  #topbar,
+  .main-content {
+    margin-left: 0;
+    left: 0;
+  }
+
+  .sidebar-toggle {
+    display: flex;
+  }
+}
+
+/* Section Badges */
+.section-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  margin-left: 5px;
+}

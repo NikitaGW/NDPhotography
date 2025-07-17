@@ -1,12 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-<!-- Mobile backdrop -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ND Photography - Admin Panel</title>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #3a7bd5;
+            --primary-dark: #2c65b8;
+            --secondary: #f8f9fa;
+            --dark: #343a40;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #fd7e14;
+            --info: #17a2b8;
+            --sidebar-width: 260px;
+            --topbar-height: 60px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Sidebar Styles */
+        #sidebar {
+            width: var(--sidebar-width);
+            background: #1a1f33;
+            color: white;
+            position: fixed;
+            height: 100vh;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            left: 0;
+            transform: translateX(0);
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            height: var(--topbar-height);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sidebar-header .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-header .logo i {
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .sidebar-header h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .sidebar-menu {
+            padding: 20px 0;
+            height: calc(100vh - var(--topbar-height));
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .sidebar-menu::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .sidebar-menu li {
+            position: relative;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            border-radius: 0;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            border-left: 3px solid transparent;
+            touch-action: manipulation;
+        }
+
+        .nav-link:hover, 
+        .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--primary);
+        }
+
+        .nav-link i {
+            margin-right: 12px;
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .badge-notification {
+            margin-left: auto;
+            font-size: 0.7rem;
+            padding: 3px 6px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        /* Submenu Styles */
+        .submenu {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0;
+            display: none;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .submenu.show {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .submenu .nav-link {
+            padding: 10px 15px 10px 45px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .submenu .nav-link:before {
+            content: "";
+            position: absolute;
+            left: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+        }
+
+        /* Second level submenu */
+        .submenu .submenu {
+            background: rgba(0, 0, 0, 0.15);
+        }
+
+        .submenu .submenu .nav-link {
+            padding-left: 65px;
+        }
+
+        .submenu .submenu .nav-link:before {
+            left: 45px;
+        }
+
+        .menu-toggle {
+            margin-left: auto;
+            transition: transform 0.3s;
+            font-size: 0.8rem;
+        }
+
+        .menu-toggle.rotated {
+            transform: rotate(180deg);
+        }
+
+        /* Topbar Styles */
+        #topbar {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            padding: 0 20px;
+            /* margin-left: var(--sidebar-width); */
+            height: var(--topbar-height);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: var(--sidebar-width);
+            z-index: 900;
+            transition: var(--transition);
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .topbar-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user-dropdown {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .user-dropdown img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .name {
+            font-weight: 500;
+            color: var(--dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 120px;
+        }
+
+        .dropdown-arrow {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 5px 0;
+            margin-top: 10px;
+            display: none;
+            position: absolute;
+            right: 0;
+            background: white;
+            min-width: 200px;
+            z-index: 1001;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(58, 123, 213, 0.1);
+            color: var(--primary);
+        }
+
+        .dropdown-item i {
+            margin-right: 8px;
+            width: 18px;
+            text-align: center;
+        }
+
+        .dropdown-divider {
+            margin: 5px 0;
+            border-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Mobile Styles */
+        .mobile-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+
+        .mobile-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .sidebar-toggle {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            z-index: 999;
+            display: none;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            margin-top: var(--topbar-height);
+            padding: 20px;
+            transition: var(--transition);
+            min-height: calc(100vh - var(--topbar-height));
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            #sidebar {
+                transform: translateX(calc(-1 * var(--sidebar-width)));
+            }
+
+            #sidebar.active {
+                transform: translateX(0);
+            }
+
+            #topbar,
+            .main-content {
+                margin-left: 0;
+                left: 0;
+            }
+
+            .sidebar-toggle {
+                display: flex;
+            }
+        }
+
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            :root {
+                --sidebar-width: 240px;
+                --topbar-height: 55px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            #topbar {
+                padding: 0 10px;
+            }
+
+            .user-dropdown .name {
+                display: none;
+            }
+
+            .dropdown-menu {
+                right: 10px;
+                left: auto;
+                width: 180px;
+            }
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .submenu .nav-link {
+                padding: 10px 15px 10px 40px;
+            }
+
+            .submenu .submenu .nav-link {
+                padding-left: 55px;
+            }
+
+            .nav-link {
+                padding: 12px 15px !important;
+            }
+
+            .sidebar-header {
+                padding: 15px;
+            }
+
+            .sidebar-header h3 {
+                font-size: 1.1rem;
+            }
+
+            .sidebar-toggle {
+                top: 10px;
+                left: 10px;
+                width: 36px;
+                height: 36px;
+                font-size: 1.3rem;
+            }
+
+            .topbar-right {
+                gap: 12px;
+            }
+
+            .user-dropdown img {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --sidebar-width: 85vw;
+                --topbar-height: 50px;
+            }
+
+            .sidebar-header {
+                padding: 12px;
+            }
+
+            .sidebar-header h3 {
+                font-size: 1rem;
+            }
+
+            .sidebar-header .logo i {
+                font-size: 1.5rem;
+            }
+
+            .nav-link {
+                padding: 10px 12px !important;
+                font-size: 0.85rem;
+            }
+
+            .nav-link i {
+                font-size: 1rem;
+                margin-right: 10px;
+            }
+
+            .submenu .nav-link {
+                padding: 8px 12px 8px 36px !important;
+            }
+
+            .submenu .submenu .nav-link {
+                padding-left: 50px !important;
+            }
+
+            .topbar-icon {
+                font-size: 1.1rem;
+            }
+
+            .notification-badge {
+                width: 16px;
+                height: 16px;
+                font-size: 0.6rem;
+            }
+
+            .dropdown-menu {
+                width: 160px;
+                font-size: 0.85rem;
+            }
+
+            .dropdown-item {
+                padding: 6px 12px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            :root {
+                --sidebar-width: 90vw;
+            }
+
+            .nav-link {
+                padding: 8px 10px !important;
+            }
+
+            .submenu .nav-link {
+                padding: 6px 10px 6px 32px !important;
+            }
+
+            .submenu .submenu .nav-link {
+                padding-left: 44px !important;
+            }
+
+            .topbar-right {
+                gap: 8px;
+            }
+        }
+
+        /* Section Badges */
+        .section-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            font-size: 0.7rem;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            margin-left: 5px;
+        }
+
+        /* Prevent zooming on input focus on mobile */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            select,
+            textarea,
+            input {
+                font-size: 16px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile backdrop -->
     <div class="mobile-backdrop" id="mobileBackdrop"></div>
     
     <!-- Mobile sidebar toggle -->
@@ -19,63 +564,149 @@
         <div class="sidebar-header">
             <div class="logo">
                 <i class="bi bi-camera"></i>
+                <h3>ND-Photography</h3>
             </div>
-            <h3>ND-Photography</h3>
         </div>
         
         <ul class="list-unstyled sidebar-menu">
             <li>
-                <a href="#" class="nav-link active">
-                    <i class="bi bi-speedometer"></i> Dashboard
+                <a href="/admin/dashboard" class="nav-link active">
+                    <i class="bi bi-speedometer2"></i> Dashboard
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
+            
+            <!-- Home Section with nested dropdowns -->
+            <li class="has-submenu">
+                <a href="#" class="nav-link menu-item">
+                    <i class="bi bi-house-door"></i> Home Content
+                    <i class="bi bi-chevron-down menu-toggle"></i>
+                </a>
+                <ul class="submenu">
+                    <!-- Slider with nested options -->
+                    <li class="has-submenu">
+                        <a href="#" class="nav-link submenu-item">
+                            <i class="bi bi-sliders"></i> Slider
+                            <i class="bi bi-chevron-down menu-toggle"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/admin/add_slider" class="nav-link"><i class="bi bi-plus-circle"></i> Add Slider</a></li>
+                            <li><a href="#" class="nav-link"><i class="bi bi-card-list"></i> Manage Slider</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Featured Work with nested options -->
+                    <li class="has-submenu">
+                        <a href="#" class="nav-link submenu-item">
+                            <i class="bi bi-star"></i> Featured Work
+                            <i class="bi bi-chevron-down menu-toggle"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="#" class="nav-link"><i class="bi bi-plus-circle"></i> Add Featured Work</a></li>
+                            <li><a href="#" class="nav-link"><i class="bi bi-card-list"></i> Manage Featured Work</a></li>
+                        </ul>
+                    </li>
+                    
+                    <!-- Services with nested options -->
+                    <li class="has-submenu">
+                        <a href="#" class="nav-link submenu-item">
+                            <i class="bi bi-collection"></i> Services
+                            <i class="bi bi-chevron-down menu-toggle"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="#" class="nav-link"><i class="bi bi-plus-circle"></i> Add Service</a></li>
+                            <li><a href="#" class="nav-link"><i class="bi bi-card-list"></i> Manage Services</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            
+            <!-- Portfolio Section -->
+            <li class="has-submenu">
+                <a href="#" class="nav-link menu-item">
                     <i class="bi bi-images"></i> Portfolio
+                    <i class="bi bi-chevron-down menu-toggle"></i>
                 </a>
+                <ul class="submenu">
+                    <li><a href="#" class="nav-link"><i class="bi bi-grid"></i> All Galleries</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-plus-circle"></i> Add Gallery</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-folder"></i> Categories</a></li>
+                </ul>
             </li>
+            
+            <!-- Services Section -->
             <li>
                 <a href="#" class="nav-link">
                     <i class="bi bi-briefcase"></i> Services
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-chat-quote"></i> Testimonials
+            
+            <!-- Testimonials -->
+            <li class="has-submenu">
+                <a href="#" class="nav-link menu-item">
+                    <i class="bi bi-chat-square-quote"></i> Testimonials
+                    <i class="bi bi-chevron-down menu-toggle"></i>
                 </a>
+                <ul class="submenu">
+                    <li><a href="#" class="nav-link"><i class="bi bi-card-list"></i> Manage</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-plus-circle"></i> Add New</a></li>
+                </ul>
             </li>
+            
+            <!-- Enquiries -->
             <li>
                 <a href="#" class="nav-link">
                     <i class="bi bi-envelope"></i> Enquiries
-                    <span class="badge badge-notification bg-danger">5</span>
+                    <span class="badge badge-notification">5</span>
                 </a>
             </li>
+            
+            <!-- Blog Section -->
+            <li class="has-submenu">
+                <a href="#" class="nav-link menu-item">
+                    <i class="bi bi-pencil-square"></i> Blog
+                    <i class="bi bi-chevron-down menu-toggle"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#" class="nav-link"><i class="bi bi-card-list"></i> All Posts</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-plus-circle"></i> Add New</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-tags"></i> Categories</a></li>
+                </ul>
+            </li>
+            
+            <!-- Pricing -->
             <li>
                 <a href="#" class="nav-link">
-                    <i class="bi bi-pencil"></i> Blog
+                    <i class="bi bi-currency-dollar"></i> Pricing
                 </a>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-currency-rupee"></i> Pricing
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link">
+            
+            <!-- FAQs -->
+            <li class="has-submenu">
+                <a href="#" class="nav-link menu-item">
                     <i class="bi bi-question-circle"></i> FAQs
+                    <i class="bi bi-chevron-down menu-toggle"></i>
                 </a>
+                <ul class="submenu">
+                    <li><a href="#" class="nav-link"><i class="bi bi-card-list"></i> Manage FAQs</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-plus-circle"></i> Add New</a></li>
+                </ul>
             </li>
-            <li>
-                <a href="#" class="nav-link">
-                    <i class="bi bi-bell"></i> Notifications
-                </a>
-            </li>
-            <li>
-                <a href="#" class="nav-link">
+            
+            <!-- Settings Section -->
+            <li class="has-submenu">
+                <a href="#" class="nav-link menu-item">
                     <i class="bi bi-gear"></i> Settings
+                    <i class="bi bi-chevron-down menu-toggle"></i>
                 </a>
+                <ul class="submenu">
+                    <li><a href="#" class="nav-link"><i class="bi bi-globe"></i> General</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-lock"></i> Security</a></li>
+                    <li><a href="#" class="nav-link"><i class="bi bi-person"></i> Profile</a></li>
+                </ul>
             </li>
-            <li>
+            
+            <!-- Logout -->
+            <li class="logout-link">
                 <a href="/admin/logout" class="nav-link">
                     <i class="bi bi-box-arrow-right"></i> Logout
                 </a>
@@ -92,23 +723,151 @@
                     <span class="notification-badge">3</span>
                 </div>
                 
-                <div class="user-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=3c7fff&color=fff" alt="Admin">
+                <div class="user-dropdown" id="userDropdown">
+                    <img src="https://ui-avatars.com/api/?name=Admin+User&background=3c7fff&color=fff" alt="Admin User">
                     <div class="name">Admin User</div>
                     <div class="dropdown-arrow">
                         <i class="bi bi-chevron-down"></i>
                     </div>
                 </div>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i> Profile</a></li>
-                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i> Settings</a></li>
+                <ul class="dropdown-menu" id="userDropdownMenu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-person"></i> Profile</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-gear"></i> Settings</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/admin/logout"><i class="bi bi-box-arrow-right me-2"></i> Logout</a></li>
+                    <li><a class="dropdown-item" href="/admin/logout"><i class="bi bi-box-arrow-right"></i> Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-        
-  </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle mobile sidebar
+            document.getElementById('sidebarToggle').addEventListener('click', function(e) {
+                e.stopPropagation();
+                const sidebar = document.getElementById('sidebar');
+                const backdrop = document.getElementById('mobileBackdrop');
+                
+                sidebar.classList.toggle('active');
+                backdrop.classList.toggle('active');
+                
+                if (sidebar.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                    document.body.style.position = 'fixed';
+                    document.body.style.width = '100%';
+                } else {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                }
+            });
+
+            // Close sidebar when clicking on backdrop
+            document.getElementById('mobileBackdrop').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    document.getElementById('sidebar').classList.remove('active');
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                }
+            });
+
+            // Handle nav link clicks
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // If it's a submenu toggle link
+                    if (this.classList.contains('menu-item') || this.classList.contains('submenu-item')) {
+                        return;
+                    }
+                    
+                    // For regular nav links on mobile
+                    if (window.innerWidth <= 992) {
+                        e.stopPropagation();
+                        
+                        if (this.getAttribute('href') && this.getAttribute('href') !== '#') {
+                            document.getElementById('sidebar').classList.remove('active');
+                            document.getElementById('mobileBackdrop').classList.remove('active');
+                            document.body.style.overflow = '';
+                            document.body.style.position = '';
+                            document.body.style.width = '';
+                        }
+                    }
+                });
+            });
+
+            // Submenu toggle handler
+            document.querySelectorAll('.menu-item, .submenu-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    if (this.parentElement.classList.contains('has-submenu')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        
+                        const submenu = this.nextElementSibling;
+                        const isShowing = submenu.classList.contains('show');
+                        
+                        if (!isShowing) {
+                            const parentMenu = this.closest('ul');
+                            if (parentMenu) {
+                                parentMenu.querySelectorAll('.submenu.show').forEach(openSubmenu => {
+                                    if (openSubmenu !== submenu) {
+                                        openSubmenu.classList.remove('show');
+                                        const toggle = openSubmenu.previousElementSibling.querySelector('.menu-toggle');
+                                        if (toggle) toggle.classList.remove('rotated');
+                                    }
+                                });
+                            }
+                        }
+                        
+                        submenu.classList.toggle('show');
+                        const toggle = this.querySelector('.menu-toggle');
+                        if (toggle) toggle.classList.toggle('rotated');
+                    }
+                });
+            });
+
+            // Close all submenus when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('#sidebar') && !e.target.closest('#sidebarToggle')) {
+                    document.querySelectorAll('.submenu.show').forEach(submenu => {
+                        submenu.classList.remove('show');
+                    });
+                    document.querySelectorAll('.menu-toggle.rotated').forEach(toggle => {
+                        toggle.classList.remove('rotated');
+                    });
+                }
+            });
+
+            // User dropdown toggle
+            const userDropdown = document.getElementById('userDropdown');
+            const userDropdownMenu = document.getElementById('userDropdownMenu');
+            
+            if (userDropdown && userDropdownMenu) {
+                userDropdown.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    userDropdownMenu.classList.toggle('show');
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (userDropdownMenu && !e.target.closest('#userDropdown') && !e.target.closest('#userDropdownMenu')) {
+                    userDropdownMenu.classList.remove('show');
+                }
+            });
+
+            // Handle window resize
+            function handleResize() {
+                if (window.innerWidth > 992) {
+                    document.body.style.overflow = '';
+                    document.body.style.position = '';
+                    document.body.style.width = '';
+                    document.getElementById('mobileBackdrop').classList.remove('active');
+                }
+            }
+            
+            window.addEventListener('resize', handleResize);
+            handleResize();
+        });
+    </script>
+</body>
 </html>
