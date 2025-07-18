@@ -2,11 +2,12 @@ let express = require('express');
 let bodyparser = require('body-parser')
 let user_route = require('./routes/user_routes');
 let session = require('express-session')
-
+let fileUpload = require('express-fileupload');
 var admin_route = require('./routes/admin_routes');
 
 
 let app = express()
+app.use(fileUpload())
 app.use(session({
     resave:true,
     saveUninitialized:true,

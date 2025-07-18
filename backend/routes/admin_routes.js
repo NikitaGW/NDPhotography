@@ -50,5 +50,11 @@ router.get('/logout',(req,res)=>{
 router.get('/add_slider',(req,res)=>{
     res.render('admin/add_slider.ejs')
 })
+router.get('/banners',(req,res)=>{
+    res.render('admin/addBanners.ejs')
+})
+router.get('/save_banners',(req,res)=>{
+    res.send
+})
 
 module.exports = router;
