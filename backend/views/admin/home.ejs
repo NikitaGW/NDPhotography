@@ -1,307 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ND-Photography Admin Panel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/admin/home.css">
-</head>
-<body> 
-    <%- include('navbar.ejs') %>
-   <!-- Main Content -->
-    <div id="content">
-        <div class="page-header">
-            <div>
-                <h1>Dashboard</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door"></i></a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                    </ol>
-                </nav>
-            </div>
-            <div>
-                <button class="btn btn-primary"><i class="bi bi-plus-circle me-2"></i> New Content</button>
-            </div>
-        </div>
-        
-        <!-- Stats Cards -->
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-icon bg-primary-light">
-                    <i class="bi bi-envelope"></i>
+<%-include('navbar')%>
+ <!-- Content Area -->
+        <div class="content-area">
+            <div class="page-header">
+                <h1 class="page-title">
+                    <i class="bi bi-speedometer2"></i>
+                    Dashboard Overview
+                </h1>
+                <div class="page-actions">
+                    <a href="#" class="btn btn-primary">
+                        <i class="bi bi-plus-circle"></i>
+                        New Booking
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="bi bi-cloud-upload"></i>
+                        Upload Photos
+                    </a>
                 </div>
-                <div class="stat-info">
-                    <h5>New Enquiries</h5>
-                    <h3>12</h3>
-                    <div class="stat-trend trend-up">
+            </div>
+            
+            <!-- Dashboard Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon enquiries">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">23</div>
+                    <div class="stat-label">New Enquiries</div>
+                    <div class="stat-change positive">
                         <i class="bi bi-arrow-up"></i>
-                        <span>20% since last week</span>
+                        +18% from last week
                     </div>
                 </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon bg-success-light">
-                    <i class="bi bi-calendar-event"></i>
-                </div>
-                <div class="stat-info">
-                    <h5>Upcoming Shoots</h5>
-                    <h3>7</h3>
-                    <div class="stat-trend trend-down">
-                        <i class="bi bi-arrow-down"></i>
-                        <span>5% since last week</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon bg-warning-light">
-                    <i class="bi bi-currency-rupee"></i>
-                </div>
-                <div class="stat-info">
-                    <h5>Monthly Revenue</h5>
-                    <h3>₹68,420</h3>
-                    <div class="stat-trend trend-up">
-                        <i class="bi bi-arrow-up"></i>
-                        <span>12.5% since last month</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="stat-card">
-                <div class="stat-icon bg-purple-light">
-                    <i class="bi bi-star"></i>
-                </div>
-                <div class="stat-info">
-                    <h5>New Testimonials</h5>
-                    <h3>3</h3>
-                    <div class="stat-trend trend-up">
-                        <i class="bi bi-arrow-up"></i>
-                        <span>50% since last month</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Dashboard Content -->
-        <div class="dashboard-content">
-            <div>
-                <div class="card">
-                    <div class="card-header">
-                        Recent Enquiries
-                        <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Service</th>
-                                        <th>Date</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Sarah Johnson</td>
-                                        <td>sarah@example.com</td>
-                                        <td>Wedding Photography</td>
-                                        <td>Jun 12, 2023</td>
-                                        <td><span class="badge badge-status badge-new">New</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary action-btn">
-                                                <i class="bi bi-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Michael Brown</td>
-                                        <td>michael@example.com</td>
-                                        <td>Portrait Session</td>
-                                        <td>Jun 10, 2023</td>
-                                        <td><span class="badge badge-status badge-progress">In Progress</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary action-btn">
-                                                <i class="bi bi-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Emily Davis</td>
-                                        <td>emily@example.com</td>
-                                        <td>Event Photography</td>
-                                        <td>Jun 8, 2023</td>
-                                        <td><span class="badge badge-status badge-completed">Completed</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary action-btn">
-                                                <i class="bi bi-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>David Wilson</td>
-                                        <td>david@example.com</td>
-                                        <td>Commercial Shoot</td>
-                                        <td>Jun 5, 2023</td>
-                                        <td><span class="badge badge-status badge-progress">In Progress</span></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary action-btn">
-                                                <i class="bi bi-eye"></i> View
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        Revenue Overview
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-placeholder">
-                            <div>
-                                <i class="bi bi-bar-chart"></i>
-                                <p>Revenue chart visualization</p>
-                                <div class="currency-info">
-                                    <i class="bi bi-currency-rupee"></i> Indian Rupee (₹)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <div class="card">
-                    <div class="card-header">
-                        Upcoming Shoots
-                        <a href="#" class="btn btn-sm btn-outline-primary">Calendar</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex flex-column gap-3">
-                            <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
-                                <div>
-                                    <div class="fw-bold">Sarah & John Wedding</div>
-                                    <div class="text-muted small">Jun 18, 2023 • 10:00 AM</div>
-                                </div>
-                                <span class="badge bg-primary">Wedding</span>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
-                                <div>
-                                    <div class="fw-bold">Corporate Event - TechCo</div>
-                                    <div class="text-muted small">Jun 20, 2023 • 2:00 PM</div>
-                                </div>
-                                <span class="badge bg-info">Event</span>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center border-bottom pb-3">
-                                <div>
-                                    <div class="fw-bold">Family Portraits - Miller</div>
-                                    <div class="text-muted small">Jun 22, 2023 • 11:00 AM</div>
-                                </div>
-                                <span class="badge bg-success">Portrait</span>
-                            </div>
-                            
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <div class="fw-bold">Product Photography</div>
-                                    <div class="text-muted small">Jun 25, 2023 • 9:00 AM</div>
-                                </div>
-                                <span class="badge bg-warning">Commercial</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card">
-                    <div class="card-header">
-                        Recent Testimonials
-                        <a href="#" class="btn btn-sm btn-outline-primary">Manage</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex flex-column gap-3">
-                            <div class="testimonial-item">
-                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client" class="testimonial-avatar">
-                                <div class="testimonial-content">
-                                    <div class="testimonial-name">Jennifer Lopez</div>
-                                    <div class="testimonial-event">Wedding Photography</div>
-                                    <div class="testimonial-text">"Absolutely stunning photos! Captured our special day perfectly."</div>
-                                    <div class="testimonial-rating">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="testimonial-item">
-                                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Client" class="testimonial-avatar">
-                                <div class="testimonial-content">
-                                    <div class="testimonial-name">Robert Chen</div>
-                                    <div class="testimonial-event">Corporate Event</div>
-                                    <div class="testimonial-text">"Professional, punctual, and delivered amazing results for our conference."</div>
-                                    <div class="testimonial-rating">
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-fill"></i>
-                                        <i class="bi bi-star-half"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Toggle sidebar on mobile
-        document.getElementById('sidebarToggle').addEventListener('click', function() {
-            document.body.classList.toggle('sidebar-open');
-        });
-        
-        // Close sidebar when clicking on backdrop
-        document.getElementById('mobileBackdrop').addEventListener('click', function() {
-            document.body.classList.remove('sidebar-open');
-        });
-        
-        // Add active class to clicked nav links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Close sidebar on mobile after clicking a link
-                if (window.innerWidth <= 992) {
-                    document.body.classList.remove('sidebar-open');
-                }
-            });
-        });
-        
-        // Update currency to Indian Rupees
-        document.querySelectorAll('.stat-info h3').forEach(el => {
-            if (el.textContent.includes('$')) {
-                el.textContent = '₹' + el.textContent.replace('$', '').replace(/\d+/g, m => 
-                    parseInt(m).toLocaleString('en-IN')
-                );
-            }
-        });
-    </script>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon shoots">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Upcoming Shoots</div>
+                    <div class="stat-change positive">
+                        <i class="bi bi-arrow-up"></i>
+                        +12% from last month
+                    </div>
+                </div>
 
-</body>
-</html>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon revenue">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">$15,750</div>
+                    <div class="stat-label">Monthly Revenue</div>
+                    <div class="stat-change positive">
+                        <i class="bi bi-arrow-up"></i>
+                        +25% from last month
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon testimonials">
+                            <i class="bi bi-star"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value">47</div>
+                    <div class="stat-label">Client Reviews</div>
+                    <div class="stat-change positive">
+                        <i class="bi bi-arrow-up"></i>
+                        +8% from last month
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="actions-grid">
+                    <a href="#" class="action-item" data-action="add-portfolio">
+                        <div class="action-icon">
+                            <i class="bi bi-images"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Add Portfolio</h4>
+                            <p>Upload new photos to gallery</p>
+                        </div>
+                    </a>
+                    <a href="#" class="action-item" data-action="manage-bookings">
+                        <div class="action-icon">
+                            <i class="bi bi-calendar-plus"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Manage Bookings</h4>
+                            <p>View and schedule shoots</p>
+                        </div>
+                    </a>
+                    <a href="#" class="action-item" data-action="respond-enquiries">
+                        <div class="action-icon">
+                            <i class="bi bi-reply"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Respond to Enquiries</h4>
+                            <p>Reply to client messages</p>
+                        </div>
+                    </a>
+                    <a href="#" class="action-item" data-action="update-pricing">
+                        <div class="action-icon">
+                            <i class="bi bi-tag"></i>
+                        </div>
+                        <div class="action-content">
+                            <h4>Update Pricing</h4>
+                            <p>Manage service packages</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <div class="activity-header">
+                    <h3>Recent Activity</h3>
+                    <a href="#" class="view-all-btn">View All</a>
+                </div>
+                
+                <div class="activity-item">
+                    <div class="activity-icon enquiry">
+                        <i class="bi bi-envelope-plus"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">New wedding enquiry received</div>
+                        <div class="activity-description">Sarah & Mike Johnson - June 2024 wedding</div>
+                    </div>
+                    <div class="activity-time">2 hours ago</div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon booking">
+                        <i class="bi bi-calendar-check"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">Portrait session confirmed</div>
+                        <div class="activity-description">Emma Thompson - Family portraits this Saturday</div>
+                    </div>
+                    <div class="activity-time">4 hours ago</div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon upload">
+                        <i class="bi bi-cloud-upload"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">Portfolio updated</div>
+                        <div class="activity-description">Added 24 new photos to Wedding gallery</div>
+                    </div>
+                    <div class="activity-time">1 day ago</div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon review">
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">New 5-star review</div>
+                        <div class="activity-description">Lisa Martinez left a glowing testimonial</div>
+                    </div>
+                    <div class="activity-time">2 days ago</div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-icon booking">
+                        <i class="bi bi-credit-card"></i>
+                    </div>
+                    <div class="activity-content">
+                        <div class="activity-title">Payment received</div>
+                        <div class="activity-description">$1,200 deposit from David Wilson - Wedding package</div>
+                    </div>
+                    <div class="activity-time">3 days ago</div>
+                </div>
+            </div>
+        </div>
+   
+<%-include('footer')%>
