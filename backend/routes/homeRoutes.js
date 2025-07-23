@@ -74,7 +74,7 @@ router.post("/save_slider", async (req, res) => {
 // slider
 
 router.get('/add_featured',async(req,res)=>{
-    let featureSql = `SELECT * FROM homeFeature`;
+    let featureSql = `SELECT * FROM homefeature`;
     let featureResult = await exe(featureSql);
     res.render('admin/add_featured_work.ejs',{featureResult});
 })
