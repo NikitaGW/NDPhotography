@@ -4,9 +4,11 @@ const exe = require('../connection');
 var router = express.Router();
 
 router.get('/',async(req,res)=>{
-    let sliderdata = `SELECT * FROM sliders`
+    let sliderdata = `SELECT * FROM sliders`;
     let sliderSql = await exe(sliderdata)
-    let homePacket = {sliderSql}
+    let featured = `SELECT * FROM homefeature`;
+    let featureResult = await exe(featured);
+    let homePacket = {sliderSql, featureResult}
     res.render('user/home.ejs',homePacket);
 })
 router.get('/portfolio',(req,res)=>{

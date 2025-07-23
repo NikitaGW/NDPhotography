@@ -1,0 +1,172 @@
+<%- include('navbar.ejs') -%>
+
+<style>
+    /* Main Container Styles */
+    .admin-container {
+        padding: 2rem 0;
+        min-height: calc(100vh - 120px);
+    }
+    
+    /* Page Header */
+    .page-title {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #f8f9fa;
+    }
+    
+    /* Form Styles */
+    .admin-form {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.5rem;
+        display: block;
+    }
+    
+    .form-control {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+        border-color: #4a90e2;
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        outline: none;
+    }
+    
+    /* Image Preview */
+    .image-preview {
+        margin-top: 1rem;
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        border: 1px solid #eee;
+        padding: 5px;
+        background: #f9f9f9;
+    }
+    
+    /* Button Styles */
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+    }
+    
+    .btn-primary {
+        background-color: #4a90e2;
+        color: white;
+    }
+    
+    .btn-primary:hover {
+        background-color: #3a7bc8;
+        transform: translateY(-1px);
+    }
+    
+    /* Helper Text */
+    .text-muted {
+        color: #6c757d !important;
+        font-size: 0.85rem;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .admin-form {
+            padding: 1.5rem;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .admin-container {
+            padding: 1.5rem 0;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+        }
+        
+        .form-control {
+            padding: 0.65rem 0.9rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .admin-form {
+            padding: 1.25rem;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 0.85rem;
+        }
+    }
+</style>
+
+<div class="admin-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <h2 class="page-title">
+                    <i class="bi bi-pencil-square"></i> Update Featured Work
+                </h2>
+                
+                <form action="/admin/update_feature" method="POST" enctype="multipart/form-data" class="admin-form">
+                    <input type="hidden" name="feature_id" value="<%= editResult[0].feature_id %>">
+                    
+                    <div class="form-group mb-4">
+                        <label for="feature_heading">Feature Heading</label>
+                        <input type="text" id="feature_heading" name="feature_heading" class="form-control" 
+                               value="<%= editResult[0].feature_heading %>" required>
+                    </div>
+
+                    <div class="form-group mb-4">
+                        <label for="feature_subheading">Feature Subheading</label>
+                        <input type="text" id="feature_subheading" name="feature_subheading" class="form-control" 
+                               value="<%= editResult[0].feature_subheading %>" required>
+                    </div>
+                    
+                    <div class="form-group mb-4">
+                        <label for="featured_image">Feature Image</label>
+                        <input type="file" id="featured_image" name="featured_image" class="form-control" accept="image/*">
+                        
+                        <% if(editResult[0].featured_image) { %>
+                            <div class="mt-3">
+                                <p class="text-muted mb-2">Current Image:</p>
+                                <img src="<%= editResult[0].featured_image %>" alt="Current featured image" class="image-preview" style="max-height: 200px;">
+                            </div>
+                        <% } %>
+                        
+                        <small class="text-muted d-block mt-2">Recommended size: 800×600px (JPEG or PNG format)</small>
+                    </div>
+
+                    <div class="form-group mt-4">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-check-circle"></i> Update Feature
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('footer.ejs') -%>

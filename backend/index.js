@@ -4,6 +4,7 @@ let user_route = require('./routes/user_routes');
 let session = require('express-session')
 let fileUpload = require('express-fileupload');
 var admin_route = require('./routes/admin_routes');
+let homeRoutes = require('./routes/homeRoutes');
 
 
 let app = express()
@@ -20,4 +21,6 @@ app.use(bodyparser.urlencoded({extended:true}))
 
 app.use('/',user_route);
 app.use('/admin',admin_route);
+app.use('/admin',homeRoutes);
+
 app.listen(1000)
