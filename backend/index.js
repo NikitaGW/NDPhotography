@@ -8,6 +8,7 @@ var admin_route = require('./routes/admin_routes');
 
 let app = express()
 app.use(fileUpload())
+app.use(express.static('public/'))
 app.use(session({
     resave:true,
     saveUninitialized:true,

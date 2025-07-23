@@ -21,20 +21,20 @@
     <!-- Hero Section -->
     <section class="hero-section d-flex align-items-center">
         <!-- Hero Slides -->
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-        
+        <div class="hero-slide active" style="background-image: url('/images/<%=sliderSql[0].image1%>');"></div>
+        <div class="hero-slide" style="background-image: url('/images/<%= sliderSql[0].image2%>');"></div>
+        <div class="hero-slide" style="background-image: url('/images/<%= sliderSql[0].image3%>');"></div>
+
         <!-- Overlay -->
         <div class="hero-overlay"></div>
         
         <!-- Hero Content -->
         <div class="container hero-content text-center">
-            <h1 class="tagline mb-3 animate-on-scroll">Capturing Moments That Matter</h1>
-            <p class="sub-tagline animate-on-scroll delay-1">Professional photography for weddings, portraits, and events</p>
+            <h1 class="tagline mb-3 animate-on-scroll"><%= sliderSql[0].heading%></h1>
+            <p class="sub-tagline animate-on-scroll delay-1"><%=sliderSql[0].description%></p>
             <div class="d-flex justify-content-center gap-3 animate-on-scroll delay-2">
-                <a href="/contact" class="btn btn-primary btn-lg">Book a Session</a>
-                <a href="/portfolio" class="btn btn-outline-light btn-lg">View Portfolio</a>
+                <a href="<%= sliderSql[0].button1_link%>" class="btn btn-primary btn-lg"><%= sliderSql[0].button1_text%></a>
+                <a href="<%= sliderSql[0].button2_link%>" class="btn btn-outline-light btn-lg"><%= sliderSql[0].button2_text%></a>
             </div>
         </div>
     </section>

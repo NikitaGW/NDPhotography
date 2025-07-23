@@ -1,0 +1,152 @@
+<%- include('navbar.ejs') -%>
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <form action="/admin/update_slider" method="POST" enctype="multipart/form-data" class="p-4 p-md-5 bg-white rounded-3 shadow-sm">
+                <h3 class="mb-4 text-primary border-bottom pb-3">Edit Slider Content</h3>
+                
+                <!-- Heading -->
+                <div class="mb-4">
+                    <input type="hidden" value="<%-sliderResult[0].slider_id%>" name="slider_id">
+                    <label for="heading" class="form-label fw-semibold">Heading</label>
+                    <input type="text" name="heading" id="heading" class="form-control form-control-lg" 
+                           value="<%- sliderResult[0].heading %>" required>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-4">
+                    <label for="description" class="form-label fw-semibold">Description</label>
+                    <textarea name="description" id="description" class="form-control" rows="4" required><%- sliderResult[0].description %></textarea>
+                </div>
+
+                <!-- Images Section -->
+                <div class="mb-4">
+                    <h5 class="mb-3 fw-semibold text-secondary border-bottom pb-2">Slider Images</h5>
+                    <div class="row g-4">
+                        <!-- Image 1 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-light">
+                                <div class="card-body text-center">
+                                    <% if(sliderResult[0].image1) { %>
+                                        <img src="/<%- sliderResult[0].image1 %>" class="img-fluid mb-3 rounded" style="max-height: 100px;">
+                                    <% } else { %>
+                                        <div class="bg-light mb-3 rounded" style="height: 100px; display: grid; place-items: center;">
+                                            <i class="bi bi-image text-muted fs-1"></i>
+                                        </div>
+                                    <% } %>
+                                    <label class="form-label d-block">Image 1</label>
+                                    <input type="file" name="image1" class="form-control form-control-sm" accept="image/*">
+                                    <small class="text-muted d-block mt-1">1920×1080px recommended</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 2 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-light">
+                                <div class="card-body text-center">
+                                    <% if(sliderResult[0].image2) { %>
+                                        <img src="/<%- sliderResult[0].image2 %>" class="img-fluid mb-3 rounded" style="max-height: 100px;">
+                                    <% } else { %>
+                                        <div class="bg-light mb-3 rounded" style="height: 100px; display: grid; place-items: center;">
+                                            <i class="bi bi-image text-muted fs-1"></i>
+                                        </div>
+                                    <% } %>
+                                    <label class="form-label d-block">Image 2</label>
+                                    <input type="file" name="image2" class="form-control form-control-sm" accept="image/*">
+                                    <small class="text-muted d-block mt-1">1920×1080px recommended</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 3 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-light">
+                                <div class="card-body text-center">
+                                    <% if(sliderResult[0].image3) { %>
+                                        <img src="/<%- sliderResult[0].image3 %>" class="img-fluid mb-3 rounded" style="max-height: 100px;">
+                                    <% } else { %>
+                                        <div class="bg-light mb-3 rounded" style="height: 100px; display: grid; place-items: center;">
+                                            <i class="bi bi-image text-muted fs-1"></i>
+                                        </div>
+                                    <% } %>
+                                    <label class="form-label d-block">Image 3</label>
+                                    <input type="file" name="image3" class="form-control form-control-sm" accept="image/*">
+                                    <small class="text-muted d-block mt-1">1920×1080px recommended</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Image 4 -->
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card h-100 border-light">
+                                <div class="card-body text-center">
+                                    <% if(sliderResult[0].image4) { %>
+                                        <img src="/<%- sliderResult[0].image4 %>" class="img-fluid mb-3 rounded" style="max-height: 100px;">
+                                    <% } else { %>
+                                        <div class="bg-light mb-3 rounded" style="height: 100px; display: grid; place-items: center;">
+                                            <i class="bi bi-image text-muted fs-1"></i>
+                                        </div>
+                                    <% } %>
+                                    <label class="form-label d-block">Image 4</label>
+                                    <input type="file" name="image4" class="form-control form-control-sm" accept="image/*">
+                                    <small class="text-muted d-block mt-1">1920×1080px recommended</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons Section -->
+                <div class="mb-4">
+                    <h5 class="mb-3 fw-semibold text-secondary border-bottom pb-2">Call-to-Action Buttons</h5>
+                    
+                    <!-- Button 1 -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label for="button1_text" class="form-label">Primary Button Text</label>
+                            <input type="text" name="button1_text" id="button1_text" class="form-control" 
+                                   value="<%- sliderResult[0].button1_text %>" placeholder="e.g. Learn More">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="button1_link" class="form-label">Primary Button Link</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+                                <input type="url" name="button1_link" id="button1_link" class="form-control" 
+                                       value="<%- sliderResult[0].button1_link %>" placeholder="https://example.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Button 2 -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="button2_text" class="form-label">Secondary Button Text</label>
+                            <input type="text" name="button2_text" id="button2_text" class="form-control" 
+                                   value="<%- sliderResult[0].button2_text %>" placeholder="e.g. Contact Us">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="button2_link" class="form-label">Secondary Button Link</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-link-45deg"></i></span>
+                                <input type="url" name="button2_link" id="button2_link" class="form-control" 
+                                       value="<%- sliderResult[0].button2_link %>" placeholder="https://example.com">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                    <a href="#" class="btn btn-outline-secondary">Cancel</a>
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="bi bi-save me-2"></i>Update Slider
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%- include('footer.ejs') -%>
+<!-- Include Bootstrap Icons if not already included -->

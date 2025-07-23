@@ -47,10 +47,20 @@ router.get('/logout',(req,res)=>{
     });
 })
 
-router.get('/add_slider',(req,res)=>{
-    res.render('admin/add_slider.ejs')
+router.get('/add_slider',async(req,res)=>{
+    let sliderdata = `SELECT * FROM sliders`;
+    let sliderResult = await exe(sliderdata)
+    let sliderPacket = {sliderResult}
+    res.render('admin/add_slider.ejs',sliderPacket)
 })
-router.post("/save_slider", async (req, res) => {
+
+
+router.get('/update',async (req,res)=>{
+    let sliderSql = `SELECT * FROM sliders`;
+    let sliderResult =await exe(sliderSql);
+    res.render('admin/edit_slider.ejs',{sliderResult})
+})
+router.post("/update_slider", async (req, res) => {
     let d =  req.body;
 
     let image1 = '';
@@ -77,9 +87,10 @@ router.post("/save_slider", async (req, res) => {
     }
 
     const sql = `
-      INSERT INTO sliders 
-      (heading, description, image1, image2, image3, image4, button1_text, button1_link, button2_text, button2_link)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      UPDATE sliders SET
+      heading = ?, description = ?, image1 = ?, image2 = ?, image3 = ?, image4 = ?, button1_text = ?, button1_link = ?, button2_text = ?, button2_link = ?
+      WHERE slider_id = ?
+
     `;
 
     const values = [
@@ -93,13 +104,42 @@ router.post("/save_slider", async (req, res) => {
       d.button1_link,
       d.button2_text,
       d.button2_link,
+      d.slider_id
     ];
 
     await exe(sql, values); // assuming your db returns a Promise
     res.redirect("/admin/add_slider"); 
 });
-router.get('/add_featured',(req,res)=>{
-    res.render('admin/add_featured_work.ejs')
+router.get('/add_featured',async(req,res)=>{
+    
+    // let sliderPacket = {sliderResult}
+    res.render('admin/add_featured_work.ejs');
 })
+router.post('/update_feature', async (req, res) => {
+    let d = req.body;
+
+    let image = d.old_image || ''; // fallback to old image
+
+    if (req.files && req.files.featured_image) {
+        image = Date.now() + '_' + req.files.featured_image.name;
+        await req.files.featured_image.mv('public/images/' + image);
+    }
+
+    const sql = `
+      UPDATE homeFeature 
+      SET 
+        feature_heading = ?, 
+        feature_subheading = ?, 
+        featured_image = ?
+      WHERE feature_id = ?
+    `;
+    const values = [d.feature_heading, d.feature_subheading, image, d.feature_id];
+
+    await exe(sql, values);
+    res.redirect('/admin/add_feature');
+});
+
+
+
 
 module.exports = router;
