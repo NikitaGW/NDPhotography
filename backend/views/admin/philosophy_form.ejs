@@ -1,0 +1,17 @@
+<%- include('navbar') %>
+<form action="/admin/about/philosophy" method="POST">
+  <input name="icon" placeholder="Icon class" class="form-control mb-2">
+  <input name="title" placeholder="Title" class="form-control mb-2">
+  <textarea name="description" class="form-control mb-2" rows="3"></textarea>
+  <button class="btn btn-success mb-3">Add</button>
+</form>
+
+<ul class="list-group">
+  <% philosophies.forEach(p => { %>
+    <li class="list-group-item d-flex justify-content-between">
+      <span><i class="<%= p.icon %>"></i> <%= p.title %></span>
+      <a href="/admin/about/philosophy/delete/<%= p.id %>" class="btn btn-sm btn-danger">Delete</a>
+    </li>
+  <% }) %>
+</ul>
+<%- include('footer') %>

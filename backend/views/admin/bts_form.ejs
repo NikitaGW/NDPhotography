@@ -1,0 +1,17 @@
+    <%- include('navbar') %>
+<form action="/admin/about/bts" method="POST" enctype="multipart/form-data">
+  <input type="file" name="image" class="form-control mb-2">
+  <input type="text" name="caption" class="form-control mb-2" placeholder="Caption">
+  <button class="btn btn-success mb-3">Add</button>
+</form>
+
+<div class="row">
+  <% bts.forEach(b => { %>
+    <div class="col-md-4 mb-3">
+      <img src="<%= b.image %>" class="img-fluid rounded mb-1">
+      <p><%= b.caption %></p>
+      <a href="/admin/about/bts/delete/<%= b.id %>" class="btn btn-danger btn-sm">Delete</a>
+    </div>
+  <% }) %>
+</div>
+<%- include('footer') %>

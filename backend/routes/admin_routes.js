@@ -45,9 +45,13 @@ router.get('/logout',(req,res)=>{
         }
         res.redirect('/admin');
     });
-})
+});
 
 
+router.get('/admin/about_banner_form', (req, res) => {
+  res.render('admin/about_banner_form.ejs'); // Make sure the filename matches exactly
+});
 
 
 module.exports = router;
+
