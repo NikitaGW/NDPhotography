@@ -3,21 +3,21 @@ const exe = require('../connection');
 var router = express.Router();
 
 // slider
-router.get('/add_slider',async(req,res)=>{
+router.get('/add_slider', async (req, res) => {
     let sliderdata = `SELECT * FROM sliders`;
     let sliderResult = await exe(sliderdata)
-    let sliderPacket = {sliderResult}
-    res.render('admin/add_slider.ejs',sliderPacket)
+    let sliderPacket = { sliderResult }
+    res.render('admin/add_slider.ejs', sliderPacket)
 })
 
 
-router.get('/update_slider',async (req,res)=>{
+router.get('/update_slider', async (req, res) => {
     let sliderSql = `SELECT * FROM sliders`;
-    let sliderResult =await exe(sliderSql);
-    res.render('admin/edit_slider.ejs',{sliderResult})
+    let sliderResult = await exe(sliderSql);
+    res.render('admin/edit_slider.ejs', { sliderResult })
 })
 router.post("/save_slider", async (req, res) => {
-    let d =  req.body;
+    let d = req.body;
 
     let image1 = '';
     let image2 = '';
@@ -50,21 +50,21 @@ router.post("/save_slider", async (req, res) => {
     `;
 
     const values = [
-      d.heading,
-      d.description,
-      image1,
-      image2,
-      image3,
-      image4,
-      d.button1_text,
-      d.button1_link,
-      d.button2_text,
-      d.button2_link,
-      d.slider_id
+        d.heading,
+        d.description,
+        image1,
+        image2,
+        image3,
+        image4,
+        d.button1_text,
+        d.button1_link,
+        d.button2_text,
+        d.button2_link,
+        d.slider_id
     ];
 
     await exe(sql, values); // assuming your db returns a Promise
-    res.redirect("/admin/add_slider"); 
+    res.redirect("/admin/add_slider");
 });
 
 
@@ -73,10 +73,10 @@ router.post("/save_slider", async (req, res) => {
 
 // slider
 
-router.get('/add_featured',async(req,res)=>{
+router.get('/add_featured', async (req, res) => {
     let featureSql = `SELECT * FROM homefeature`;
     let featureResult = await exe(featureSql);
-    res.render('admin/add_featured_work.ejs',{featureResult});
+    res.render('admin/add_featured_work.ejs', { featureResult });
 })
 
 router.post('/save_feature', async (req, res) => {
@@ -128,6 +128,113 @@ router.post('/update_feature', async (req, res) => {
     await exe(sql, values);
     res.redirect('/admin/add_featured'); // or wherever you want
 });
+
+router.get('/home_services', async (req, res) => {
+    let showHomeServices = `SELECT * FROM home_services`;
+    let showResult = await exe(showHomeServices)
+    let showPacket = { showResult }
+    res.render('admin/homeServices.ejs', showPacket)
+})
+router.post('/save_home_service', async (req, res) => {
+    let d = req.body;
+    var icon_paths = ''
+    if (req.files) {
+        var icon_paths = new Date().getTime() + req.files.icon_path.name;
+        req.files.icon_path.mv("public/images/" + icon_paths)
+    }
+    let homeServicesSql = ` INSERT INTO home_services (category, description, icon_path)
+VALUES (?,?,?)`
+    let value = [d.category, d.description, icon_paths]
+
+    let homeServicesResult = await exe(homeServicesSql, value)
+
+    res.redirect('/admin/home_services')
+})
+router.get('/edit_services/:id',async(req,res)=>{
+    let eid = req.params.id;
+    let editHomeServices = `SELECT * FROM home_services WHERE id = ?`;
+    let editHomeServicesResult = await exe (editHomeServices,[eid])
+    let editHomeServicesPakcet = {editHomeServicesResult}
+    res.render('admin/updateHomeServices.ejs',editHomeServicesPakcet)
+})
+router.post('/update_home_service', async (req, res) => {
+    let d = req.body;
+    let icon_paths = d.old_icon_path;
+
+    // If a new icon is uploaded
+    if (req.files && req.files.icon_path) {
+        icon_paths = new Date().getTime() + req.files.icon_path.name;
+        await req.files.icon_path.mv("public/images/" + icon_paths);
+    }
+
+    let updateHomeServicesSql = `UPDATE home_services 
+                                 SET category = ?, description = ?, icon_path = ? 
+                                 WHERE id = ?`;
+    let value = [d.category, d.description, icon_paths, d.id];
+
+    await exe(updateHomeServicesSql, value);
+
+    res.redirect('/admin/home_services'); // ✅ Final response
+});
+router.get('/delete_services/:id',async(req,res)=>{
+    let did = req.params.id;
+    let deleteHomeServices = `DELETE FROM home_services WHERE id = ?`
+    let deleteHomeServicesResult = await exe(deleteHomeServices,[did])
+    res.redirect('/admin/home_services')
+})
+router.get('/home_testimonials',async(req,res)=>{
+    let homeTestimonials = `SELECT * FROM Hometestimonials`
+    let homeTestimonialsResult = await exe(homeTestimonials)
+    let HometestimonialsPacket = {homeTestimonialsResult}
+    res.render('admin/homeTestimonials.ejs',HometestimonialsPacket)
+})
+router.post('/save_home_testimonial', async (req, res) => {
+    let d = req.body;
+    let insertSql = `
+        INSERT INTO Hometestimonials (name, category, description, status)
+        VALUES (?, ?, ?, ?)
+    `;
+    let values = [d.name, d.category, d.description, d.status || 'active'];
+    await exe(insertSql, values);
+
+    res.redirect('/admin/home_testimonials');
+});
+router.get('/edit_home_testimonial/:id', async (req, res) => {
+    let id = req.params.id;
+    let selectSql = `SELECT * FROM Hometestimonials WHERE id = ?`;
+    let result = await exe(selectSql, [id]);
+
+    if (result.length > 0) {
+        res.render('admin/updateHomeTestimonial.ejs', { testimonial: result[0] });
+    } else {
+        res.send('Testimonial not found.');
+    }
+});
+router.post('/update_home_testimonial', async (req, res) => {
+    let d = req.body;
+    let updateSql = `
+        UPDATE Hometestimonials 
+        SET name = ?, category = ?, description = ? 
+        WHERE id = ?
+    `;
+    let values = [d.name, d.category, d.description, d.id];
+    await exe(updateSql, values);
+
+    res.redirect('/admin/home_testimonials');
+});
+router.get('/delete_home_testimonial/:id', async (req, res) => {
+    let id = req.params.id;
+
+    try {
+        await exe('DELETE FROM Hometestimonials WHERE id = ?', [id]);
+        res.redirect('/admin/home_testimonials');
+    } catch (err) {
+        console.error("Delete error:", err);
+        res.send("Error deleting testimonial");
+    }
+});
+
+
 
 
 

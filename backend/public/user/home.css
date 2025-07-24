@@ -146,12 +146,19 @@
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
+        .service-icon img
+        {
+            width: 90px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
         
-        .service-icon {
+        /* .service-icon {
             font-size: 3rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
-        }
+        } */
+
         
         /* Buttons */
         .btn-primary {

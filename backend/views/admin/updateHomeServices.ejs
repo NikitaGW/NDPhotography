@@ -1,0 +1,324 @@
+<%- include('navbar') %>
+
+<div class="edit-service-container">
+  <div class="edit-service-card">
+    <h1 class="edit-service-title">Edit Service</h1>
+    
+    <form action="/admin/update_home_service" method="post" enctype="multipart/form-data" class="edit-service-form">
+      <input type="hidden" name="id" value="<%-editHomeServicesResult[0].id%>">
+      
+      <div class="form-group">
+        <label for="category" class="form-label">Category</label>
+        <input type="text" id="category" name="category" value="<%- editHomeServicesResult[0].category %>" 
+               class="form-input" required placeholder="e.g., Plumbing, Electrical">
+      </div>
+
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="description" rows="5" class="form-textarea" 
+                  required placeholder="Enter service description..."><%- editHomeServicesResult[0].description %></textarea>
+      </div>
+      
+      <div class="form-group">
+        <label for="icon_path" class="form-label">Service Icon</label>
+        
+        <div class="current-image-preview">
+          <p class="current-image-label">Current Icon:</p>
+          <img src="/images/<%- editHomeServicesResult[0].icon_path %>" 
+               alt="Current service icon" 
+               class="current-image">
+        </div>
+        
+        <div class="file-upload-wrapper">
+          <label class="file-upload-label">
+            <span class="file-upload-text">Upload New Icon</span>
+            <input type="file" id="icon_path" name="icon_path" accept="image/*" onchange="updateFileName(this)">
+            <span class="file-upload-button">Choose File</span>
+          </label>
+          <div id="file-name" class="file-name-display">No file selected</div>
+        </div>
+        <small class="form-hint">Recommended: 100x100px PNG (Will replace current icon)</small>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-save">
+          <i class="fas fa-save"></i> Save Changes
+        </button>
+        <button type="reset" class="btn btn-reset">
+          <i class="fas fa-undo"></i> Reset
+        </button>
+        <a href="/admin" class="btn btn-cancel">
+          <i class="fas fa-times"></i> Cancel
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  /* Base Styles */
+  :root {
+    --primary-color: #4361ee;
+    --primary-dark: #3a56d4;
+    --secondary-color: #6c757d;
+    --danger-color: #dc3545;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --border-color: #dee2e6;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+  }
+
+  .edit-service-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .edit-service-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .edit-service-title {
+    color: var(--dark-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+    font-size: 1.75rem;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 1rem;
+  }
+
+  /* Form Styles */
+  .edit-service-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: var(--transition);
+    background-color: var(--light-color);
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    background-color: white;
+  }
+
+  .form-textarea {
+    min-height: 150px;
+    resize: vertical;
+  }
+
+  /* Current Image Preview */
+  .current-image-preview {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .current-image-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+  }
+
+  .current-image {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    padding: 5px;
+    background: white;
+  }
+
+  /* File Upload Styles */
+  .file-upload-wrapper {
+    margin-top: 1rem;
+  }
+
+  .file-upload-label {
+    display: flex;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+
+  .file-upload-text {
+    flex-grow: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px 0 0 6px;
+    background-color: var(--light-color);
+    color: var(--secondary-color);
+  }
+
+  .file-upload-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0 6px 6px 0;
+    transition: var(--transition);
+    font-weight: 500;
+  }
+
+  .file-upload-button:hover {
+    background-color: var(--primary-dark);
+  }
+
+  .file-upload-label input[type="file"] {
+    display: none;
+  }
+
+  .file-name-display {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+    margin-top: 0.25rem;
+    padding-left: 0.5rem;
+  }
+
+  .form-hint {
+    color: var(--secondary-color);
+    font-size: 0.85rem;
+    display: block;
+    margin-top: 0.5rem;
+  }
+
+  /* Button Styles */
+  .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+
+  .btn i {
+    margin-right: 0.5rem;
+  }
+
+  .btn-save {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  .btn-save:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-reset {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  .btn-reset:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+  }
+
+  .btn-cancel {
+    background-color: white;
+    color: var(--danger-color);
+    border: 1px solid var(--danger-color);
+    text-decoration: none;
+  }
+
+  .btn-cancel:hover {
+    background-color: #f8d7da;
+    transform: translateY(-2px);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .edit-service-card {
+      padding: 1.5rem;
+    }
+    
+    .edit-service-title {
+      font-size: 1.5rem;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .edit-service-container {
+      padding: 0 0.75rem;
+    }
+    
+    .file-upload-label {
+      flex-direction: column;
+    }
+    
+    .file-upload-text {
+      border-radius: 6px 6px 0 0;
+      text-align: center;
+    }
+    
+    .file-upload-button {
+      border-radius: 0 0 6px 6px;
+    }
+    
+    .current-image {
+      max-width: 80px;
+    }
+  }
+</style>
+
+<script>
+  function updateFileName(input) {
+    const fileNameDisplay = document.getElementById('file-name');
+    if (input.files.length > 0) {
+      fileNameDisplay.textContent = input.files[0].name;
+      fileNameDisplay.style.color = 'var(--dark-color)';
+      fileNameDisplay.style.fontWeight = '500';
+    } else {
+      fileNameDisplay.textContent = 'No file selected';
+      fileNameDisplay.style.color = 'var(--secondary-color)';
+      fileNameDisplay.style.fontWeight = 'normal';
+    }
+  }
+</script>
+
+<%- include('footer') %>

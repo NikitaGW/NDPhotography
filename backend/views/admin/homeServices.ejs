@@ -1,0 +1,441 @@
+<%-include('navbar.ejs')%>
+
+<div class="admin-container">
+  <h1 class="admin-title">Home Services Management</h1>
+  
+  <div class="admin-content">
+    <!-- Form Section -->
+    <div class="card form-section">
+      <h2 class="section-title"><%= showResult.length > 0 ? 'Update' : 'Add' %> Service</h2>
+      <form action="/admin/save_home_service" method="POST" enctype="multipart/form-data" class="service-form">
+        <div class="form-group">
+          <label for="category" class="form-label">Category:</label>
+          <input type="text" id="category" name="category" class="form-input" required placeholder="e.g., Plumbing, Electrical" />
+        </div>
+
+        <div class="form-group">
+          <label for="description" class="form-label">Description:</label>
+          <textarea id="description" name="description" rows="4" class="form-textarea" required placeholder="Enter service description..."></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="icon_path" class="form-label">Icon Upload:</label>
+          <div class="file-upload">
+            <label for="icon_path" class="file-upload-label">
+              <span id="file-name">Choose an icon file...</span>
+              <span class="file-upload-button">Browse</span>
+            </label>
+            <input type="file" id="icon_path" name="icon_path" accept="image/*" required onchange="updateFileName(this)" />
+          </div>
+          <small class="form-hint">Recommended size: 100x100px, PNG format</small>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary">Clear</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Services Table -->
+    <div class="card table-section d-flex d-md-block align-items-center justify-content-center">
+      <h2 class="section-title">Existing Services</h2>
+      <div class="table-responsive">
+        <table class="services-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Category</th>
+              <th>Description</th>
+              <th>Icon</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if (showResult.length > 0) { %>
+              <% for(var i = 0 ; i < showResult.length; i++) {%>
+                <tr>
+                  <td data-label="#"><%- i+1 %></td>
+                  <td data-label="Category"><%- showResult[i].category %></td>
+                  <td data-label="Description" class="description-cell"><%= showResult[i].description %></td>
+                  <td data-label="Icon">
+                    <div class="icon-preview">
+                      <img src="/images/<%= showResult[i].icon_path %>" alt="<%- showResult[i].category %> icon" />
+                    </div>
+                  </td>
+                  <!-- onclick="return confirm('Are you sure you want to delete this service?')" -->
+                  <td data-label="Actions" class="actions-cell">
+                    <a href="/admin/edit_services/<%= showResult[i].id %>" class="btn btn-sm btn-edit">
+                      <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a href="/admin/delete_services/<%= showResult[i].id %>" class="btn btn-sm btn-delete" >
+                      <i class="fas fa-trash"></i> Delete
+                    </a>
+                  </td>
+                </tr>
+              <% } %>
+            <% } else { %>
+              <tr>
+                <td colspan="5" class="no-results">No services found. Add your first service above.</td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Base Styles */
+  :root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --danger-color: #f72585;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --border-color: #dee2e6;
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f5f7fa;
+  }
+
+  .admin-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .admin-title {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+
+  .admin-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 992px) {
+    .admin-content {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  /* Card Styles */
+  .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+
+  /* Form Styles */
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;    
+    color: var(--dark-color);
+  }
+
+  .form-input, .form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(72, 149, 239, 0.2);
+  }
+
+  .form-textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  .form-hint {
+    color: var(--gray-color);
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 0.25rem;
+  }
+
+  /* File Upload Styles */
+  .file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .file-upload-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  #file-name {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px 0 0 4px;
+    background-color: #f8f9fa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .file-upload-button {
+    padding: 0.75rem 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 0 4px 4px 0;
+    transition: background-color 0.3s;
+  }
+
+  .file-upload-button:hover {
+    background-color: var(--secondary-color);
+  }
+
+  .file-upload input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  /* Button Styles */
+  .btn {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-1px);
+  }
+
+  .btn-secondary {
+    background-color: var(--gray-color);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+  }
+
+  .btn-sm {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .btn-edit {
+    background-color: var(--accent-color);
+    color: white;
+    margin-right: 0.5rem;
+  }
+
+  .btn-edit:hover {
+    background-color: #3a7bd5;
+  }
+
+  .btn-delete {
+    background-color: var(--danger-color);
+    color: white;
+  }
+
+  .btn-delete:hover {
+    background-color: #e3176a;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  /* Table Styles */
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .services-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  .services-table th {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    text-align: left;
+  }
+
+  .services-table td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+  }
+
+  .services-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .services-table tr:hover {
+    background-color: rgba(67, 97, 238, 0.05);
+  }
+
+  .icon-preview {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .description-cell {
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .actions-cell {
+    white-space: nowrap;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 2rem;
+    color: var(--gray-color);
+  }
+
+  /* Responsive Table */
+  @media (max-width: 768px) {
+    .services-table {
+      display: block;
+    }
+
+    .services-table thead {
+      display: none;
+    }
+
+    .services-table tr {
+      display: block;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+    }
+
+    .services-table td {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .services-table td:last-child {
+      border-bottom: none;
+    }
+
+    .services-table td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      margin-right: 1rem;
+      color: var(--primary-color);
+    }
+
+    .description-cell {
+      white-space: normal;
+    }
+
+    .actions-cell {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .actions-cell a {
+      flex: 1 1 auto;
+      text-align: center;
+    }
+  }
+
+  /* Icons */
+  .fas {
+    margin-right: 0.3rem;
+  }
+</style>
+
+<script>
+  function updateFileName(input) {
+    const fileNameDisplay = document.getElementById('file-name');
+    if (input.files.length > 0) {
+      fileNameDisplay.textContent = input.files[0].name;
+    } else {
+      fileNameDisplay.textContent = 'Choose an icon file...';
+    }
+  }
+</script>
+
+<%- include('footer')%>

@@ -5,10 +5,14 @@ var router = express.Router();
 
 router.get('/',async(req,res)=>{
     let sliderdata = `SELECT * FROM sliders`;
-    let sliderSql = await exe(sliderdata)
+    let servicesData = `SELECT * FROM home_services`
     let featured = `SELECT * FROM homefeature`;
+    let homeTestimonials = `SELECT * FROM Hometestimonials`
+    let sliderSql = await exe(sliderdata)
     let featureResult = await exe(featured);
-    let homePacket = {sliderSql, featureResult}
+    let servicesSql = await exe(servicesData)
+    let homeTestimonialsSql = await exe(homeTestimonials)
+    let homePacket = {sliderSql, featureResult,servicesSql,homeTestimonialsSql}
     res.render('user/home.ejs',homePacket);
 })
 router.get('/portfolio',(req,res)=>{
