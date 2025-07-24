@@ -1,0 +1,17 @@
+<%- include('navbar') %>
+<form action="/admin/about/equipment" method="POST" enctype="multipart/form-data">
+  <input type="text" name="name" class="form-control mb-2" placeholder="Equipment name">
+  <textarea name="description" class="form-control mb-2" rows="3"></textarea>
+  <input type="file" name="image" class="form-control mb-2">
+  <button class="btn btn-success mb-3">Add</button>
+</form>
+
+<ul class="list-group">
+  <% items.forEach(item => { %>
+    <li class="list-group-item d-flex justify-content-between">
+      <%= item.name %>
+      <a href="/admin/about/equipment/delete/<%= item.id %>" class="btn btn-sm btn-danger">Delete</a>
+    </li>
+  <% }) %>
+</ul>
+<%- include('footer') %>

@@ -1,0 +1,46 @@
+<%- include('navbar') %>
+<style>
+  .hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 120px 0;
+  margin-bottom: 50px;
+}
+
+/* Sections */
+.section-title {
+  position: relative;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+}
+
+.section-title:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
+.bio-section, .philosophy-section {
+  padding: 60px 0;
+}
+
+.philosophy-section {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+</style>
+<section class="hero-section text-center">
+        <a href="/admin/update_about"><button class="editBtn text-capitalize">update</button></a>
+
+            <h1 class="display-3 fw-bold mb-4">About Me</h1>
+            <p class="lead">Capturing moments, telling stories, creating art</p>
+        </section>
+
+
+<%- include('footer') %>

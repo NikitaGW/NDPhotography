@@ -1,0 +1,17 @@
+<%- include('navbar') %>
+<form action="/admin/about/awards" method="POST">
+  <input type="number" name="year" placeholder="Year" class="form-control mb-2">
+  <input type="text" name="title" placeholder="Award Title" class="form-control mb-2">
+  <textarea name="description" placeholder="Award Description" class="form-control mb-2" rows="2"></textarea>
+  <button class="btn btn-success mb-3">Add</button>
+</form>
+
+<ul class="list-group">
+  <% awards.forEach(award => { %>
+    <li class="list-group-item d-flex justify-content-between">
+      <strong><%= award.year %></strong> - <%= award.title %>
+      <a href="/admin/about/awards/delete/<%= award.id %>" class="btn btn-sm btn-danger">Delete</a>
+    </li>
+  <% }) %>
+</ul>
+<%- include('footer') %>
