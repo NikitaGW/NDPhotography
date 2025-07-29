@@ -1,0 +1,100 @@
+<%- include('navbar')%>
+<link rel="stylesheet" href="/admin/manageservices.css">
+
+<div class="services-admin-container">
+  <!-- Page Header -->
+  <div class="admin-header">
+    <div class="header-content">
+      <h1 class="admin-title">
+        <i class="fas fa-concierge-bell"></i> Services Management
+      </h1>
+      <div class="header-actions">
+        <div class="search-container">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search services..." class="search-input">
+        </div>
+        <a href="/admin/addPhotographyservices" class="add-service-btn">
+          <i class="fas fa-plus"></i> <span class="btn-label">New Service</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Services Table -->
+  <div class="services-content">
+    <% if (result.length > 0) { %>
+      <div class="services-table-container">
+        <div class="table-responsive">
+          <table class="services-table">
+            <thead>
+              <tr>
+                <th class="col-number">#</th>
+                <th class="col-title">Title</th>
+                <th class="col-date">Date</th>
+                <th class="col-category">Category</th>
+                <th class="col-image">Image</th>
+                <th class="col-actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < result.length; i++) { %>
+                <tr class="service-row">
+                  <td class="col-number" data-label="#"><%= i + 1 %></td>
+                  <td class="col-title" data-label="Title">
+                    <div class="service-title"><%= result[i].title %></div>
+                  </td>
+                  <td class="col-date" data-label="Date">
+                    <div class="service-date"><%= new Date(result[i].event_date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %></div>
+                  </td>
+                  <td class="col-category" data-label="Category">
+                    <span class="service-category"><%= result[i].category_name %></span>
+                  </td>
+                  <td class="col-image" data-label="Image">
+                    <% if (result[i].image_path) { %>
+                      <div class="service-image">
+                        <img src="/images/<%= result[i].image_path %>" alt="<%= result[i].title %>">
+                      </div>
+                    <% } else { %>
+                      <div class="no-image">No image</div>
+                    <% } %>
+                  </td>
+                  <td class="col-actions" data-label="Actions">
+                    <div class="action-buttons">
+                      <a href="/admin/editServices/<%= result[i].id %>" class="action-btn edit-btn" title="Edit">
+                        <i class="fas fa-pencil-alt"></i>
+                        <span class="action-label">Edit</span>
+                      </a>
+                      <a href="/admin/deleteServices/<%= result[i].id %>" class="action-btn delete-btn" title="Delete" onclick="return confirm('Are you sure you want to delete this service?')">
+                        <i class="fas fa-trash-alt"></i>
+                        <span class="action-label">Delete</span>
+                      </a>
+                    </div>
+                  </td>
+                </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      <div class="table-footer">
+        <div class="footer-info">
+          Showing <span class="highlight"><%= result.length %></span> service<%= result.length !== 1 ? 's' : '' %>
+        </div>
+      </div>
+    <% } else { %>
+      <div class="empty-state">
+        <div class="empty-icon">
+          <i class="fas fa-calendar-times"></i>
+        </div>
+        <h3 class="empty-title">No Services Found</h3>
+        <p class="empty-message">You haven't added any services yet. Get started by adding your first service.</p>
+        <a href="/admin/addServices" class="empty-action">
+          <i class="fas fa-plus"></i> Add Service
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('footer')%>

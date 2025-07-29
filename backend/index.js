@@ -6,6 +6,7 @@ let fileUpload = require('express-fileupload');
 var admin_route = require('./routes/admin_routes');
 let homeRoutes = require('./routes/homeRoutes');
 let aboutRoutes = require('./routes/aboutRoutes');
+let servicesRouter = require('./routes/servicesRoutes')
 
 
 let app = express()
@@ -24,5 +25,6 @@ app.use('/',user_route);
 app.use('/admin',admin_route);
 app.use('/admin',homeRoutes);
 app.use('/admin',aboutRoutes);
+app.use('/admin',servicesRouter)
 
 app.listen(1000)

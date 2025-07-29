@@ -24,70 +24,17 @@
 
     <div class="row g-4">
       <!-- Product Photography -->
+       <% for(let i = 0; i < commercialResult.length; i++) {%>
       <div class="col-md-6 col-lg-4" data-aos="zoom-in">
         <div class="service-card h-100">
-          <img src="/images/cta.jpg" alt="Product Photography" class="service-img" />
+          <img src="/images/<%-commercialResult[i].image_path%>" alt="Product Photography" class="service-img" />
           <div class="service-content p-4">
-            <h5 class="fw-bold">Product Photography</h5>
-            <p class="text-muted">Crisp, high-quality images that highlight your product's features and appeal.</p>
+            <h5 class="fw-bold"><%-commercialResult[i].title%></h5>
+            <p class="text-muted"><%-commercialResult[i].description%></p>
           </div>
         </div>
       </div>
-
-      <!-- Branding & Advertising -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="service-card h-100">
-          <img src="/images/branding.jpg" alt="Branding Photography" class="service-img" />
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Branding & Advertising</h5>
-            <p class="text-muted">Strategic shoots for marketing materials, ads, websites, and social media.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Corporate Portraits -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="service-card h-100">
-          <img src="/images/commercialphoto.jpg" alt="Corporate Portraits" class="service-img" />
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Corporate Portraits</h5>
-            <p class="text-muted">Professional headshots for teams, executives, and personal branding.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Workspace Photography -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in">
-        <div class="service-card h-100">
-          <img src="/images/commercial.jpg" alt="Workspace Photography" class="service-img" />
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Workspace Shoots</h5>
-            <p class="text-muted">Capture your office environment and team in action to build trust and transparency.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Editorial Shoots -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="service-card h-100">
-          <img src="/images/editorial.jpg" alt="Editorial Photography" class="service-img" />
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Editorial Photography</h5>
-            <p class="text-muted">Stylized shoots perfect for magazines, blogs, brochures, and interviews.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Architecture & Interiors -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="service-card h-100">
-          <img src="/images/interior.jpg" alt="Architecture Photography" class="service-img" />
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Architecture & Interiors</h5>
-            <p class="text-muted">Showcase spaces with detail, perspective, and vibrant lighting.</p>
-          </div>
-        </div>
-      </div>
+      <%}%>
     </div>
   </div>
 </section>

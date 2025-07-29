@@ -405,7 +405,7 @@
   left: 0;
   height: 100%;
   width: 100%;
-  background: url('/images/servicescta.jpg') center center/cover no-repeat;
+  background: url('img/servicescta.jpg') center center/cover no-repeat;
   background-attachment: fixed;
   filter: blur(1px) brightness(0.7);
   z-index: -1;

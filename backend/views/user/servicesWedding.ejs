@@ -25,82 +25,19 @@
 
     <div class="row g-4">
       <!-- Pre-Wedding Shoot -->
+       <% for(let i = 0;i < ServicesResult.length; i++) {%>
       <div class="col-md-6 col-lg-4" data-aos="zoom-in">
         <div class="service-card h-100">
-          <img src="/images/prewedding.jpg" alt="Pre-Wedding Shoot" class="service-img">
+          <img src="/images/<%-ServicesResult[i].image_path %>" alt="Pre-Wedding Shoot" class="service-img">
           <div class="service-content p-4">
-            <h5 class="fw-bold">Pre-Wedding Shoot</h5>
+            <h5 class="fw-bold"><%-ServicesResult[i].title %></h5>
             <p class="text-muted">
-              Scenic locations, elegant outfits, and candid chemistry—your love story captured in a cinematic style before the big day.
+              <%-ServicesResult[i].description %>
             </p>
           </div>
         </div>
       </div>
-
-      <!-- Haldi & Mehndi -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="service-card h-100">
-          <img src="/images/mehndi.jpg" alt="Haldi & Mehndi" class="service-img">
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Haldi & Mehndi Moments</h5>
-            <p class="text-muted">
-              We capture the vibrant colors, candid laughter, and every intricate henna detail with a joyful storytelling approach.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Wedding Ceremony -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="service-card h-100">
-          <img src="/images/weddingcouple.jpg" alt="Wedding Ceremony" class="service-img">
-          <div class="service-content p-4">
-            <h5 class="fw-bold">The Wedding Ceremony</h5>
-            <p class="text-muted">
-              The sacred rituals, emotional glances, and royal elegance are documented with cinematic depth and traditional finesse.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Candid Moments -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in">
-        <div class="service-card h-100">
-          <img src="/images/candid.jpg" alt="Candid Photography" class="service-img">
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Candid Photography</h5>
-            <p class="text-muted">
-              Unscripted, emotional, real. We freeze those fleeting moments — the tears, smiles, and stolen glances that matter most.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Reception Coverage -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-        <div class="service-card h-100">
-          <img src="/images/reception.jpg" alt="Reception Coverage" class="service-img">
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Reception Coverage</h5>
-            <p class="text-muted">
-              From glamorous entries to couple dances, we cover your reception with grace, glamour, and editorial-style frames.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Album & Delivery -->
-      <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-        <div class="service-card h-100">
-          <img src="/images/album.jpg" alt="Albums & Delivery" class="service-img">
-          <div class="service-content p-4">
-            <h5 class="fw-bold">Albums & Edits</h5>
-            <p class="text-muted">
-              Receive beautifully retouched photos, cinematic videos, and handcrafted albums delivered with love and care.
-            </p>
-          </div>
-        </div>
-      </div>
+      <%}%>
     </div>
   </div>
 </section>
