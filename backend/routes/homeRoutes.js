@@ -233,7 +233,35 @@ router.get('/delete_home_testimonial/:id', async (req, res) => {
         res.send("Error deleting testimonial");
     }
 });
+router.get('/PhotographerStory',async(req,res)=>{
+    var sql = `SELECT * FROM photography_highlights`
+    var result = await exe(sql)
+    var packet = {result}
+    res.render('admin/photographyHighlights.ejs',packet)
+})
+router.post('/update_result/:id', async (req, res) => {
+  const id = req.params.id;
+  const { title, description, style, experience, categories } = req.body;
+  let image = req.files?.image?.name || null;
 
+  if (image) {
+    await req.files.image.mv('./public/images/' + image);
+  }
+
+  const sql = `
+    UPDATE photography_highlights 
+    SET title = ?, description = ?, style = ?, experience = ?, categories = ?, image = COALESCE(?, image)
+    WHERE id = ?
+  `;
+
+  try {
+    await exe(sql, [title, description, style, experience, categories, image, id]);
+    res.redirect('/admin/PhotographerStory');
+  } catch (err) {
+    console.error(err);
+    res.send("Update failed");
+  }
+});
 
 
 

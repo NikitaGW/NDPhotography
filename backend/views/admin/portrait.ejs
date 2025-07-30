@@ -1,0 +1,70 @@
+<%- include('navbar.ejs') %>
+
+<div class="container mt-5">
+  <h2 class="mb-4">Add Wedding Highlight</h2>
+
+  <form action="/admin/save_portrait" method="POST" enctype="multipart/form-data">
+    
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="event_date" class="form-label">Event Date</label>
+      <input type="date" class="form-control" id="event_date" name="event_date" placeholder="e.g. May 2023" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Image</label>
+      <input type="file" class="form-control" id="image" name="image" accept="image/*" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href="/admin/dashboard" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Sr No</th>
+      <th>Title</th>
+      <th>Event Date</th>
+      <th>Description</th>
+      <th>Image</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% result.forEach((item, index) => { %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= item.title %></td>
+        <td><%= item.event_date %></td>
+        <td><%= item.description %></td>
+        <td>
+          <% if (item.image_path) { %>
+            <img src="/images/<%= item.image_path %>" width="100" />
+          <% } else { %>
+            No Image
+          <% } %>
+        </td>
+        <td>
+          <a href="editportrait/<%- item.id %>">edit</a>
+          <a href="deleteportrait/<%-item.id %>">delete</a>
+        </td>
+      </tr>
+    <% }); %>
+  </tbody>
+</table>
+
+<%- include('footer.ejs') %>

@@ -130,20 +130,18 @@
         <div class="cta-container">
             <div class="cta-wrapper">
                 <div class="cta-image">
-                    <img src="/images/cta.jpg" alt="Camera Setup" />
+                    <img src="/images/<%-photography_highlightResult[0].image %>" alt="Camera Setup" />
                 </div>
 
                 <div class="cta-content">
-                    <h3>Capture Stories That Last a Lifetime</h3>
+                    <h3><%-photography_highlightResult[0].title %></h3>
                     <p class="lead">
-                        At ND Photography, we don't just click pictures — we tell emotional, timeless stories. From
-                        candid wedding shots to corporate portraits, our camera lens captures it all with artistry and
-                        passion.
+                        <%-photography_highlightResult[0].description %>
                     </p>
                     <ul class="features">
-                        <li><i class="fas fa-circle-check"></i> Candid & Documentary Style</li>
-                        <li><i class="fas fa-circle-check"></i> 10+ Years of Photography Experience</li>
-                        <li><i class="fas fa-circle-check"></i> Wedding, Fashion, Corporate & Events</li>
+                        <li><i class="fas fa-circle-check"></i> <%-photography_highlightResult[0].style %></li>
+                        <li><i class="fas fa-circle-check"></i> <%-photography_highlightResult[0].experience %></li>
+                        <li><i class="fas fa-circle-check"></i> <%-photography_highlightResult[0].categories %></li>
                     </ul>
 
                     <div class="cta-buttons">

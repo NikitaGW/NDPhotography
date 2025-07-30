@@ -24,83 +24,19 @@
 
       <div class="row g-4">
         <!-- Lifestyle Portrait -->
+         <%for(let i = 0; i < portraitResult.length;i++) {%>
         <div class="col-md-6 col-lg-4" data-aos="zoom-in">
           <div class="service-card h-100">
-            <img src="/images/portraits.png" alt="Lifestyle Portrait" class="service-img" />
+            <img src="/images/<%-portraitResult[i].image_path%>" alt="Lifestyle Portrait" class="service-img" />
             <div class="service-content p-4">
-              <h5 class="fw-bold">Lifestyle Portraits</h5>
+              <h5 class="fw-bold"><%-portraitResult[i].title%></h5>
               <p class="text-muted">
-                Natural light, real locations, and your authentic self captured in a storytelling frame.
+                <%-portraitResult[i].description%>
               </p>
             </div>
           </div>
         </div>
-
-        <!-- Studio Shoot -->
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-          <div class="service-card h-100">
-            <img src="/images/studiosession.jpg" alt="Studio Shoot" class="service-img" />
-            <div class="service-content p-4">
-              <h5 class="fw-bold">Studio Sessions</h5>
-              <p class="text-muted">
-                Controlled lighting, clean backdrops, and creative compositions tailored for you.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Creative Concepts -->
-        <div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-          <div class="service-card h-100">
-            <img src="/images/creativeportrait.jpg" alt="Creative Portrait" class="service-img" />
-            <div class="service-content p-4">
-              <h5 class="fw-bold">Creative Portraits</h5>
-              <p class="text-muted">
-                Let us bring your vision to life with themed, dramatic, or editorial-style portraits.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Outdoor Fashion Shoot -->
-<div class="col-md-6 col-lg-4" data-aos="zoom-in">
-  <div class="service-card h-100">
-    <img src="/images/portraitgirl.jpg" alt="Outdoor Fashion" class="service-img" />
-    <div class="service-content p-4">
-      <h5 class="fw-bold">Outdoor Fashion Shoot</h5>
-      <p class="text-muted">
-        Striking poses, styled outfits, and stunning backdrops come together for portfolio-worthy visuals.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Corporate Headshots -->
-<div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="100">
-  <div class="service-card h-100">
-    <img src="/images/commercialphoto.jpg" alt="Corporate Headshots" class="service-img" />
-    <div class="service-content p-4">
-      <h5 class="fw-bold">Corporate Headshots</h5>
-      <p class="text-muted">
-        Crisp, professional, and confident images ideal for resumes, LinkedIn, and business profiles.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Family & Couple Portraits -->
-<div class="col-md-6 col-lg-4" data-aos="zoom-in" data-aos-delay="200">
-  <div class="service-card h-100">
-    <img src="/images/candid.jpg" alt="Family Portraits" class="service-img" />
-    <div class="service-content p-4">
-      <h5 class="fw-bold">Family & Couple Portraits</h5>
-      <p class="text-muted">
-        Heartfelt, warm, and timeless portraits that celebrate relationships and togetherness.
-      </p>
-    </div>
-  </div>
-</div>
-
+        <%}%>
       </div>
     </div>
   </section>
