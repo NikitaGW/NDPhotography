@@ -1,39 +1,34 @@
-
 <%- include('navbar') %>
 
 <div class="container mt-5">
-  <h2 class="mb-4">Update About Hero Section</h2>
-  <form action="/admin/save_about" method="POST" enctype="multipart/form-data">
-    
-    <!-- Hidden field for update -->
-    <input type="hidden" name="hero_id" value="<%= typeof result !== 'undefined' ? result.id : '' %>">
-
-    <!-- Hero Title -->
-    <div class="mb-3">
-      <label for="hero_title" class="form-label">Hero Title</label>
-      <input type="text" class="form-control" id="hero_title" name="hero_title" placeholder="Enter Hero Title"
-        value="<%= typeof result !== 'undefined' ? result.hero_title : '' %>" required>
-    </div>
-
-    <!-- Hero Subtitle -->
-    <div class="mb-3">
-      <label for="hero_subtitle" class="form-label">Hero Subtitle</label>
-      <input type="text" class="form-control" id="hero_subtitle" name="hero_subtitle" placeholder="Enter Hero Subtitle"
-        value="<%= typeof result !== 'undefined' ? result.hero_subtitle : '' %>" required>
-    </div>
-
-    <!-- Background Image Upload -->
-    <div class="mb-3">
-      <label for="hero_image" class="form-label">Hero Background Image</label>
-      <input type="file" class="form-control" id="hero_image" name="hero_image">
-      <% if (typeof result !== 'undefined' && result.hero_image_url) { %>
-        <img src="/uploads/<%= result.hero_image_url %>" alt="Current Hero Image" width="200" class="mt-2">
-      <% } %>
-    </div>
-
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
+  <h2>Edit About Banner Data Directly</h2>
+  <% if (banners && banners.length > 0) { %>
+    <% for (var i = 0; i < banners.length; i++) { %>
+      <form action="/admin/save_about" method="POST" enctype="multipart/form-data" class="mb-5 p-4 border rounded">
+        <input type="hidden" name="id" value="<%= banners[i].id %>">
+        <div class="mb-3">
+          <label for="title_<%= i %>" class="form-label">Hero Title</label>
+          <input type="text" class="form-control" id="title_<%= i %>" name="title" value="<%= banners[i].title %>" required>
+        </div>
+        <div class="mb-3">
+          <label for="subtitle_<%= i %>" class="form-label">Hero Subtitle</label>
+          <input type="text" class="form-control" id="subtitle_<%= i %>" name="subtitle" value="<%= banners[i].subtitle %>" required>
+        </div>
+        <div class="mb-3">
+          <label for="background_image_<%= i %>" class="form-label">Hero Background Image</label>
+          <% if (banners[i].background_image) { %>
+            <div class="mb-2">
+              <img src="/images/<%= banners[i].background_image %>" alt="Current Image" style="max-width: 120px; max-height: 80px;">
+            </div>
+          <% } %>
+          <input type="file" class="form-control" id="background_image_<%= i %>" name="background_image">
+          <input type="hidden" name="existing_background_image" value="<%= banners[i].background_image %>">
+        </div>
+        <button type="submit" class="btn btn-success">Save Changes</button>
+      </form>
+    <% } %>
+  <% } else { %>
+    <div class="alert alert-info">No About Banner data found.</div>
+  <% } %>
 </div>
-
 <%- include('footer') %>

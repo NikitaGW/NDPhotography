@@ -21,8 +21,12 @@ router.get('/portfolio',(req,res)=>{
 router.get('/services',(req,res)=>{
     res.render('user/services.ejs')
 })
-router.get('/about',(req,res)=>{
-    res.render("user/about.ejs")
+router.get('/about',async(req,res)=>{
+    let aboutSql = `SELECT * FROM about_banner`;
+    let aboutResult = await exe(aboutSql);
+    let aboutPacket = {aboutResult}
+    res.render("user/about.ejs",aboutPacket)
+    
 })
 router.get('/contact',(req,res)=>{
     res.render('user/contact.ejs')
