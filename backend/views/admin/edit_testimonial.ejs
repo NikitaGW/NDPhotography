@@ -1,0 +1,283 @@
+<%- include('navbar') %>
+
+<div class="testimonial-edit-container">
+  <div class="admin-header">
+    <h2>Edit Testimonial</h2>
+    <div class="admin-actions">
+      <a href="/admin/testimonials" class="btn btn-secondary">Back to List</a>
+    </div>
+  </div>
+
+  <div class="card edit-form-card">
+    <form action="/admin/update_testimonials" method="POST" enctype="multipart/form-data" class="testimonial-edit-form">
+      <input type="hidden" name="old_image" value="<%= testimonial.testimonial_image %>">
+      <input type="hidden" value="<%= testimonial.id %>" name="id">
+
+      <div class="form-grid">
+        <div class="form-group image-preview-group">
+          <label class="form-label">Current Image</label>
+          <div class="image-preview">
+            <img src="/images/<%= testimonial.testimonial_image %>" alt="Current testimonial image" class="preview-image">
+          </div>
+          <div class="image-upload">
+            <label for="testimonial_image" class="file-upload-label">
+              <span class="btn btn-outline-primary">Choose New Image</span>
+              <span class="file-name" id="file-name">No file chosen</span>
+            </label>
+            <input type="file" name="testimonial_image" id="testimonial_image" class="file-input" accept="image/*">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="testimonial_description" class="form-label">Description</label>
+          <textarea name="testimonial_description" id="testimonial_description" class="form-control" rows="5" required><%= testimonial.testimonial_description %></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="client_name" class="form-label">Client Name</label>
+          <input type="text" name="client_name" id="client_name" class="form-control" value="<%= testimonial.client_name %>" required>
+        </div>
+
+        <div class="form-group">
+          <label for="client_category" class="form-label">Client Category</label>
+          <input type="text" name="client_category" id="client_category" class="form-control" value="<%= testimonial.client_category %>" required>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Update Testimonial</button>
+        <a href="/admin/testimonials" class="btn btn-link">Cancel</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+<%- include('footer') %>
+
+<style>
+  /* Base Styles */
+  :root {
+    --primary-color: #3498db;
+    --secondary-color: #2c3e50;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #6c757d;
+    --border-color: #dee2e6;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+  }
+
+  .testimonial-edit-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .admin-header h2 {
+    margin: 0;
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Form Styles */
+  .testimonial-edit-form {
+    width: 100%;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .form-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+  }
+
+  .form-control:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+
+  textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  /* Image Preview */
+  .image-preview-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .image-preview {
+    margin-bottom: 1rem;
+    border: 1px dashed var(--border-color);
+    border-radius: 4px;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    background-color: var(--light-gray);
+  }
+
+  .preview-image {
+    max-width: 100%;
+    max-height: 200px;
+    object-fit: contain;
+  }
+
+  /* File Upload */
+  .file-input {
+    display: none;
+  }
+
+  .file-upload-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+
+  .file-name {
+    color: var(--dark-gray);
+    font-size: 0.9rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background-color: #2980b9;
+  }
+
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+  }
+
+  .btn-secondary:hover {
+    background-color: #1a252f;
+  }
+
+  .btn-outline-primary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+  }
+
+  .btn-outline-primary:hover {
+    background-color: rgba(52, 152, 219, 0.1);
+  }
+
+  .btn-link {
+    background: none;
+    border: none;
+    color: var(--dark-gray);
+    padding: 0;
+  }
+
+  .btn-link:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+  }
+
+  /* Form Actions */
+  .form-actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 576px) {
+    .admin-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .btn {
+      width: 100%;
+    }
+  }
+</style>
+
+<script>
+  // Update file name display when file is selected
+  document.getElementById('testimonial_image').addEventListener('change', function(e) {
+    const fileName = e.target.files.length ? e.target.files[0].name : 'No file chosen';
+    document.getElementById('file-name').textContent = fileName;
+    
+    // Preview new image if selected
+    if (e.target.files.length) {
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        document.querySelector('.preview-image').src = event.target.result;
+      };
+      reader.readAsDataURL(e.target.files[0]);
+    }
+  });
+</script>
