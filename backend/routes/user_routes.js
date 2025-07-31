@@ -20,6 +20,29 @@ router.get('/',async(req,res)=>{
 router.get('/portfolio',(req,res)=>{
     res.render('user/portfolio.ejs')
 })
+router.get('/booking',(req,res)=>{
+    res.render('user/booking.ejs')
+})
+router.post("/save_booking", async (req, res) => {
+    let d = req.body;
+
+    let sql = `INSERT INTO bookings (full_name, email, phone, photography_type, location, preferred_date, preferred_slot, message) 
+               VALUES (?,?,?,?,?,?,?,?)`;
+
+    let data = await exe(sql, [
+        d.full_name,
+        d.email,
+        d.phone,
+        d.photography_type,
+        d.location,
+        d.preferred_date,
+        d.preferred_slot,
+        d.message || null  
+    ]);
+
+    res.redirect("/booking"); 
+});
+
 router.get('/services',async(req,res)=>{
     var serviceSql = `SELECT * FROM photographyservices`;
     var servicesResult = await exe(serviceSql);
@@ -34,8 +57,12 @@ router.get('/event',async(req,res)=>{
 
     res.render('user/event.ejs',eventPacket)
 })
-router.get('/about',(req,res)=>{
-    res.render("user/about.ejs")
+router.get('/about',async(req,res)=>{
+    let aboutSql = `SELECT * FROM about_banner`;
+    let aboutResult = await exe(aboutSql);
+    let aboutPacket = {aboutResult}
+    res.render("user/about.ejs",aboutPacket)
+    
 })
 router.get('/contact',(req,res)=>{
     res.render('user/contact.ejs')

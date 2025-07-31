@@ -12,8 +12,10 @@
 <body>
     <%- include('Navbar') %>
      <section class="hero-section text-center">
-            <h1 class="display-3 fw-bold mb-4">About Me</h1>
-            <p class="lead">Capturing moments, telling stories, creating art</p>
+            <h1 class="display-3 fw-bold mb-4"><%= aboutResult[0].title %></h1>
+        
+
+            <p class="lead"><%= aboutResult[0].title %></p>
         </section>
          <div class="container">
         <section class="bio-section">

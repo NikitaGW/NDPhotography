@@ -1,0 +1,45 @@
+<%- include('navbar') %>
+
+<section class="bio-section">
+    <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+            <img src="https://images.unsplash.com/photo-1554080353-a576cf803bda?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Photographer" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-lg-6">
+            <h2 class="section-title">Photographer's Bio and Story</h2>
+            <p>Hello, I'm Sarah Johnson, a professional photographer with over 12 years of experience capturing life's most precious moments. My journey began when I received my first camera as a birthday gift at age 14, and I've been obsessed with photography ever since.</p>
+            <p>After studying Fine Arts at the University of Washington, I worked as an assistant to several renowned photographers, which helped me develop my unique style. In 2015, I decided to start my own photography business, and I haven't looked back since.</p>
+            <p>What drives me is the ability to freeze time - to capture emotions, relationships, and beauty that might otherwise be forgotten. Whether it's a wedding, a portrait session, or a commercial project, I approach each assignment with the same passion and attention to detail.</p>
+        </div>
+    </div>
+</section>
+
+<form action="/admin/save_photographer" method="POST" enctype="multipart/form-data" class="p-4 border rounded shadow">
+    <div class="mb-3">
+      <label for="photographer_image" class="form-label">Photographer Image</label>
+      <input type="file" name="photographer_image" class="form-control" required>
+    </div>
+  
+    <div class="mb-3">
+      <label for="title" class="form-label">Section Title</label>
+      <input type="text" name="title"  class="form-control" placeholder="e.g., Photographer's Bio and Story" required>
+    </div>
+  
+    <div class="mb-3">
+      <label for="para1" class="form-label">Paragraph 1</label>
+      <textarea name="para1"  rows="3" class="form-control" placeholder="Intro or story beginning" required></textarea>
+    </div>
+  
+    <div class="mb-3">
+      <label for="para2" class="form-label">Paragraph 2</label>
+      <textarea name="para2"  rows="3" class="form-control" placeholder="Education or growth experience" required></textarea>
+    </div>
+  
+    <div class="mb-3">
+      <label for="para3" class="form-label">Paragraph 3</label>
+      <textarea name="para3"  rows="3" class="form-control" placeholder="Passion, values, motivation" required></textarea>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Save Bio</button>
+  </form>
+  
