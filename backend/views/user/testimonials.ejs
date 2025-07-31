@@ -31,17 +31,19 @@
 
 
     <!-- Wedding -->
+     <% for(let i = 0; i < result.length; i++){%>
 <div class="testimonial-row">
   <div class="testimonial-img">
-    <img src="/images/weddingcouple.jpg" alt="Client - Sarah & John">
+    <img src="/images/<%- result[i].testimonial_Image%>" alt="Client - Sarah & John">
   </div>
   <div class="testimonial-text">
     <i class="fas fa-quote-left quote-icon"></i>
-    <p>From the moment we connected with ND-Photography, we felt completely at ease. They didn’t just photograph our wedding — they captured the soul of it. Every image is full of raw emotion and beautiful detail. Looking through our album feels like reliving the day.</p>
-    <h4>Sarah & John</h4>
-    <span>Wedding Client</span>
+    <p><%- result[i].testimonial_description%></p>
+    <h4><%- result[i].client_name%></h4>
+    <span><%- result[i].client_category%></span>
   </div>
 </div>
+<%}%>
 
 <!-- Portrait -->
 <div class="testimonial-row row-reverse">
@@ -55,60 +57,6 @@
     <span>Portrait Client</span>
   </div>
 </div>
-
-<!-- Event -->
-<div class="testimonial-row">
-  <div class="testimonial-img">
-    <img src="/images/eventcouple.jpg" alt="Client - Liam & Mia">
-  </div>
-  <div class="testimonial-text">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>Our anniversary event was a once-in-a-lifetime celebration and ND-Photography captured every magical moment. From candid laughter to group photos, everything was done with precision and creativity. We are truly grateful for their storytelling through pictures.</p>
-    <h4>Liam & Mia</h4>
-    <span>Event Client</span>
-  </div>
-</div>
-
-<!-- Commercial -->
-<div class="testimonial-row row-reverse">
-  <div class="testimonial-img">
-    <img src="/images/commercialphoto.jpg" alt="Client - David Singh">
-  </div>
-  <div class="testimonial-text">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>We hired ND-Photography for our product shoot and were blown away. The attention to lighting, angles, and brand representation was excellent. Their images significantly elevated our brand presence and engagement across all platforms.</p>
-    <h4>David Singh</h4>
-    <span>Commercial Shoot Client</span>
-  </div>
-</div>
-
-<!-- Nature -->
-<div class="testimonial-row">
-  <div class="testimonial-img">
-    <img src="/images/naturephotgraphy.jpg" alt="Client - Arjun Mehta">
-  </div>
-  <div class="testimonial-text">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>I collaborated with ND-Photography on a nature photography project. Their patience, eye for detail, and ability to capture wildlife in natural moments was inspiring. The results were breathtaking and truly celebrated nature’s raw beauty.</p>
-    <h4>Arjun Mehta</h4>
-    <span>Nature Photography Client</span>
-  </div>
-</div>
-
-<!-- Branding -->
-<div class="testimonial-row row-reverse">
-  <div class="testimonial-img">
-    <img src="/images/bussinesswomen.jpg" alt="Client - Olivia Roy">
-  </div>
-  <div class="testimonial-text">
-    <i class="fas fa-quote-left quote-icon"></i>
-    <p>For my personal branding shoot, I needed something clean, modern, and expressive. ND-Photography delivered exactly that and more. Every photo speaks of confidence, style, and clarity — everything I wanted my brand to convey.</p>
-    <h4>Olivia Roy</h4>
-    <span>Branding Client</span>
-  </div>
-</div>
-
-
   </div>
 </section>
 

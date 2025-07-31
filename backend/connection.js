@@ -7,6 +7,10 @@ let conn = mysql.createConnection({
     user:'uetmszyap3qud2ph',
     password:'i5bxkWogV6H8hiwomuR3',
     database:'bpaz9xm6nviszsaz40rv'
+    // host:'localhost',
+    // user:"root",
+    // password:"",
+    // database:'temp'
 })
 let exe = util.promisify(conn.query).bind(conn)
 

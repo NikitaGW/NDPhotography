@@ -67,8 +67,11 @@ router.get('/about',async(req,res)=>{
 router.get('/contact',(req,res)=>{
     res.render('user/contact.ejs')
 })
-router.get('/testimonials',(req,res)=>{
-    res.render('user/testimonials.ejs');
+router.get('/testimonials',async(req,res)=>{
+    var sql =`SELECT * FROM testimonials`;
+    var result =  await exe(sql)
+    var packet = {result}
+    res.render('user/testimonials.ejs',packet);
 })
 router.get('/pricing',(req,res)=>{
     res.render('user/pricing.ejs');
