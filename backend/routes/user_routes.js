@@ -1,35 +1,39 @@
-let express = require('express');
+var express = require('express');
 const exe = require('../connection');
 
 var router = express.Router();
 
 router.get('/',async(req,res)=>{
-    let sliderdata = `SELECT * FROM sliders`;
-    let servicesData = `SELECT * FROM home_services`
-    let featured = `SELECT * FROM homefeature`;
-    let homeTestimonials = `SELECT * FROM Hometestimonials`;
+    var sliderdata = `SELECT * FROM sliders`;
+    var servicesData = `SELECT * FROM home_services`
+    var featured = `SELECT * FROM homefeature`;
+    var homeTestimonials = `SELECT * FROM Hometestimonials`;
     var photography_highlightSql = `SELECT * FROM photography_highlights`
-    let sliderSql = await exe(sliderdata)
-    let featureResult = await exe(featured);
-    let servicesSql = await exe(servicesData)
-    let homeTestimonialsSql = await exe(homeTestimonials)
+    var sliderSql = await exe(sliderdata)
+    var featureResult = await exe(featured);
+    var servicesSql = await exe(servicesData)
+    var homeTestimonialsSql = await exe(homeTestimonials)
     var photography_highlightResult = await exe(photography_highlightSql)
-    let homePacket = {sliderSql, featureResult,servicesSql,homeTestimonialsSql,photography_highlightResult}
+    var homePacket = {sliderSql, featureResult,servicesSql,homeTestimonialsSql,photography_highlightResult}
     res.render('user/home.ejs',homePacket);
 })
-router.get('/portfolio',(req,res)=>{
-    res.render('user/portfolio.ejs')
+router.get('/portfolio',async(req,res)=>{
+    var category = 5
+    var portraitSql = `SELECT * FROM photographyservices WHERE category = ?`
+    var portraitsResult = await exe(portraitSql,[category])
+    var packet = {portraitsResult}
+    res.render('user/portfolio.ejs',packet)
 })
 router.get('/booking',(req,res)=>{
     res.render('user/booking.ejs')
 })
 router.post("/save_booking", async (req, res) => {
-    let d = req.body;
+    var d = req.body;
 
-    let sql = `INSERT INTO bookings (full_name, email, phone, photography_type, location, preferred_date, preferred_slot, message) 
+    var sql = `INSERT INTO bookings (full_name, email, phone, photography_type, location, preferred_date, preferred_slot, message) 
                VALUES (?,?,?,?,?,?,?,?)`;
 
-    let data = await exe(sql, [
+    var data = await exe(sql, [
         d.full_name,
         d.email,
         d.phone,
@@ -50,7 +54,7 @@ router.get('/services',async(req,res)=>{
     res.render('user/services.ejs',servicePacket)
 })
 router.get('/event',async(req,res)=>{
-    let event = 6
+    var event = 6
     var eventSql = `SELECT * FROM photographyservices WHERE category = ?`
     var eventResult = await exe(eventSql,[event])
     var eventPacket = {eventResult}
@@ -58,9 +62,9 @@ router.get('/event',async(req,res)=>{
     res.render('user/event.ejs',eventPacket)
 })
 router.get('/about',async(req,res)=>{
-    let aboutSql = `SELECT * FROM about_banner`;
-    let aboutResult = await exe(aboutSql);
-    let aboutPacket = {aboutResult}
+    var aboutSql = `SELECT * FROM about_banner`;
+    var aboutResult = await exe(aboutSql);
+    var aboutPacket = {aboutResult}
     res.render("user/about.ejs",aboutPacket)
     
 })
@@ -73,31 +77,62 @@ router.get('/testimonials',async(req,res)=>{
     var packet = {result}
     res.render('user/testimonials.ejs',packet);
 })
-router.get('/pricing',(req,res)=>{
-    res.render('user/pricing.ejs');
-})
+router.get('/pricing', async (req, res) => {
+  try {
+    const sql = 'SELECT * FROM photography_packages';
+    let addons = `SELECT * FROM photography_addons`;
+    let faq = `SELECT * FROM photography_faqs`;
+    let faqResult = await exe(faq)
+    let result = await exe(sql);
+    let addonsResult = await exe(addons)
+
+    // Transform features dynamically
+    const packages = result.map(pkg => ({
+      ...pkg,
+      features: [
+        { text: `${pkg.duration} of coverage`, disabled: false },
+        { text: `${pkg.edited_images} edited images`, disabled: false },
+        { text: 'Online gallery', disabled: !pkg.online_gallery },
+        { text: 'Digital download', disabled: !pkg.digital_download },
+        { text: 'Print release', disabled: !pkg.print_release },
+        { text: 'Second photographer', disabled: !pkg.second_photographer },
+        { text: pkg.photo_album || 'Photo album', disabled: !pkg.photo_album }
+      ]
+    }));
+
+    // ✅ Pass 'packages' to the EJS
+    res.render('user/pricing', { packages,addonsResult,faqResult });
+
+  } catch (err) {
+    console.error('Error fetching packages:', err);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 router.get('/serviceswedding',async(req,res)=>{
-    let category = 5
+    var category = 5
     var ServicesSql = `SELECT * FROM photographyservices WHERE category = ?`
     var ServicesResult = await exe(ServicesSql,[category])
     var ServicesPacket = {ServicesResult}
     res.render('user/servicesWedding.ejs',ServicesPacket)
 })
 router.get('/portraitservices',async(req,res)=>{
-    let portrait = 7
+    var portrait = 7
     var portraitSql = `SELECT * FROM photographyservices WHERE category = ?`
     var portraitResult = await exe(portraitSql,[portrait])
     var portraitPacket = {portraitResult}
     res.render('user/portraitservices.ejs',portraitPacket)
 })
 router.get('/commercialservices',async(req,res)=>{
-    let commercial = 9
+    var commercial = 9
     var commercialSql = `SELECT * FROM photographyservices WHERE category = ?`
     var commercialResult = await exe(commercialSql,[commercial])
     var commercialPacket = {commercialResult}
     res.render('user/commercialservices.ejs',commercialPacket);
 })
-router.get('/blog',(req,res)=>{
-    res.render('user/blog.ejs')
-})
+
+
+
+
 module.exports = router;

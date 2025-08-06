@@ -8,6 +8,7 @@ let homeRoutes = require('./routes/homeRoutes');
 let aboutRoutes = require('./routes/aboutRoutes');
 let servicesRouter = require('./routes/servicesRoutes');
 const testimonialRouter = require('./routes/testimonialRoutes');
+const PackagesRouter = require('./routes/packagesRoutes');
 
 
 
@@ -21,7 +22,7 @@ app.use(session({
 }))
 app.use(express.static('public/'));
 app.use(bodyparser.urlencoded({extended:true}))
-
+app.set('view engine', 'ejs');
 
 app.use('/',user_route);
 app.use('/admin',admin_route);
@@ -29,6 +30,8 @@ app.use('/admin',homeRoutes);
 app.use('/admin',aboutRoutes);
 app.use('/admin',servicesRouter)
 app.use('/admin',testimonialRouter)
+app.use('/admin', PackagesRouter);
+
 
 
 app.listen(1000)
