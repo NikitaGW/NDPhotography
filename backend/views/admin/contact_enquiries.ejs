@@ -1,0 +1,254 @@
+<%- include('navbar') %>
+
+<div class="container-fluid px-0 px-lg-4 py-3">
+  <div class="card shadow-lg border-0 rounded-lg overflow-hidden">
+    <!-- Card Header -->
+    <div class="card-header bg-gradient-primary text-primary py-3">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="mb-2 mb-md-0">
+          <h2 class="h4 mb-1"><i class="bi bi-envelope-paper me-2"></i>Contact Messages</h2>
+          <p class="small mb-0 opacity-75">Customer inquiries and feedback</p>
+        </div>
+        <div class="d-flex align-items-center">
+          <span class="badge bg-white text-primary rounded-pill px-3 py-2">
+            <i class="bi bi-list-ol me-1"></i> <%= messages.length %> messages
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Messages Content -->
+    <% if (messages.length > 0) { %>
+      <!-- Desktop Table -->
+      <div class="card-body p-0 d-none d-lg-block">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+              <tr>
+                <th scope="col" class="ps-4 text-nowrap"># ID</th>
+                <th scope="col" class="text-nowrap">Contact</th>
+                <th scope="col" class="text-nowrap">Details</th>
+                <th scope="col" class="pe-4">Message</th>
+                <th scope="col" class="text-end pe-4">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% messages.forEach((msg, index) => { %>
+                <tr class="position-relative">
+                  <th scope="row" class="ps-4 fw-normal text-muted"><%= index + 1 %></th>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <div class="avatar avatar-sm bg-light-primary text-primary rounded-circle me-3">
+                        <%= msg.name.charAt(0).toUpperCase() %>
+                      </div>
+                      <div>
+                        <h6 class="mb-0"><%= msg.name %></h6>
+                        <small class="text-muted"><%= msg.email %></small>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="d-flex flex-column">
+                      <a href="mailto:<%= msg.email %>" class="text-primary text-decoration-none">
+                        <i class="bi bi-envelope me-1"></i> <%= msg.email %>
+                      </a>
+                      <small class="text-muted mt-1">
+                        <i class="bi bi-telephone me-1"></i> <%= msg.phone || 'Not provided' %>
+                      </small>
+                    </div>
+                  </td>
+                  <td class="pe-4">
+                    <div class="message-preview text-truncate" style="max-width: 300px;" data-bs-toggle="tooltip" data-bs-placement="top" title="<%= msg.message %>">
+                      <%= msg.message %>
+                    </div>
+                  </td>
+                  <td class="text-end pe-4">
+                    <div class="btn-group btn-group-sm" role="group">
+                      <button class="btn btn-outline-primary">
+                        <i class="bi bi-eye"></i>
+                      </button>
+                      <button class="btn btn-outline-success">
+                        <i class="bi bi-reply"></i>
+                      </button>
+                      <button class="btn btn-outline-danger">
+                        <i class="bi bi-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mobile Cards -->
+      <div class="card-body p-0 d-block d-lg-none">
+        <div class="list-group list-group-flush">
+          <% messages.forEach((msg, index) => { %>
+            <div class="list-group-item p-3 border-bottom">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div class="d-flex align-items-center">
+                  <div class="avatar avatar-sm bg-light-primary text-primary rounded-circle me-3">
+                    <%= msg.name.charAt(0).toUpperCase() %>
+                  </div>
+                  <div>
+                    <h6 class="mb-0"><%= msg.name %></h6>
+                    <small class="text-muted">#<%= index + 1 %></small>
+                  </div>
+                </div>
+                <span class="badge bg-primary bg-opacity-10 text-primary rounded-pill">
+                  <i class="bi bi-clock me-1"></i> Today
+                </span>
+              </div>
+              
+              <div class="ps-5">
+                <div class="mb-2">
+                  <a href="mailto:<%= msg.email %>" class="text-decoration-none d-flex align-items-center">
+                    <i class="bi bi-envelope me-2 text-muted"></i>
+                    <span class="text-primary"><%= msg.email %></span>
+                  </a>
+                </div>
+                
+                <% if (msg.phone) { %>
+                <div class="mb-2">
+                  <a href="tel:<%= msg.phone %>" class="text-decoration-none d-flex align-items-center">
+                    <i class="bi bi-telephone me-2 text-muted"></i>
+                    <span><%= msg.phone %></span>
+                  </a>
+                </div>
+                <% } %>
+                
+                <div class="mb-3">
+                  <small class="text-muted d-block mb-1">Message</small>
+                  <div class="bg-light p-2 rounded">
+                    <%= msg.message %>
+                  </div>
+                </div>
+                
+                
+              </div>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+    <% } else { %>
+      <div class="card-body text-center py-5">
+        <div class="empty-state">
+          <div class="empty-state-icon bg-light-primary rounded-circle">
+            <i class="bi bi-inbox text-primary" style="font-size: 2.5rem;"></i>
+          </div>
+          <h3 class="mt-4">No messages yet</h3>
+          <p class="text-muted">When customers contact you, their messages will appear here</p>
+          <!-- <a href="/contact" class="btn btn-primary mt-3">
+            <i class="bi bi-envelope-plus me-1"></i> View Contact Page
+          </a> -->
+        </div>
+      </div>
+    <% } %>
+    
+    <!-- Card Footer -->
+    <% if (messages.length > 0) { %>
+      <div class="card-footer bg-light py-3">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-3 mb-lg-0">
+            <div class="d-flex align-items-center">
+              <select class="form-select form-select-sm w-auto me-2">
+                <option>10 per page</option>
+                <option>25 per page</option>
+                <option>50 per page</option>
+              </select>
+              <small class="text-muted">Showing 1 to <%= messages.length %> of <%= messages.length %> entries</small>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex flex-column flex-lg-row justify-content-lg-end align-items-center">
+              <button class="btn btn-sm btn-outline-primary mb-2 mb-lg-0 me-lg-2">
+                <i class="bi bi-download me-1"></i> Export as CSV
+              </button>
+              <a href="/admin/delete" class="btn btn-sm btn-danger">
+                <i class="bi bi-trash me-1"></i> Delete All Messages
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('footer') %>
+
+<style>
+  /* Custom Styles */
+  .avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-weight: 600;
+  }
+  
+  .empty-state {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .empty-state-icon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 991.98px) {
+    .container-fluid {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    
+    .card {
+      border-radius: 0;
+      border-left: none;
+      border-right: none;
+    }
+    
+    .list-group-item {
+      padding: 1.25rem 1rem;
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    .card-header {
+      padding: 1rem;
+    }
+    
+    .btn-group-sm > .btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Hover effects */
+  .table-hover > tbody > tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+  }
+  
+  .list-group-item:hover {
+    background-color: #f8f9fa;
+  }
+</style>
+
+<script>
+  // Initialize tooltips
+  document.addEventListener('DOMContentLoaded', function() {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+  })
+</script>

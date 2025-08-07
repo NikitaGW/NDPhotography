@@ -4,23 +4,6 @@
             
             const form = document.getElementById('contactForm');
             
-            form.addEventListener('submit', function(event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                
-                form.classList.add('was-validated');
-                
-                if (form.checkValidity()) {
-                    // Form is valid - you can add AJAX submission here
-                    event.preventDefault();
-                    alert('Thank you for your message! We will contact you soon.');
-                    form.reset();
-                    form.classList.remove('was-validated');
-                }
-            }, false);
-            
             // Phone number validation
             const phoneInput = document.getElementById('phone');
             phoneInput.addEventListener('input', function() {

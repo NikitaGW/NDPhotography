@@ -71,6 +71,14 @@ router.get('/about',async(req,res)=>{
 router.get('/contact',(req,res)=>{
     res.render('user/contact.ejs')
 })
+router.post('/save_enquiry', async (req, res) => {
+    let d = req.body;
+
+    let sql = `INSERT INTO contact_messages (name, email, phone, message) VALUES (?, ?, ?, ?)`;
+    await exe(sql, [d.name, d.email, d.phone, d.message]);
+
+    res.redirect('/contact'); 
+});
 router.get('/testimonials',async(req,res)=>{
     var sql =`SELECT * FROM testimonials`;
     var result =  await exe(sql)

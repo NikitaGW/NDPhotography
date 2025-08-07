@@ -1,5 +1,6 @@
 let express = require('express');
 const exe = require('../connection');
+const { route } = require('./user_routes');
 var router = express.Router();
 
 // slider
@@ -262,6 +263,18 @@ router.post('/update_result/:id', async (req, res) => {
     res.send("Update failed");
   }
 });
+router.get('/manage_booking', async (req, res) => {
+  try {
+    const sql = 'SELECT * FROM bookings ORDER BY id DESC';
+    const result = await exe(sql); 
+    console.log("📦 Inquiries fetched:", result); // DEBUG LOG
+    res.render('admin/Bookings.ejs', { inquiries: result });
+  } catch (err) {
+    console.error('❌ Error fetching inquiries:', err.message);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
 
 
 

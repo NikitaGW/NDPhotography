@@ -1,270 +1,426 @@
 <%- include('navbar')%>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-        }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
+<style>
+    :root {
+        --primary-color: #2c3e50;
+        --secondary-color: #e74c3c;
+        --accent-color: #3498db;
+        --light-color: #f8f9fa;
+        --dark-color: #212529;
+        --border-radius: 8px;
+        --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
 
-        .booking-wrapper {
-            max-width: 1000px;
-            margin: 30px auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            display: flex;
-            flex-wrap: wrap;
-        }
+    body {
+        font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+    }
 
-        .info-section {
-            background: linear-gradient(rgba(44, 62, 80, 0.85), rgba(44, 62, 80, 0.8)),
-                        url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
-            color: #fff;
-            padding: 30px 25px;
-            display: flex;
+    .booking-container {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .booking-card {
+        display: flex;
+        background: #fff;
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        overflow: hidden;
+        transition: var(--transition);
+    }
+
+    .booking-card:hover {
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    }
+
+    .info-section {
+        flex: 0 0 40%;
+        background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.95)),
+                    url('https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+        color: #fff;
+        padding: 40px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .info-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.9));
+        z-index: -1;
+    }
+
+    .info-section h2 {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        color: #fff;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .info-section h2::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background-color: var(--secondary-color);
+    }
+
+    .info-section p {
+        font-size: 16px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 25px;
+    }
+
+    .benefits-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .benefits-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 12px;
+        font-size: 15px;
+    }
+
+    .benefits-list li::before {
+        content: '\f00c';
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        color: var(--secondary-color);
+    }
+
+    .form-section {
+        flex: 0 0 60%;
+        padding: 40px;
+    }
+
+    .form-header {
+        margin-bottom: 30px;
+    }
+
+    .form-header h3 {
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 8px;
+    }
+
+    .form-header p {
+        color: #6c757d;
+        font-size: 15px;
+        margin-bottom: 0;
+    }
+
+    .form-label {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+        color: var(--primary-color);
+    }
+
+    .required-field::after {
+        content: " *";
+        color: var(--secondary-color);
+    }
+
+    .form-control {
+        height: 45px;
+        border-radius: var(--border-radius);
+        border: 1px solid #e0e0e0;
+        font-size: 15px;
+        transition: var(--transition);
+        padding: 10px 15px;
+    }
+
+    .form-control:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.2);
+    }
+
+    textarea.form-control {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-select {
+        height: 45px;
+        font-size: 15px;
+        border-radius: var(--border-radius);
+        border: 1px solid #e0e0e0;
+        padding: 10px 15px;
+    }
+
+    .form-select:focus {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.2);
+    }
+
+    .btn-submit {
+        background-color: var(--secondary-color);
+        color: white;
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 12px 25px;
+        font-size: 16px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: var(--transition);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .btn-submit:hover {
+        background-color: #c0392b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+    }
+
+    .form-check {
+        margin-bottom: 25px;
+    }
+
+    .form-check-input {
+        margin-top: 0.2em;
+    }
+
+    .form-check-label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .booking-card {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .booking-card {
             flex-direction: column;
-            justify-content: center;
-            border-top-left-radius: 12px;
-            border-bottom-left-radius: 12px;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
-
-        .info-section h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #fff;
+        
+        .info-section, .form-section {
+            flex: 0 0 100%;
         }
-
-        .info-section h2 i {
-            margin-right: 10px;
-            color: #e74c3c;
+        
+        .info-section {
+            padding: 30px;
+            text-align: center;
         }
-
-        .info-section p {
-            font-size: 16px;
-            line-height: 1.5;
-            color: #f8f8f8;
-            margin-bottom: 0;
+        
+        .info-section h2::after {
+            left: 50%;
+            transform: translateX(-50%);
         }
+        
+        .benefits-list {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+    }
 
+    @media (max-width: 768px) {
+        .booking-container {
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
         .form-section {
-            padding: 25px 30px;
+            padding: 30px;
         }
-
-        .form-section h3 {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+        
+        .form-header h3 {
+            font-size: 22px;
         }
+    }
 
-        .form-section .subtitle {
-            font-size: 14px;
-            color: #6c757d;
-            margin-bottom: 20px;
+    @media (max-width: 576px) {
+        .info-section {
+            padding: 25px 20px;
         }
-
-        label {
-            font-size: 14.5px;
-            font-weight: bold;
-            margin-bottom: 4px;
-            color: var(--primary-color);
+        
+        .form-section {
+            padding: 25px 20px;
         }
-
-        .form-control-sm, .form-select-sm {
-            font-size: 16px;
-            padding: 0.4rem 0.55rem;
-            border-radius: 6px;
-            border: 1px solid #ced4da;
+        
+        .form-header h3 {
+            font-size: 20px;
         }
-
-        .form-control:focus, .form-select:focus {
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 0.2rem rgba(231, 76, 60, 0.25);
+        
+        .btn-submit {
+            padding: 21px 20px;
+            font-size: 15px;
         }
+    }
+</style>
 
-        .btn-primary {
-            background-color: var(--secondary-color);
-            border: none;
-            border-radius: 6px;
-            padding: 10px 0;
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .required-field::after {
-            content: " *";
-            color: var(--secondary-color);
-        }
-
-        @media (max-width: 768px) {
-            .booking-wrapper {
-                flex-direction: column;
-                border-radius: 10px;
-                margin: 20px 15px;
-            }
-
-            .info-section {
-                border-radius: 12px 12px 0 0;
-                text-align: center;
-                padding: 25px 20px;
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-
-            .form-section {
-                padding: 20px;
-            }
-
-            .form-section h3 {
-                font-size: 20px;
-                text-align: center;
-            }
-
-            .form-section form {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .row.mb-2 {
-                flex-direction: column;
-            }
-
-            .row.mb-2 > div {
-                width: 100%;
-                margin-bottom: 12px;
-            }
-
-            .btn {
-                font-size: 16px;
-                padding: 12px;
-            }
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .booking-wrapper {
-            animation: fadeIn 0.6s ease-out forwards;
-        }
-    </style>
-</head>
-<body>
-    <!-- Main Booking Form -->
-    <div class="container my-5 d-flex justify-content-center">
-        <div class="booking-wrapper row g-0">
-            <!-- Left: Info Section -->
-            <div class="col-md-5 info-section">
-                <h2><i class="fas fa-camera-retro"></i>Book with ND Photography</h2>
-                <p>Whether it's a wedding, portrait session, or commercial shoot — we capture your story beautifully. Fill the form and let's create something amazing!</p>
-                
-                <div class="mt-4">
-                    <h4><i class="fas fa-check-circle"></i> Why Choose Us?</h4>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-check me-2"></i> Professional Equipment</li>
-                        <li><i class="fas fa-check me-2"></i> Creative Direction</li>
-                        <li><i class="fas fa-check me-2"></i> High-Quality Editing</li>
-                        <li><i class="fas fa-check me-2"></i> Quick Turnaround</li>
-                    </ul>
+<!-- Main Booking Form -->
+<div class="booking-container">
+    <div class="booking-card">
+        <!-- Left: Info Section -->
+        <div class="info-section">
+            <h2><i class="fas fa-camera-retro me-2"></i>Book Your Session</h2>
+            <p>Let us capture your special moments with professional photography services tailored to your needs. Complete the form and we'll contact you to finalize details.</p>
+            
+            <ul class="benefits-list">
+                <li>Professional-grade equipment</li>
+                <li>Creative direction and posing guidance</li>
+                <li>High-resolution edited images</li>
+                <li>Fast delivery with online gallery</li>
+                <li>Flexible scheduling options</li>
+            </ul>
+            
+            <div class="mt-auto pt-3">
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-phone-alt me-3"></i>
+                    <div>
+                        <small class="d-block text-white-50">Have questions?</small>
+                        <strong>+1 (555) 123-4567</strong>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <!-- Right: Form Section -->
-            <div class="col-md-7 form-section">
-                <h3>Book Your Session</h3>
-                <p class="subtitle">Fill in your details and we'll get back to you within 24 hours.</p>
-
-                <form action="/save_booking" method="post">
-                    <div class="mb-3">
-                        <label for="name" class="form-label required-field">Full Name</label>
-                        <input type="text" class="form-control form-control-sm" id="name" name="full_name" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label required-field">Email Address</label>
-                        <input type="email" class="form-control form-control-sm" id="email" name="email" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="phone" class="form-label required-field">Phone Number</label>
-                        <input type="tel" class="form-control form-control-sm" id="phone" name="phone" required>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="service" class="form-label required-field">Photography Type</label>
-                            <select class="form-select form-select-sm" id="service" name="photography_type" required>
-                                <option value="" disabled selected>Select service</option>
-                                <option>Wedding Photography</option>
-                                <option>Portrait Session</option>
-                                <option>Event Coverage</option>
-                                <option>Commercial Shoot</option>
-                                <option>Family Photography</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="location" class="form-label required-field">Location</label>
-                            <input type="text" class="form-control form-control-sm" id="location" name="location" placeholder="e.g., Pune" required>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="date" class="form-label required-field">Preferred Date</label>
-                            <input type="date" class="form-control form-control-sm" id="date" name="preferred_date" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="slot" class="form-label required-field">Preferred Time</label>
-                            <select class="form-select form-select-sm" id="slot" name="preferred_slot" required>
-                                <option value="" disabled selected>Select time</option>
-                                <option>Morning (8am-12pm)</option>
-                                <option>Afternoon (12pm-4pm)</option>
-                                <option>Evening (4pm-8pm)</option>
-                                <option>Custom Time</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="message" class="form-label">Special Requests</label>
-                        <textarea class="form-control form-control-sm" id="message" name="message" rows="3" placeholder="Tell us about your vision, special requirements, or anything else we should know"></textarea>
-                    </div>
-
-                    <div class="form-check mb-4">
-                        <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
-                        <label class="form-check-label" for="newsletter">
-                            Subscribe to our newsletter for tips and special offers
-                        </label>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary w-100">
-                        <i class="fas fa-paper-plane me-2"></i> Submit Booking Request
-                    </button>
-                </form>
+        <!-- Right: Form Section -->
+        <div class="form-section">
+            <div class="form-header">
+                <h3>Booking Request</h3>
+                <p>Fill out the form below and we'll get back to you within 24 hours to confirm your session.</p>
             </div>
+
+            <form action="/save_booking" method="post">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label required-field">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="full_name" required placeholder="John Smith">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label required-field">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label required-field">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required placeholder="+1 (___) ___-____">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="service" class="form-label required-field">Session Type</label>
+                        <select class="form-select" id="service" name="photography_type" required>
+                            <option value="" disabled selected>Select session type</option>
+                            <option>Wedding Photography</option>
+                            <option>Engagement Session</option>
+                            <option>Family Portraits</option>
+                            <option>Maternity Session</option>
+                            <option>Professional Headshots</option>
+                            <option>Commercial Photography</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label for="date" class="form-label required-field">Preferred Date</label>
+                        <input type="date" class="form-control" id="date" name="preferred_date" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="slot" class="form-label required-field">Preferred Time</label>
+                        <select class="form-select" id="slot" name="preferred_slot" required>
+                            <option value="" disabled selected>Select time slot</option>
+                            <option>Sunrise (5-8am)</option>
+                            <option>Morning (8am-12pm)</option>
+                            <option>Afternoon (12-4pm)</option>
+                            <option>Golden Hour (4-7pm)</option>
+                            <option>Evening (7-10pm)</option>
+                            <option>Flexible</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="location" class="form-label required-field">Location</label>
+                    <input type="text" class="form-control" id="location" name="location" required placeholder="Studio, outdoor location, or address">
+                </div>
+
+                <div class="mb-3">
+                    <label for="message" class="form-label">Special Requests</label>
+                    <textarea class="form-control" id="message" name="message" rows="3" placeholder="Tell us about your vision, special requirements, or anything else we should know"></textarea>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter" checked>
+                    <label class="form-check-label" for="newsletter">
+                        Subscribe to our newsletter for photography tips and special offers
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-submit">
+                    <i class="fas fa-paper-plane me-1"></i> Request Booking
+                </button>
+            </form>
         </div>
     </div>
+</div>
+
 <%- include('footer')%>
+
+<script>
+    // Enhance form functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Phone number formatting
+        const phoneInput = document.getElementById('phone');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', function(e) {
+                const x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+            });
+        }
+
+        // Date picker minimum date (today)
+        const dateInput = document.getElementById('date');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.min = today;
+        }
+    });
+</script>
