@@ -32,41 +32,37 @@
         </div>
 
         <div class="row">
-          <% packages.forEach((pkg, index) => { %>
-          <div
-            class="col-md-4 animate-on-scroll <%= index === 1 ? 'delay-1' : index === 2 ? 'delay-2' : '' %>"
-          >
-            <div
-              class="pricing-card" style="<%= index === 1 ? 'transform: scale(1.05);' : '' %>"      >
-              <% if(index === 1) { %>
-              <div class="popular-tag">Most Popular</div>
-              <% } %>
-              <div
-                class="pricing-header"
-                style="<%= index === 1 ? 'background-color: var(--secondary-color);' : '' %>"
-              >
-                <h3 class="pricing-title"><%= pkg.name %></h3>
-                <p class="pricing-price">₹<%= pkg.price %></p>
-                <p class="pricing-period">per session</p>
-              </div>
-              <div class="pricing-body">
-                <ul class="pricing-features">
-                  <% pkg.features.forEach(f => { %>
-                  <li class="<%= f.disabled ? 'disabled' : '' %>">
-                    <%= f.text %>
-                  </li>
-                  <% }) %>
-                </ul>
-                <a
-                  href="#contact"
-                  class="btn <%= index === 1 ? 'btn-dark' : 'btn-primary' %> btn-pricing"
-                  >Book Now</a
-                >
-              </div>
-            </div>
-          </div>
-          <% }); %>
+  <% packages.forEach((pkg, index) => { %>
+    <div class="col-md-4 animate-on-scroll <%= index === 1 ? 'delay-1' : index === 2 ? 'delay-2' : '' %>">
+      <div class="pricing-card" style="<%= index === 1 ? 'transform: scale(1.05);' : '' %>">
+        
+        <% if (index === 1) { %>
+          <div class="popular-tag">Most Popular</div>
+        <% } %>
+
+        <div class="pricing-header" style="<%= index === 1 ? 'background-color: var(--secondary-color);' : '' %>">
+          <h3 class="pricing-title"><%= pkg.name %></h3>
+          <p class="pricing-price">₹<%= pkg.price %></p>
+          <p class="pricing-period">per session</p>
         </div>
+
+        <div class="pricing-body">
+          <ul class="pricing-features">
+            <% pkg.features.forEach(f => { %>
+              <li class="<%= f.disabled ? 'disabled' : '' %>"><%= f.text %></li>
+            <% }) %>
+          </ul>
+
+          <a href="#contact" class="btn <%= index === 1 ? 'btn-dark' : 'btn-primary' %> btn-pricing">
+            Book Now
+          </a>
+        </div>
+
+      </div>
+    </div>
+  <% }); %>
+</div>
+
 
         <!-- Custom Packages -->
         <div class="custom-packages animate-on-scroll">
