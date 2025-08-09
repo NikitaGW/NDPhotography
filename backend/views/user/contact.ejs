@@ -25,36 +25,36 @@
                             <div class="col-lg-7">
                                 <div class="contact-form">
                                     <h2 class="mb-4">Send Us a Message</h2>
-                                    <form id="contactForm" novalidate>
+                                    <form id="contactForm" method="post" action="/save_enquiry" novalidate>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Your Name" required>
                                             <div class="invalid-feedback">
                                                 Please Enter your name.
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                                             <div class="invalid-feedback">
                                                 Please Enter a valid email.
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <input type="tel" class="form-control" id="phone" placeholder="Your Phone" required>
+                                            <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
                                             <div class="invalid-feedback">
                                                 Please Enter your phone number.
                                             </div>
                                         </div>
                                         
                                         <div class="form-group">
-                                            <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                                            <textarea class="form-control" name="message" id="message" rows="5" placeholder="Your Message" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please enter your message.
                                             </div>
                                         </div>
                                         
-                                        <button type="submit" class="btn btn-primary">Send Message</button>
+                                        <button class="btn btn-primary" type="submit">Send Message</button>
                                     </form>
                                 </div>
                             </div>

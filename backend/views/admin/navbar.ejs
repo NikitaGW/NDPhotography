@@ -44,12 +44,12 @@
               Dashboard
             </a>
           </li>
-          <li>
+          <!-- <li>
             <a href="#" class="nav-link" data-page="profile">
               <i class="bi bi-person-circle"></i>
               Profile Management
             </a>
-          </li>
+          </li> -->
         </div>
 
         <div class="menu-section">
@@ -73,7 +73,8 @@
 <!-- Home Management Dropdown -->
 <li class="nav-item">
   <a class="nav-link d-flex justify-content-between align-items-center text-white" data-bs-toggle="collapse" href="#homeManagementMenu" role="button" aria-expanded="false" aria-controls="homeManagementMenu">
-    <span><i class="bi bi-images me-2"></i> Home Management</span>
+    <span><i class="fa fa-home" aria-hidden="true"></i>
+ Home Management</span>
     <i class="bi bi-chevron-down dropdown-icon"></i>
   </a>
   <div class="collapse" id="homeManagementMenu">
@@ -90,7 +91,8 @@
 <!-- About Management Dropdown -->
 <li class="nav-item mt-2">
   <a class="nav-link d-flex justify-content-between align-items-center text-white" data-bs-toggle="collapse" href="#aboutManagementMenu" role="button" aria-expanded="false" aria-controls="aboutManagementMenu">
-    <span><i class="bi bi-images me-2"></i> About Management</span>
+    <span><i class="fa fa-info-circle" aria-hidden="true"></i>
+ About Management</span>
     <i class="bi bi-chevron-down dropdown-icon"></i>
   </a>
   <div class="collapse" id="aboutManagementMenu">
@@ -109,7 +111,8 @@
   <a class="nav-link d-flex justify-content-between align-items-center text-white" 
      data-bs-toggle="collapse" href="#servicesManagement" role="button" 
      aria-expanded="false" aria-controls="servicesManagement">
-    <span><i class="bi bi-images me-2"></i> Services Management</span>
+    <span><i class="fa fa-wrench me-2" aria-hidden="true"></i>
+ Services Management</span>
     <i class="bi bi-chevron-down dropdown-icon"></i>
   </a>
 
@@ -125,7 +128,8 @@
   <a class="nav-link d-flex justify-content-between align-items-center text-white" 
      data-bs-toggle="collapse" href="#testimonialManagement" role="button" 
      aria-expanded="false" aria-controls="testimonialManagement">
-    <span><i class="bi bi-images me-2"></i> testimonial</span>
+    <span><i class="fa fa-quote-left me-2" aria-hidden="true"></i>
+ testimonial</span>
     <i class="bi bi-chevron-down dropdown-icon"></i>
   </a>
 
@@ -133,42 +137,68 @@
     <ul class="list-unstyled ms-4">
       <!-- <li><a href="/admin/photographytestimonial" class="nav-link text-white">Photography testimonial</a></li> -->
       <li><a href="/admin/managePhotographytestimonial" class="nav-link text-white">Manage testimonial</a></li>
-      <li><a href="/admin/addPhotographytestimonial" class="nav-link text-white">Add testimonial</a></li>
+      <li><a href="/admin/add_testimonial" class="nav-link text-white">Add testimonial</a></li>
+    </ul>
+  </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link d-flex justify-content-between align-items-center text-white" 
+     data-bs-toggle="collapse" href="#pricing" role="button" 
+     aria-expanded="false" aria-controls="pricing">
+    <span><i class="fa fa-dollar me-2" ></i> pricing</span>
+    <i class="bi bi-chevron-down dropdown-icon"></i>
+  </a>
+
+  <div class="collapse" id="pricing">
+    <ul class="list-unstyled ms-4">
+      <!-- <li><a href="/admin/photographytestimonial" class="nav-link text-white">Photography testimonial</a></li> -->
+      <li>
+            <a href="/admin/save" class="nav-link" data-page="pricing">
+              <i class="bi bi-currency-dollar"></i>
+              Pricing Management
+            </a>
+          </li>
+          <li>
+            <a href="/admin/addons" class="nav-link" data-page="pricing">
+              <i class="bi bi-currency-dollar"></i>
+              Pricing addons
+            </a>
+          </li>
+          <li>
+            <a href="/admin/addons/add" class="nav-link" data-page="pricing">
+              <i class="bi bi-currency-dollar"></i>
+               addons form
+            </a>
+          </li>
     </ul>
   </div>
 </li>
 </ul>
 
           <ul class="navbar-nav"></ul>
-          <li>
-            <a href="#" class="nav-link" data-page="portfolio">
-              <i class="bi bi-images"></i>
-              Pricing Management
-              <span class="badge-notification">24</span>
-            </a>
-          </li>
-          <li>
+          <!-- <li>
+            
             <a href="#" class="nav-link" data-page="portfolio">
               <i class="bi bi-images"></i>
               Blog Management
               <span class="badge-notification">24</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="/admin/testimonials" class="nav-link" data-page="testimonials">
               <i class="bi bi-chat-quote"></i>
               Testimonials
               <span class="badge-notification success">12</span>
             </a>
-          </li>
-          <li>
+          </li> -->
+          <!-- <li>
             <a href="#" class="nav-link" data-page="blog">
               <i class="bi bi-journal-text"></i>
               Blog Management
             </a>
-          </li>
+          </li> -->
           <li>
-            <a href="#" class="nav-link" data-page="faq">
+            <a href="/admin/photolist_form" class="nav-link" data-page="faq">
               <i class="bi bi-question-circle"></i>
               FAQ Management
             </a>
@@ -178,25 +208,20 @@
         <div class="menu-section">
           <div class="menu-section-title">Business</div>
           <li>
-            <a href="#" class="nav-link" data-page="enquiries">
+            <a href="/admin/contact_enquiries" class="nav-link" data-page="enquiries">
               <i class="bi bi-envelope"></i>
               Contact Enquiries
               <span class="badge-notification">7</span>
             </a>
           </li>
           <li>
-            <a href="#" class="nav-link" data-page="bookings">
+            <a href="/admin/manage_booking" class="nav-link" data-page="bookings">
               <i class="bi bi-calendar-check"></i>
               Bookings & Schedule
               <span class="badge-notification warning">3</span>
             </a>
           </li>
-          <li>
-            <a href="#" class="nav-link" data-page="pricing">
-              <i class="bi bi-currency-dollar"></i>
-              Pricing Management
-            </a>
-          </li>
+          
           <li>
             <a href="/admin/logout" class="nav-link" data-page="client-area">
               <i class="bi bi-people"></i>
@@ -238,7 +263,7 @@
               <div class="user-name">Nick Davis</div>
               <div class="user-role">Professional Photographer</div>
             </div>
-            <i class="bi bi-chevron-down"></i>
+            <!-- <i class="bi bi-chevron-down"></i> -->
           </div>
         </div>
       </div>

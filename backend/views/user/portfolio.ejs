@@ -49,23 +49,16 @@
             </div>
             
             <!-- Portraits -->
+             <% for(let i = 0; i < portraitsResult.length;i++){%>
             <div class="gallery-item" data-category="portraits">
-                <img src="https://images.unsplash.com/photo-1554151228-14d9def656e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Portrait of woman">
+                <img src="images/<%- portraitsResult[i].image_path%>" alt="Portrait of woman">
                 <div class="item-info">
-                    <h3 class="item-title">Urban Elegance</h3>
-                    <p class="item-date">April 2023</p>
-                    <p class="item-desc">Corporate headshot session with natural lighting in downtown studio</p>
+                    <h3 class="item-title"><%- portraitsResult[i].title%></h3>
+                    <p class="item-date"><%- portraitsResult[i].event_date%></p>
+                    <p class="item-desc"><%- portraitsResult[i].description%></p>
                 </div>
             </div>
-            
-            <div class="gallery-item" data-category="portraits">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Portrait of man">
-                <div class="item-info">
-                    <h3 class="item-title">Executive Profile</h3>
-                    <p class="item-date">March 2023</p>
-                    <p class="item-desc">Professional portrait for LinkedIn profile and company website</p>
-                </div>
-            </div>
+            <%}%>
             
             <!-- Events -->
             <div class="gallery-item" data-category="events">
@@ -131,15 +124,6 @@
                     <h3 class="item-title">Reception Celebration</h3>
                     <p class="item-date">September 2022</p>
                     <p class="item-desc">First dance under custom crystal chandelier at vineyard estate</p>
-                </div>
-            </div>
-            
-            <div class="gallery-item" data-category="portraits">
-                <img src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Family portrait">
-                <div class="item-info">
-                    <h3 class="item-title">Generations</h3>
-                    <p class="item-date">August 2022</p>
-                    <p class="item-desc">Three-generation family portrait session in the studio</p>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 let express = require('express')
 var exe = require('./../connection');
+const { route } = require('./user_routes');
 
 
 var router = express.Router();
@@ -53,7 +54,23 @@ router.get('/logout',(req,res)=>{
 router.get('/admin/about_banner_form', (req, res) => {
   res.render('admin/about_banner_form.ejs'); // Make sure the filename matches exactly
 });
+// Show all contact messages
+router.get('/contact_enquiries', async (req, res) => {
+  try {
+    const sql = 'SELECT * FROM contact_messages ORDER BY id DESC';
+    const messages = await exe(sql);
 
+    res.render('admin/contact_enquiries.ejs', { messages });
+  } catch (err) {
+    console.error('❌ Error fetching contact messages:', err.message);
+    res.status(500).send('Internal Server Error');
+  }
+});
+router.get('/delete',async(req,res)=>{
+    var sql = `DELETE FROM contact_messages`
+    var result = await exe(sql);
+    res.redirect('/admin/contact_enquiries')
+})
 
 module.exports = router;
 
