@@ -51,9 +51,9 @@ router.get('/logout',(req,res)=>{
 });
 
 
-router.get('/admin/about_banner_form', (req, res) => {
-  res.render('admin/about_banner_form.ejs'); // Make sure the filename matches exactly
-});
+// router.get('/admin/about_banner_form', (req, res) => {
+//   res.render('admin/about_banner_form.ejs'); // Make sure the filename matches exactly
+// });
 // Show all contact messages
 router.get('/contact_enquiries', async (req, res) => {
   try {

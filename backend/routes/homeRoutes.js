@@ -11,7 +11,6 @@ router.get('/add_slider', async (req, res) => {
     res.render('admin/add_slider.ejs', sliderPacket)
 })
 
-
 router.get('/update_slider', async (req, res) => {
     let sliderSql = `SELECT * FROM sliders`;
     let sliderResult = await exe(sliderSql);

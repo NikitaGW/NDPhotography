@@ -160,9 +160,14 @@ router.post("/save_about", async (req, res) => {
   
 
 
-router.get("/add_photographer",(req,res)=>{
+router.get("/add_photographer",async(req,res)=>{
 
-  
-  res.render("admin/add_photographer.ejs");
+  let photographerdata = `SELECT * FROM photographers`;
+  let photographerResult = await exe(photographerdata);
+  let photographerPacket = { photographerResult };
+  res.render("admin/add_photographer.ejs", photographerPacket);
 })
+
+
+
 module.exports = router;
