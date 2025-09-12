@@ -1,5 +1,6 @@
 <%- include('navbar') %>
 
+
 <style>
   .hero-section {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
@@ -32,11 +33,8 @@
     max-width: 600px;
   }
 </style>
-
 <section class="hero-section text-center">
-  <a href="/admin/about_banner_list">
-    <button class="editBtn btn btn-warning float-end">View List</button>
-  </a>
+  
   <h1 class="display-3 fw-bold mb-4">About Me</h1>
   <p class="lead">Capturing moments, telling stories, creating art</p>
 </section>
@@ -44,26 +42,34 @@
 <div class="container form-container">
   <div class="card shadow-lg border-0 rounded-3">
     <div class="card-body p-4">
-      <h2 class="text-center mb-4">Add About Banner</h2>
-      <form action="/admin/add_about_banner" method="POST" enctype="multipart/form-data">
-        
-        <div class="mb-3">
-          <label for="title" class="form-label">Title:</label>
-          <input type="text" id="title" name="title" class="form-control" required>
-        </div>
+      <h2 class="text-center mb-4">About Banners</h2>
+      <table class="table table-striped table-bordered align-middle text-center">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Subtitle</th>
+            <th>Image</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% banners.forEach(banner => { %>
+            <tr>
+              <td><%= banner.id %></td>
+              <td><%= banner.title %></td>
+              <td><%= banner.subtitle %></td>
+              <td><img src="/images/<%= banner.background_image %>" alt="<%= banner.title %>" class="img-fluid" style="max-width: 150px;"></td>
+              <td>
+                <a href="/admin/update_about_banner/<%= banner.id %>" class="btn btn-success btn-sm">Edit</a>
+                <a href="/admin/delete_about_banner/<%= banner.id %>" class="btn btn-danger btn-sm">Delete</a>
 
-        <div class="mb-3">
-          <label for="subtitle" class="form-label">Subtitle:</label>
-          <input type="text" id="subtitle" name="subtitle" class="form-control" required>
-        </div>
-
-        <div class="mb-3">
-          <label for="image" class="form-label">Image:</label>
-          <input type="file" id="image" name="background_image" class="form-control" accept="image/*" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-100">Save</button>
-      </form>
+                
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

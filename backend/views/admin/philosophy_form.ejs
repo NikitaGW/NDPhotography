@@ -1,17 +1,80 @@
 <%- include('navbar') %>
-<form action="/admin/about/philosophy" method="POST">
-  <input name="icon" placeholder="Icon class" class="form-control mb-2">
-  <input name="title" placeholder="Title" class="form-control mb-2">
-  <textarea name="description" class="form-control mb-2" rows="3"></textarea>
-  <button class="btn btn-success mb-3">Add</button>
-</form>
 
-<ul class="list-group">
-  <% philosophies.forEach(p => { %>
-    <li class="list-group-item d-flex justify-content-between">
-      <span><i class="<%= p.icon %>"></i> <%= p.title %></span>
-      <a href="/admin/about/philosophy/delete/<%= p.id %>" class="btn btn-sm btn-danger">Delete</a>
-    </li>
-  <% }) %>
-</ul>
+<link rel="stylesheet" href="/user/about.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<section class="philosophy-section">
+            <h2 class="section-title">My Photography Philosophy</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-eye fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                            <h4>See the Unseen</h4>
+                            <p>I believe in looking beyond the obvious to capture the subtle emotions and details that tell the real story.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-heart fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                            <h4>Authenticity Matters</h4>
+                            <p>My goal is to create images that feel genuine, not staged. I guide rather than pose, allowing natural moments to unfold.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-lightbulb fa-3x mb-3" style="color: var(--secondary-color);"></i>
+                            <h4>Light is Everything</h4>
+                            <p>I work with light to create mood and depth, whether it's soft natural light or carefully crafted artificial lighting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+<body class="bg-light">
+
+<div class="container mt-5">
+  <div class="card shadow p-4 rounded-3">
+    <h3 class="mb-4">Add Feature</h3>
+    <form action="/admin/save_phiolosophy" method="POST" enctype="multipart/form-data">
+      
+      <!-- Icon -->
+      <div class="mb-3">
+        <label for="icon" class="form-label">Icon</label>
+        <input type="text" class="form-control" id="icon" name="icon" required>
+      </div>
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter title" required>
+      </div>
+
+      <!-- Subtitle -->
+      <div class="mb-3">
+        <label for="subtitle" class="form-label">Subtitle</label>
+        <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Enter subtitle" required>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn btn-primary mb-3">Save</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <%- include('footer') %>
